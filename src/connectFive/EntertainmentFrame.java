@@ -56,7 +56,6 @@ public class EntertainmentFrame extends JFrame{
 	public EntertainmentFrame(){
 		super("Entertainment Questionnaire");
 						
-//		setLayout(new FlowLayout());
 		g = new GridLayout(0, 1); // rows, columns
 		setLayout( g ); // set JFrame layout
 		
@@ -193,7 +192,7 @@ public class EntertainmentFrame extends JFrame{
 		add( q7 );
 		add( b7 );
 		
-		// adds submit button to the southern border
+		// adds submit button
 		submit = new JButton("Submit");
 		JPanel buttonJPanel = new JPanel();
 		buttonJPanel.add(submit);
