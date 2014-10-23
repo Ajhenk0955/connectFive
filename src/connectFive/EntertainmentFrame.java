@@ -1,7 +1,7 @@
 package connectFive;
 
 import java.awt.*;
-
+import java.awt.event.*;
 import javax.swing.*;
 
 public class EntertainmentFrame extends JFrame{
@@ -52,7 +52,6 @@ public class EntertainmentFrame extends JFrame{
 	private JLabel age;
 	private JLabel distance;
 	private JLabel space;
-	
 	
 	public EntertainmentFrame(){
 		super("Entertainment Questionnaire");
@@ -222,7 +221,20 @@ public class EntertainmentFrame extends JFrame{
 		buttonJPanel.add(submit);
 		add(buttonJPanel);
 		
+		ButtonHandler handler = new ButtonHandler();
+		submit.addActionListener( handler );
+			
 	}
+	
+	// class for button event handling
+	class ButtonHandler implements ActionListener{
+		
+		public void actionPerformed( ActionEvent e){
+			JOptionPane.showMessageDialog(EntertainmentFrame.this, 
+					String.format("Questionnaire Submitted!", e.getActionCommand() ) );
+			
+		}								
+	}	
 	
 	public static void main( String[] args ){
 		EntertainmentFrame eFrame = new EntertainmentFrame();
