@@ -12,13 +12,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-class Entertainment extends JFrame implements ActionListener{
+class RSO extends JFrame implements ActionListener{
 	private JButton submit;
-	private JRadioButton morning;
-	private JRadioButton afternoon;
-	private JRadioButton night;
-	private JRadioButton sunny;
-	private JRadioButton cloudy;
+	private JRadioButton baking;
+	private JRadioButton gaming;
+	private JRadioButton reading;
+	private JRadioButton building;
+	private JRadioButton volunteering;
+	private JRadioButton sports;
+	private JRadioButton engineering;
+	private JRadioButton health;
 	private JRadioButton rainy;
 	private JRadioButton storming;
 	private JRadioButton allDay;
@@ -37,7 +40,7 @@ class Entertainment extends JFrame implements ActionListener{
 	private JRadioButton fiveFifteen;
 	private JRadioButton fifteenThirty;
 	private JRadioButton thirtyPlus;
-	private JLabel time;
+	private JLabel enjoy;
 	private JLabel weather;
 	private JLabel length;
 	private JLabel inOrOut;
@@ -45,10 +48,10 @@ class Entertainment extends JFrame implements ActionListener{
 	private JLabel age;
 	private JLabel distance;
 	private ButtonGroup radioGroup;
-	private ButtonGroup radioGroup1;
+
 	int [] array = new int [7];
 	
-	Entertainment (String test){
+	RSO (String test){
 		super(test);
 		JPanel button = new JPanel(new GridLayout(0,1));
 		JPanel buttonJPanel = new JPanel();
@@ -57,104 +60,131 @@ class Entertainment extends JFrame implements ActionListener{
 		add(buttonJPanel, BorderLayout.SOUTH);
 		
 		//question 1
-		time = new JLabel ("What is the time of the day?");
-		morning = new JRadioButton("morning");
-		afternoon = new JRadioButton("afternoon");
-		night = new JRadioButton("night");
-		button.add(time);
-		button.add(morning);
-		button.add(afternoon);
-		button.add(night);
-		radioGroup1 = new ButtonGroup();
-		radioGroup1.add(morning);
-		radioGroup1.add(afternoon);
-		radioGroup1.add(night);
+		enjoy = new JLabel ("What do you enjoy doing (select one that applies most)?");
+		baking = new JRadioButton("baking");
+		gaming = new JRadioButton("gaming");
+		reading = new JRadioButton("reading");
+		building = new JRadioButton("building");
+		volunteering = new JRadioButton("volunteering");
+		sports = new JRadioButton("sports");
+		button.add(enjoy);
+		button.add(baking);
+		button.add(gaming);
+		button.add(reading);
+		button.add(building);
+		button.add(volunteering);
+		button.add(sports);
+		radioGroup = new ButtonGroup();
+		radioGroup.add(baking);
+		radioGroup.add(gaming);
+		radioGroup.add(reading);
+		radioGroup.add(building);
+		radioGroup.add(volunteering);
+		radioGroup.add(sports);
 		add(button);
 		
 		//question 2
-		weather = new JLabel ("What is the weather like?");
-		sunny = new JRadioButton("sunny");
-		cloudy = new JRadioButton("cloudy");
+		weather = new JLabel ("What college are you in?");
+		engineering = new JRadioButton("engineering");
+		health  = new JRadioButton("health professions and social works ");
 		rainy = new JRadioButton("rainy");
 		storming = new JRadioButton("storming");
 		button.add(weather);
-		button.add(sunny);
-		button.add(cloudy);
+		button.add(engineering);
+		button.add(health);
 		button.add(rainy);
 		button.add(storming);
 		radioGroup = new ButtonGroup();
-		radioGroup.add(sunny);
-		radioGroup.add(cloudy);
+		radioGroup.add(engineering);
+		radioGroup.add(health);
 		radioGroup.add(rainy);
 		radioGroup.add(storming);
 		add(button);
 		
 		//question 3
-		length = new JLabel ("How long do you want to be out for?");
-		allDay = new JRadioButton("all day");
-		twoHours = new JRadioButton("less than 2 hours");
-		twoFiveH = new JRadioButton("2-5 hours");
+		length = new JLabel ("Would you want a RSO connected to your major?");
+		allDay = new JRadioButton("yes");
+		twoHours = new JRadioButton("no");
 		button.add(length);
 		button.add(allDay);
 		button.add(twoHours);
-		button.add(twoFiveH);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(allDay);
 		radioGroup.add(twoHours);
-		radioGroup.add(twoFiveH);
 		add(button);
 		
 		//question 4
-		inOrOut = new JLabel ("Indoor or outdoor?");
-		indoor = new JRadioButton("indoor");
-		outdoor = new JRadioButton("outdoor");
+		inOrOut = new JLabel ("How much can you donate to the RSO?");
+		indoor = new JRadioButton("$0");
+		outdoor = new JRadioButton("$5-10");
+		// = new JRadioButton("$10-30");
+		// = new JRadioButton("$30+")
 		button.add(inOrOut);
 		button.add(indoor);
 		button.add(outdoor);
+		//button.add();
+		//button.add();
 		radioGroup = new ButtonGroup();
 		radioGroup.add(indoor);
 		radioGroup.add(outdoor);
+		//radioGroup.add();
+		//radioGroup.add();
 		add(button);
 		
 		//question 5
-		cost = new JLabel ("How much money can you spend?");
-		lessThan = new JRadioButton("less than $10");
-		tenTwenty = new JRadioButton("$10-20");
-		TwentyFifty = new JRadioButton("$20-50");
-		fiftyPlus = new JRadioButton("$50+");
+		cost = new JLabel ("What is least interesting to you?");
+		lessThan = new JRadioButton("biking");
+		tenTwenty = new JRadioButton("gaming");
+		TwentyFifty = new JRadioButton("reading");
+		fiftyPlus = new JRadioButton("building");
+		// = new JRadioButton("volunteering");
+		// = new JRadioButton("sports");
 		button.add(cost);
 		button.add(lessThan);
 		button.add(tenTwenty);
 		button.add(TwentyFifty);
 		button.add(fiftyPlus);
+		//button.add();
+		//button.add();
 		radioGroup = new ButtonGroup();
 		radioGroup.add(lessThan);
 		radioGroup.add(tenTwenty);
 		radioGroup.add(TwentyFifty);
 		radioGroup.add(fiftyPlus);
+		//radioGroup.add();
+		//radioGroup.add();
 		add(button);
 		
 		//question 6
-		age = new JLabel ("How old are you?");
-		young = new JRadioButton("younger than 18");
-		eighteenTwenty = new JRadioButton("18-20");
-		twentyOnePlus = new JRadioButton("21+");
+		age = new JLabel ("Which category is most interesting to you?");
+		young = new JRadioButton("academic");
+		eighteenTwenty = new JRadioButton("media");
+		twentyOnePlus = new JRadioButton("politics");
+		//new JRadioButton("religion");
+		//new JRadioButton("service");
+		//new JRadioButton("sports");
 		button.add(age);
 		button.add(young);
 		button.add(eighteenTwenty);
 		button.add(twentyOnePlus);
+		//button.add();
+		//button.add();
+		//button.add();
 		radioGroup = new ButtonGroup();
 		radioGroup.add(young);
 		radioGroup.add(eighteenTwenty);
 		radioGroup.add(twentyOnePlus);
+		//radioGroup.add();
+		//radioGroup.add();
+		//radioGroup.add();
 		add(button);
 		
 		//question 7
-		distance = new JLabel ("How far can you travel?");
-		fiveMiles = new JRadioButton("0-5 miles");
-		fiveFifteen = new JRadioButton("5-15 miles");
-		fifteenThirty = new JRadioButton("15-30 miles");
-		thirtyPlus = new JRadioButton("30+ miles");
+		distance = new JLabel ("How often are you available to meet?");
+		fiveMiles = new JRadioButton("multiple times a week");
+		fiveFifteen = new JRadioButton("once a week");
+		fifteenThirty = new JRadioButton("biweekly");
+		thirtyPlus = new JRadioButton("once a month");
 		button.add(distance);
 		button.add(fiveMiles);
 		button.add(fiveFifteen);
@@ -167,16 +197,18 @@ class Entertainment extends JFrame implements ActionListener{
 		radioGroup.add(thirtyPlus);
 		add(button);
 		submit.addActionListener(this);
-		morning.addActionListener(this);
-		afternoon.addActionListener(this);
-		night.addActionListener(this);
-		sunny.addActionListener(this);
-		cloudy.addActionListener(this);
+		baking.addActionListener(this);
+		gaming.addActionListener(this);
+		reading.addActionListener(this);
+		building.addActionListener(this);
+		volunteering.addActionListener(this);
+		sports.addActionListener(this);
+		engineering.addActionListener(this);
+		health.addActionListener(this);
 		rainy.addActionListener(this);
 		storming.addActionListener(this);
 		allDay.addActionListener(this);
 		twoHours.addActionListener(this);
-		twoFiveH.addActionListener(this);
 		indoor.addActionListener(this);
 		outdoor.addActionListener(this);
 		lessThan.addActionListener(this);
@@ -191,35 +223,47 @@ class Entertainment extends JFrame implements ActionListener{
 		fifteenThirty.addActionListener(this);
 		thirtyPlus.addActionListener(this);
 		int [] maxArray = new int [7];
-		maxArray[0] = 2;
-		maxArray[1] = 3;
-		maxArray[2] = 2;
-		maxArray[3] = 1;
-		maxArray[4] = 3;
-		maxArray[5] = 2;
-		maxArray[6] = 3;
+		maxArray[0] = 5;
+		maxArray[1] = 4;
+		maxArray[2] = 1;
+		maxArray[3] = 5;
+		maxArray[4] = 6;
+		maxArray[5] = 3;
+		maxArray[6] = 2;
 	}
 	
 	
 	public void actionPerformed(ActionEvent e){
 		
-		if(e.getSource() == morning){
+		if(e.getSource() == baking){
 			array[0] = 0;
 		}
 		
-		else if(e.getSource() == afternoon){
+		else if(e.getSource() == gaming){
 			array[0] = 1;
 		}
 		
-		else if(e.getSource() == night){
+		else if(e.getSource() == reading){
 			array[0] = 2;
 		}
 		
-		if(e.getSource() == sunny){
+		else if(e.getSource() == building){
+			array[0] = 3;
+		}
+		
+		else if(e.getSource() == volunteering){
+			array[0] = 4;
+		}
+		
+		else if(e.getSource() == sports){
+			array[0] = 5;
+		}
+		
+		if(e.getSource() == engineering){
 			array[1] = 0;
 		}
 		
-		else if(e.getSource() == cloudy){
+		else if(e.getSource() == health){
 			array[1] = 1;
 		}
 		
@@ -311,7 +355,7 @@ class Entertainment extends JFrame implements ActionListener{
 	
 
 	public static void main( String args[] ){
-		   Entertainment buttonFrame = new Entertainment("test");
+		   RSO buttonFrame = new RSO("test");
 		   buttonFrame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		   buttonFrame.setSize( 360, 640 ); // set frame size
 		   buttonFrame.setVisible( true ); // display frame
