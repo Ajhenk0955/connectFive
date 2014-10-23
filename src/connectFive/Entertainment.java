@@ -8,6 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
+// Original work started on 10/22
+// Author: Courtney Kuhlman
+
 class Frame extends JFrame{
 	private JButton submit;
 	private JRadioButton morning;
