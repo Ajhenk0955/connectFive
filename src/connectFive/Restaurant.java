@@ -2,6 +2,7 @@ package connectFive;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 
 class Restaurant extends JFrame implements ActionListener{
@@ -38,6 +39,7 @@ class Restaurant extends JFrame implements ActionListener{
 	private JLabel time;
 	private JLabel travel;
 	private JLabel price;
+	private JLabel space;
 	private ButtonGroup radioGroup;
 
 	int [] array = new int [6];
@@ -51,18 +53,20 @@ class Restaurant extends JFrame implements ActionListener{
 		add(buttonJPanel, BorderLayout.SOUTH);
 		
 		//question 1
-		type = new JLabel ("1) Which of these best describes you?");
+		type = new JLabel ("  1)  Which of these best describes you?");
 		vegan = new JRadioButton("Vegan");
 		vegetarian = new JRadioButton("Vegetarian");
 		sea = new JRadioButton("Seafood allergies");
 		gluten = new JRadioButton("Gluten intolerant");
 		none = new JRadioButton("No restrictions");
+		space = new JLabel("   ");
 		button.add(type);
 		button.add(vegan);
 		button.add(vegetarian);
 		button.add(sea);
 		button.add(gluten);
 		button.add(none);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(vegan);
 		radioGroup.add(vegetarian);
@@ -72,18 +76,20 @@ class Restaurant extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 2
-		cuisine = new JLabel ("2) What type of cuisine are you in the mood for?");
+		cuisine = new JLabel ("  2)  What type of cuisine are you in the mood for?");
 		african = new JRadioButton("African");
 		asian  = new JRadioButton("Asian");
 		european = new JRadioButton("European");
 		oceanic = new JRadioButton("Oceanic");
 		americas = new JRadioButton("Americas");
+		space = new JLabel("   ");
 		button.add(cuisine);
 		button.add(african);
 		button.add(asian);
 		button.add(european);
 		button.add(oceanic);
 		button.add(americas);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(african);
 		radioGroup.add(asian);
@@ -93,14 +99,16 @@ class Restaurant extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 3
-		meal = new JLabel ("3) Which meal type are you hungry for?");
+		meal = new JLabel ("  3)  Which meal type are you hungry for?");
 		breakfast = new JRadioButton("Breakfast");
 		lunch = new JRadioButton("Lunch");
 		dinner = new JRadioButton("Dinner");
+		space = new JLabel("   ");
 		button.add(meal);
 		button.add(breakfast);
 		button.add(lunch);
 		button.add(dinner);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(breakfast);
 		radioGroup.add(lunch);
@@ -108,18 +116,20 @@ class Restaurant extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 4
-		time = new JLabel ("4) What time are you planning to eat?");
+		time = new JLabel ("  4)  What time are you planning to eat?");
 		morning = new JRadioButton("Morning");
 		midday = new JRadioButton("Midday");
 		afternoon = new JRadioButton("Afternoon");
 		evening = new JRadioButton("Evening");
 		late = new JRadioButton("Late night");
+		space = new JLabel("   ");
 		button.add(time);
 		button.add(morning);
 		button.add(midday);
 		button.add(afternoon);
 		button.add(evening);
 		button.add(late);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(morning);
 		radioGroup.add(midday);
@@ -129,16 +139,18 @@ class Restaurant extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 5
-		travel = new JLabel ("5) How far are you willing to travel?");
+		travel = new JLabel ("  5)  How far are you willing to travel?");
 		less1 = new JRadioButton("Less than a mile");
 		more1 = new JRadioButton("More than a mile");
 		less5 = new JRadioButton("Less than five miles");
 		more5 = new JRadioButton("More than five miles");
+		space = new JLabel("   ");
 		button.add(travel);
 		button.add(less1);
 		button.add(more1);
 		button.add(less5);
 		button.add(more5);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(less1);
 		radioGroup.add(more1);
@@ -147,16 +159,18 @@ class Restaurant extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 6
-		price = new JLabel ("6) How much are you willing to spend on a meal?");
+		price = new JLabel ("  6)  How much are you willing to spend on a meal?");
 		zero = new JRadioButton("$0 - $9");
 		ten = new JRadioButton("$10 - $19");
 		twenty = new JRadioButton("$20 - $29");
 		thirty = new JRadioButton("$30+");
+		space = new JLabel("   ");
 		button.add(price);
 		button.add(zero);
 		button.add(ten);
 		button.add(twenty);
 		button.add(thirty);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(zero);
 		radioGroup.add(ten);

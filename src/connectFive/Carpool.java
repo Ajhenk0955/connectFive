@@ -7,38 +7,31 @@ import javax.swing.*;
 class Carpool extends JFrame implements ActionListener{
 	private JButton submit;
 	private JRadioButton give;
-	private JRadioButton receive;
-	
+	private JRadioButton receive;	
 	private JRadioButton me;
 	private JRadioButton two;
 	private JRadioButton three;
 	private JRadioButton four;
-	
 	private JRadioButton female;
 	private JRadioButton male;
 	private JRadioButton none;
-	
 	private JRadioButton on;
 	private JRadioButton close;
 	private JRadioButton less5;
 	private JRadioButton more5;
-	
 	private JRadioButton on2;
 	private JRadioButton close2;
 	private JRadioButton less52;
 	private JRadioButton more52;
-	
 	private JRadioButton now;
 	private JRadioButton fifteen;
 	private JRadioButton thirty;
 	private JRadioButton hour;
 	private JRadioButton hourP;
-	
 	private JRadioButton fifteen2;
 	private JRadioButton thirty2;
 	private JRadioButton hour2;
 	private JRadioButton hourP2;
-	
 	private JLabel look;
 	private JLabel party;
 	private JLabel prefer;
@@ -46,6 +39,7 @@ class Carpool extends JFrame implements ActionListener{
 	private JLabel whereTo;
 	private JLabel depart;
 	private JLabel arrive;
+	private JLabel space;
 	private ButtonGroup radioGroup;
 
 	int [] array = new int [7];
@@ -59,28 +53,32 @@ class Carpool extends JFrame implements ActionListener{
 		add(buttonJPanel, BorderLayout.SOUTH);
 		
 		//question 1
-		look = new JLabel ("1) Are you looking to:");
+		look = new JLabel ("  1)  Are you looking to:");
 		give = new JRadioButton("Give a ride");
 		receive = new JRadioButton("Receive a ride");
+		space = new JLabel("  ");
 		button.add(look);
 		button.add(give);
 		button.add(receive);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(give);
 		radioGroup.add(receive);
 		add(button);
 		
 		//question 2
-		party = new JLabel ("2) How many people are in your party?");
+		party = new JLabel ("  2)  How many people are in your party?");
 		me = new JRadioButton("Just me");
 		two  = new JRadioButton("Two");
 		three = new JRadioButton("Three");
 		four = new JRadioButton("Four");
+		space = new JLabel("  ");
 		button.add(party);
 		button.add(me);
 		button.add(two);
 		button.add(three);
 		button.add(four);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(me);
 		radioGroup.add(two);
@@ -89,14 +87,16 @@ class Carpool extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 3
-		prefer = new JLabel ("3) Who would you prefer to ride with?");
+		prefer = new JLabel ("  3)  Who would you prefer to ride with?");
 		female = new JRadioButton("A female");
 		male = new JRadioButton("A male");
 		none = new JRadioButton("No preference");
+		space = new JLabel("  ");
 		button.add(prefer);
 		button.add(female);
 		button.add(male);
 		button.add(none);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(female);
 		radioGroup.add(male);
@@ -104,16 +104,18 @@ class Carpool extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 4
-		whereAt = new JLabel ("4) Where are you?");
+		whereAt = new JLabel ("  4)  Where are you?");
 		on = new JRadioButton("On campus");
 		close = new JRadioButton("Within a mile of campus");
 		less5 = new JRadioButton("Less than five miles from campus");
 		more5 = new JRadioButton("More than five miles from campus");
+		space = new JLabel("  ");
 		button.add(whereAt);
 		button.add(on);
 		button.add(close);
 		button.add(less5);
 		button.add(more5);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(on);
 		radioGroup.add(close);
@@ -122,16 +124,18 @@ class Carpool extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 5
-		whereTo = new JLabel ("5) Where are you going?");
+		whereTo = new JLabel ("  5)  Where are you going?");
 		on2 = new JRadioButton("On campus");
 		close2 = new JRadioButton("Within a mile of campus");
 		less52 = new JRadioButton("Less than five miles from campus");
 		more52 = new JRadioButton("More than five miles from campus");
+		space = new JLabel("  ");
 		button.add(whereTo);
 		button.add(on2);
 		button.add(close2);
 		button.add(less52);
 		button.add(more52);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(on2);
 		radioGroup.add(close2);
@@ -140,18 +144,20 @@ class Carpool extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 6
-		depart = new JLabel ("6) What time do you need to depart?");
+		depart = new JLabel ("  6)  What time do you need to depart?");
 		now = new JRadioButton("Now");
 		fifteen = new JRadioButton("15 minutes");
 		thirty = new JRadioButton("30 minutes");
 		hour = new JRadioButton("1 hour");
 		hourP = new JRadioButton("More than an hour");
+		space = new JLabel("  ");
 		button.add(depart);
 		button.add(now);
 		button.add(fifteen);
 		button.add(thirty);
 		button.add(hour);
 		button.add(hourP);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(now);
 		radioGroup.add(fifteen);
@@ -161,16 +167,18 @@ class Carpool extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 7
-		arrive = new JLabel ("7) What time do you need to arrive?");
+		arrive = new JLabel ("  7)  What time do you need to arrive?");
 		fifteen2 = new JRadioButton("15 minutes");
 		thirty2 = new JRadioButton("30 minutes");
 		hour2 = new JRadioButton("1 hour");
 		hourP2 = new JRadioButton("More than an hour");
+		space = new JLabel("  ");
 		button.add(arrive);
 		button.add(fifteen2);
 		button.add(thirty2);
 		button.add(hour2);
 		button.add(hourP2);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(fifteen2);
 		radioGroup.add(thirty2);
