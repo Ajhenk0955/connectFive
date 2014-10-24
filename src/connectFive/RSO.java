@@ -1,16 +1,8 @@
-import java.awt.BorderLayout;
-//import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+package connectFive;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 class RSO extends JFrame implements ActionListener{
 	private JButton submit;
@@ -21,38 +13,47 @@ class RSO extends JFrame implements ActionListener{
 	private JRadioButton volunteering;
 	private JRadioButton sports;
 	private JRadioButton engineering;
-	private JRadioButton health;
-	private JRadioButton rainy;
-	private JRadioButton storming;
-	private JRadioButton allDay;
-	private JRadioButton twoHours;
-	private JRadioButton twoFiveH;
-	private JRadioButton indoor;
-	private JRadioButton outdoor;
-	private JRadioButton lessThan;
-	private JRadioButton tenTwenty;
-	private JRadioButton TwentyFifty;
-	private JRadioButton fiftyPlus;
-	private JRadioButton young;
-	private JRadioButton eighteenTwenty;
-	private JRadioButton twentyOnePlus;
-	private JRadioButton fiveMiles;
-	private JRadioButton fiveFifteen;
-	private JRadioButton fifteenThirty;
-	private JRadioButton thirtyPlus;
+	private JRadioButton math;
+	private JRadioButton hs;
+	private JRadioButton his;
+	private JRadioButton eng;
+	private JRadioButton arts;
+	private JRadioButton yes;
+	private JRadioButton no;
+	private JRadioButton baking2;
+	private JRadioButton gaming2;
+	private JRadioButton reading2;
+	private JRadioButton building2;
+	private JRadioButton volunteering2;
+	private JRadioButton sports2;
+	private JRadioButton acad;
+	private JRadioButton cult;
+	private JRadioButton med;
+	private JRadioButton pol;
+	private JRadioButton rel;
+	private JRadioButton ser;
+	private JRadioButton sports3;
+	private JRadioButton multi;
+	private JRadioButton week;
+	private JRadioButton bi;
+	private JRadioButton month;
+	private JRadioButton zero;
+	private JRadioButton five;
+	private JRadioButton ten;
+	private JRadioButton thirty;
 	private JLabel enjoy;
-	private JLabel weather;
-	private JLabel length;
-	private JLabel inOrOut;
-	private JLabel cost;
-	private JLabel age;
-	private JLabel distance;
+	private JLabel major;
+	private JLabel connect;
+	private JLabel least;
+	private JLabel most;
+	private JLabel meet;
+	private JLabel donate;
 	private ButtonGroup radioGroup;
 
 	int [] array = new int [7];
 	
-	RSO (String test){
-		super(test);
+	RSO (){
+		super("RSO Questionnaire");
 		JPanel button = new JPanel(new GridLayout(0,1));
 		JPanel buttonJPanel = new JPanel();
 		submit = new JButton("Submit");
@@ -60,13 +61,13 @@ class RSO extends JFrame implements ActionListener{
 		add(buttonJPanel, BorderLayout.SOUTH);
 		
 		//question 1
-		enjoy = new JLabel ("What do you enjoy doing (select one that applies most)?");
-		baking = new JRadioButton("baking");
-		gaming = new JRadioButton("gaming");
-		reading = new JRadioButton("reading");
-		building = new JRadioButton("building");
-		volunteering = new JRadioButton("volunteering");
-		sports = new JRadioButton("sports");
+		enjoy = new JLabel ("1) What do you enjoy doing (select one that applies most)?");
+		baking = new JRadioButton("Baking");
+		gaming = new JRadioButton("Gaming");
+		reading = new JRadioButton("Reading");
+		building = new JRadioButton("Building");
+		volunteering = new JRadioButton("Volunteering");
+		sports = new JRadioButton("Sports");
 		button.add(enjoy);
 		button.add(baking);
 		button.add(gaming);
@@ -84,118 +85,128 @@ class RSO extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 2
-		weather = new JLabel ("What college are you in?");
-		engineering = new JRadioButton("engineering");
-		health  = new JRadioButton("health professions and social works ");
-		rainy = new JRadioButton("rainy");
-		storming = new JRadioButton("storming");
-		button.add(weather);
+		major = new JLabel ("2) What is your major?");
+		engineering = new JRadioButton("Engineering");
+		math  = new JRadioButton("Math");
+		hs = new JRadioButton("Health Professions and Social Works");
+		his = new JRadioButton("History");
+		eng = new JRadioButton("English");
+		arts = new JRadioButton("Arts");
+		button.add(major);
 		button.add(engineering);
-		button.add(health);
-		button.add(rainy);
-		button.add(storming);
+		button.add(math);
+		button.add(hs);
+		button.add(his);
+		button.add(eng);
+		button.add(arts);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(engineering);
-		radioGroup.add(health);
-		radioGroup.add(rainy);
-		radioGroup.add(storming);
+		radioGroup.add(math);
+		radioGroup.add(hs);
+		radioGroup.add(eng);
+		radioGroup.add(arts);
 		add(button);
 		
 		//question 3
-		length = new JLabel ("Would you want a RSO connected to your major?");
-		allDay = new JRadioButton("yes");
-		twoHours = new JRadioButton("no");
-		button.add(length);
-		button.add(allDay);
-		button.add(twoHours);
+		connect = new JLabel ("3) Do you prefer something major related?");
+		yes = new JRadioButton("Yes");
+		no = new JRadioButton("No");
+		button.add(connect);
+		button.add(yes);
+		button.add(no);
 		radioGroup = new ButtonGroup();
-		radioGroup.add(allDay);
-		radioGroup.add(twoHours);
+		radioGroup.add(yes);
+		radioGroup.add(no);
 		add(button);
 		
 		//question 4
-		inOrOut = new JLabel ("How much can you donate to the RSO?");
-		indoor = new JRadioButton("$0");
-		outdoor = new JRadioButton("$5-10");
-		// = new JRadioButton("$10-30");
-		// = new JRadioButton("$30+")
-		button.add(inOrOut);
-		button.add(indoor);
-		button.add(outdoor);
-		//button.add();
-		//button.add();
+		least = new JLabel ("4) What is least interesting to you?");
+		baking2 = new JRadioButton("Baking");
+		gaming2 = new JRadioButton("Gaming");
+		reading2 = new JRadioButton("Reading");
+		building2 = new JRadioButton("Building");
+		volunteering2 = new JRadioButton("Volunteering");
+		sports2 = new JRadioButton("Sports");
+		button.add(least);
+		button.add(baking2);
+		button.add(gaming2);
+		button.add(reading2);
+		button.add(building2);
+		button.add(volunteering2);
+		button.add(sports2);
 		radioGroup = new ButtonGroup();
-		radioGroup.add(indoor);
-		radioGroup.add(outdoor);
-		//radioGroup.add();
-		//radioGroup.add();
+		radioGroup.add(baking2);
+		radioGroup.add(gaming);
+		radioGroup.add(reading2);
+		radioGroup.add(building2);
+		radioGroup.add(volunteering2);
+		radioGroup.add(sports2);
 		add(button);
 		
 		//question 5
-		cost = new JLabel ("What is least interesting to you?");
-		lessThan = new JRadioButton("biking");
-		tenTwenty = new JRadioButton("gaming");
-		TwentyFifty = new JRadioButton("reading");
-		fiftyPlus = new JRadioButton("building");
-		// = new JRadioButton("volunteering");
-		// = new JRadioButton("sports");
-		button.add(cost);
-		button.add(lessThan);
-		button.add(tenTwenty);
-		button.add(TwentyFifty);
-		button.add(fiftyPlus);
-		//button.add();
-		//button.add();
+		most = new JLabel ("5) Which category is most interesting to you?");
+		acad = new JRadioButton("Academic");
+		cult = new JRadioButton("Culture");
+		med = new JRadioButton("Media");
+		pol = new JRadioButton("Politics");
+		rel = new JRadioButton("Religion");
+		ser = new JRadioButton("Service");
+		sports3 = new JRadioButton("Sports");
+		button.add(most);
+		button.add(acad);
+		button.add(cult);
+		button.add(med);
+		button.add(pol);
+		button.add(rel);
+		button.add(ser);
+		button.add(sports3);
 		radioGroup = new ButtonGroup();
-		radioGroup.add(lessThan);
-		radioGroup.add(tenTwenty);
-		radioGroup.add(TwentyFifty);
-		radioGroup.add(fiftyPlus);
-		//radioGroup.add();
-		//radioGroup.add();
+		radioGroup.add(acad);
+		radioGroup.add(cult);
+		radioGroup.add(med);
+		radioGroup.add(pol);
+		radioGroup.add(rel);
+		radioGroup.add(ser);
+		radioGroup.add(sports3);
 		add(button);
 		
 		//question 6
-		age = new JLabel ("Which category is most interesting to you?");
-		young = new JRadioButton("academic");
-		eighteenTwenty = new JRadioButton("media");
-		twentyOnePlus = new JRadioButton("politics");
-		//new JRadioButton("religion");
-		//new JRadioButton("service");
-		//new JRadioButton("sports");
-		button.add(age);
-		button.add(young);
-		button.add(eighteenTwenty);
-		button.add(twentyOnePlus);
-		//button.add();
-		//button.add();
-		//button.add();
+		meet = new JLabel ("6) How often are you available to meet?");
+		multi = new JRadioButton("Multiple times a week");
+		week = new JRadioButton("Once a week");
+		bi = new JRadioButton("Biweekly");
+		month = new JRadioButton("Once a month");
+		button.add(meet);
+		button.add(multi);
+		button.add(week);
+		button.add(bi);
+		button.add(month);
 		radioGroup = new ButtonGroup();
-		radioGroup.add(young);
-		radioGroup.add(eighteenTwenty);
-		radioGroup.add(twentyOnePlus);
-		//radioGroup.add();
-		//radioGroup.add();
-		//radioGroup.add();
+		radioGroup.add(multi);
+		radioGroup.add(week);
+		radioGroup.add(bi);
+		radioGroup.add(month);
 		add(button);
 		
 		//question 7
-		distance = new JLabel ("How often are you available to meet?");
-		fiveMiles = new JRadioButton("multiple times a week");
-		fiveFifteen = new JRadioButton("once a week");
-		fifteenThirty = new JRadioButton("biweekly");
-		thirtyPlus = new JRadioButton("once a month");
-		button.add(distance);
-		button.add(fiveMiles);
-		button.add(fiveFifteen);
-		button.add(fifteenThirty);
-		button.add(thirtyPlus);
+		donate = new JLabel ("7) How often can you donate to the RSO?");
+		zero = new JRadioButton("$0");
+		five = new JRadioButton("$5 - $10");
+		ten = new JRadioButton("$10 - $30");
+		thirty = new JRadioButton("$30+");
+		button.add(donate);
+		button.add(zero);
+		button.add(five);
+		button.add(ten);
+		button.add(thirty);
 		radioGroup = new ButtonGroup();
-		radioGroup.add(fiveMiles);
-		radioGroup.add(fiveFifteen);
-		radioGroup.add(fifteenThirty);
-		radioGroup.add(thirtyPlus);
+		radioGroup.add(zero);
+		radioGroup.add(five);
+		radioGroup.add(ten);
+		radioGroup.add(thirty);
 		add(button);
+		
+		// action listener
 		submit.addActionListener(this);
 		baking.addActionListener(this);
 		gaming.addActionListener(this);
@@ -204,32 +215,35 @@ class RSO extends JFrame implements ActionListener{
 		volunteering.addActionListener(this);
 		sports.addActionListener(this);
 		engineering.addActionListener(this);
-		health.addActionListener(this);
-		rainy.addActionListener(this);
-		storming.addActionListener(this);
-		allDay.addActionListener(this);
-		twoHours.addActionListener(this);
-		indoor.addActionListener(this);
-		outdoor.addActionListener(this);
-		lessThan.addActionListener(this);
-		tenTwenty.addActionListener(this);
-		TwentyFifty.addActionListener(this);
-		fiftyPlus.addActionListener(this);
-		young.addActionListener(this);
-		eighteenTwenty.addActionListener(this);
-		twentyOnePlus.addActionListener(this);
-		fiveMiles.addActionListener(this);
-		fiveFifteen.addActionListener(this);
-		fifteenThirty.addActionListener(this);
-		thirtyPlus.addActionListener(this);
-		int [] maxArray = new int [7];
-		maxArray[0] = 5;
-		maxArray[1] = 4;
-		maxArray[2] = 1;
-		maxArray[3] = 5;
-		maxArray[4] = 6;
-		maxArray[5] = 3;
-		maxArray[6] = 2;
+		math.addActionListener(this);
+		hs.addActionListener(this);
+		his.addActionListener(this);
+		eng.addActionListener(this);
+		arts.addActionListener(this);
+		yes.addActionListener(this);
+		no.addActionListener(this);
+		baking2.addActionListener(this);
+		gaming2.addActionListener(this);
+		reading2.addActionListener(this);
+		building2.addActionListener(this);
+		volunteering2.addActionListener(this);
+		sports2.addActionListener(this);
+		acad.addActionListener(this);
+		cult.addActionListener(this);
+		med.addActionListener(this);
+		pol.addActionListener(this);
+		rel.addActionListener(this);
+		ser.addActionListener(this);
+		sports3.addActionListener(this);
+		multi.addActionListener(this);
+		week.addActionListener(this);
+		bi.addActionListener(this);
+		month.addActionListener(this);
+		zero.addActionListener(this);
+		five.addActionListener(this);
+		ten.addActionListener(this);
+		thirty.addActionListener(this);
+		
 	}
 	
 	
@@ -237,105 +251,85 @@ class RSO extends JFrame implements ActionListener{
 		
 		if(e.getSource() == baking){
 			array[0] = 0;
-		}
-		
-		else if(e.getSource() == gaming){
+		}else if(e.getSource() == gaming){
 			array[0] = 1;
-		}
-		
-		else if(e.getSource() == reading){
+		}else if(e.getSource() == reading){
 			array[0] = 2;
-		}
-		
-		else if(e.getSource() == building){
+		}else if(e.getSource() == building){
 			array[0] = 3;
-		}
-		
-		else if(e.getSource() == volunteering){
+		}else if(e.getSource() == volunteering){
 			array[0] = 4;
-		}
-		
-		else if(e.getSource() == sports){
+		}else if(e.getSource() == sports){
 			array[0] = 5;
 		}
 		
 		if(e.getSource() == engineering){
 			array[1] = 0;
-		}
-		
-		else if(e.getSource() == health){
+		}else if(e.getSource() == math){
 			array[1] = 1;
-		}
-		
-		else if(e.getSource() == rainy){
+		}else if(e.getSource() == hs){
 			array[1] = 2;
-		}
-		
-		else if(e.getSource() == storming){
+		}else if(e.getSource() == his){
 			array[1] = 3;
+		}else if(e.getSource() == eng){
+			array[1] = 4;
+		}else if(e.getSource() == arts){
+			array[1] = 5;
 		}
 		
-		if(e.getSource() == allDay){
+		if(e.getSource() == yes){
 			array[2] = 0;
-		}
-		
-		else if(e.getSource() == twoHours){
+		}else if(e.getSource() == no){
 			array[2] = 1;
 		}
 		
-		else if(e.getSource() == twoFiveH){
-			array[2] = 2;
-		}
-		
-		if(e.getSource() == indoor){
+		if(e.getSource() == baking2){
 			array[3] = 0;
-		}
-		
-		else if(e.getSource() == outdoor){
+		}else if(e.getSource() == gaming2){
 			array[3] = 1;
+		}else if(e.getSource() == reading2){
+			array[3] = 2;
+		}else if(e.getSource() == building2){
+			array[3] = 3;
+		}else if(e.getSource() == volunteering2){
+			array[3] = 4;
+		}else if(e.getSource() == sports2){
+			array[3] = 5;
 		}
 		
-		if(e.getSource() == lessThan){
+		if(e.getSource() == acad){
 			array[4] = 0;
-		}
-		
-		else if(e.getSource() == tenTwenty){
+		}else if(e.getSource() == cult){
 			array[4] = 1;
-		}
-		
-		else if(e.getSource() == TwentyFifty){
+		}else if(e.getSource() == med){
 			array[4] = 2;
-		}
-		
-		else if(e.getSource() == fiftyPlus){
+		}else if(e.getSource() == pol){
 			array[4] = 3;
+		}else if(e.getSource() == rel){
+			array[4] = 4;
+		}else if(e.getSource() == ser){
+			array[4] = 5;
+		}else if(e.getSource() == sports3){
+			array[4] = 6;
 		}
 		
-		if(e.getSource() == young){
+		if(e.getSource() == multi){
 			array[5] = 0;
-		}
-		
-		else if(e.getSource() == eighteenTwenty){
+		}else if(e.getSource() == week){
 			array[5] = 1;
-		}
-		
-		else if(e.getSource() == twentyOnePlus){
+		}else if(e.getSource() == bi){
 			array[5] = 2;
+		}else if(e.getSource() == month){
+			array[5] = 3;
 		}
 		
-		if(e.getSource() == fiveMiles){
+		if(e.getSource() == zero){
 			array[6] = 0;
-		}
-		
-		else if(e.getSource() == fiveFifteen){
+		}else if(e.getSource() == five){
 			array[6] = 1;
-		}
-		
-		else if(e.getSource() == fifteenThirty){
+		}else if(e.getSource() == ten){
 			array[6] = 2;
-		}
-		
-		else if(e.getSource() == thirtyPlus){
+		}else if(e.getSource() == thirty){
 			array[6] = 3;
 		}
 		
@@ -355,7 +349,7 @@ class RSO extends JFrame implements ActionListener{
 	
 
 	public static void main( String args[] ){
-		   RSO buttonFrame = new RSO("test");
+		   RSO buttonFrame = new RSO();
 		   buttonFrame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		   buttonFrame.setSize( 360, 640 ); // set frame size
 		   buttonFrame.setVisible( true ); // display frame
