@@ -40,7 +40,7 @@ class profile extends JFrame {
 	
 	
 	public profile(){
-		
+		super("Create Profile");
 		Submit= new JButton("Submit");
 		Browse= new JButton("Browse");
 		
