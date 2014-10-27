@@ -81,6 +81,15 @@ public class TrieTree{
 		return UserIDS;
 	}
 	
+	private void getHashMap(){
+		//TODO gets hashMap from SQLite 
+		keys = null;
+	}
+	
+	private void setHashMap(){
+		//TODO sets the hashMap in SQLite
+	}
+	
 	private String getUserID() {
 		// TODO Auto-generated method stub
 		//need to make profile protected/private/public -> something
