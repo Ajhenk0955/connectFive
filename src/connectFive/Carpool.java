@@ -2,6 +2,7 @@ package connectFive;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 
 class Carpool extends JFrame implements ActionListener{
@@ -218,6 +219,7 @@ class Carpool extends JFrame implements ActionListener{
 	}
 	
 	
+	@Override
 	public void actionPerformed(ActionEvent e){
 		
 		if(e.getSource() == give){
@@ -296,7 +298,11 @@ class Carpool extends JFrame implements ActionListener{
 		
 		if(e.getSource() == submit){
 			JOptionPane.showMessageDialog(null, "You've submitted your test!");
-			this.setVisible(false);
+			profile pro = new profile();
+			pro.setSize(360,640);
+			pro.viewProfile();
+			setVisible(false);
+				
 		}
 	}
 	

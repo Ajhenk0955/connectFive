@@ -2,6 +2,7 @@ package connectFive;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 
 class Entertainment extends JFrame implements ActionListener{
@@ -41,8 +42,8 @@ class Entertainment extends JFrame implements ActionListener{
 	private ButtonGroup radioGroup1;
 	int [] array = new int [7];
 	
-	Entertainment (String test){
-		super(test);
+	Entertainment (){
+		super("Entertainment Questionnaire");
 		JPanel button = new JPanel(new GridLayout(0,1));
 		JPanel buttonJPanel = new JPanel();
 		submit = new JButton("Submit");
@@ -211,6 +212,7 @@ class Entertainment extends JFrame implements ActionListener{
 		maxArray[6] = 3;
 	}
 	
+	@Override
 	public void actionPerformed(ActionEvent e){
 		
 		if(e.getSource() == morning){
@@ -316,13 +318,17 @@ class Entertainment extends JFrame implements ActionListener{
 		
 		if(e.getSource() == submit){
 			JOptionPane.showMessageDialog(null, "You've submitted your test!");
-			this.setVisible(false);
+			profile pro = new profile();
+			pro.setSize(360,640);
+			pro.viewProfile();
+			setVisible(false);
+			
 		}
 	}
 	
 
 	public static void main( String args[] ){
-		   Entertainment buttonFrame = new Entertainment("test");
+		   Entertainment buttonFrame = new Entertainment();
 		   buttonFrame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		   buttonFrame.setSize( 360, 640 ); // set frame size
 		   buttonFrame.setVisible( true ); // display frame

@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -25,7 +26,6 @@ class profile extends JFrame {
 	JPanel addresspanel;
 	JPanel picturepanel;
 	JPanel buttonpanel;
-	
 	JFileChooser chooser;
 	
 	JTextField imagepath;
@@ -100,6 +100,7 @@ class profile extends JFrame {
 	
 	class ButtonListener implements ActionListener {
 		
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			
 			if(e.getSource()==Browse) {
@@ -139,7 +140,7 @@ class profile extends JFrame {
 		imagepanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		namepanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		resultspanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-		
+				
 		JLabel label;
 		JLabel nameandaddresslabel;
 		JLabel testresults;
@@ -169,14 +170,7 @@ class profile extends JFrame {
 		frame.setSize(360, 640);
 		frame.setResizable(false);
 		frame.setVisible(true);
-	}
-	
-	public static void main(String[] args) {
-		profile profile1= new profile();
-		profile1.setSize(360,640);
-		profile1.setResizable(false);
-		profile1.setVisible(true);
 		
+	
 	}
-
 }

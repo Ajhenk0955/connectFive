@@ -3,11 +3,13 @@ package connectFive;
 public class Main {
 
 	/**
-	 * @param args
-	 */
+	* @param args
+	*/
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-			GUI gui=new GUI();
+		LoginScreen login=new LoginScreen();
+		login.setSize(360,640);
+		login.setResizable(false);
+		login.setVisible(true);
+		
 	}
-
 }
