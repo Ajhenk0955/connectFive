@@ -1,16 +1,8 @@
-import java.awt.BorderLayout;
-//import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+package connectFive;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 class Entertainment extends JFrame implements ActionListener{
 	private JButton submit;
@@ -44,6 +36,7 @@ class Entertainment extends JFrame implements ActionListener{
 	private JLabel cost;
 	private JLabel age;
 	private JLabel distance;
+	private JLabel space;
 	private ButtonGroup radioGroup;
 	private ButtonGroup radioGroup1;
 	int [] array = new int [7];
@@ -57,14 +50,16 @@ class Entertainment extends JFrame implements ActionListener{
 		add(buttonJPanel, BorderLayout.SOUTH);
 		
 		//question 1
-		time = new JLabel ("What is the time of the day?");
+		time = new JLabel ("  1)  What is the time of the day?");
 		morning = new JRadioButton("morning");
 		afternoon = new JRadioButton("afternoon");
 		night = new JRadioButton("night");
+		space = new JLabel("   ");
 		button.add(time);
 		button.add(morning);
 		button.add(afternoon);
 		button.add(night);
+		button.add(space);
 		radioGroup1 = new ButtonGroup();
 		radioGroup1.add(morning);
 		radioGroup1.add(afternoon);
@@ -72,16 +67,18 @@ class Entertainment extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 2
-		weather = new JLabel ("What is the weather like?");
+		weather = new JLabel ("  2)  What is the weather like?");
 		sunny = new JRadioButton("sunny");
 		cloudy = new JRadioButton("cloudy");
 		rainy = new JRadioButton("rainy");
 		storming = new JRadioButton("storming");
+		space = new JLabel("   ");
 		button.add(weather);
 		button.add(sunny);
 		button.add(cloudy);
 		button.add(rainy);
 		button.add(storming);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(sunny);
 		radioGroup.add(cloudy);
@@ -90,14 +87,16 @@ class Entertainment extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 3
-		length = new JLabel ("How long do you want to be out for?");
+		length = new JLabel ("  3)  How long do you want to be out for?");
 		allDay = new JRadioButton("all day");
 		twoHours = new JRadioButton("less than 2 hours");
 		twoFiveH = new JRadioButton("2-5 hours");
+		space = new JLabel("   ");
 		button.add(length);
 		button.add(allDay);
 		button.add(twoHours);
 		button.add(twoFiveH);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(allDay);
 		radioGroup.add(twoHours);
@@ -105,28 +104,32 @@ class Entertainment extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 4
-		inOrOut = new JLabel ("Indoor or outdoor?");
+		inOrOut = new JLabel ("  4)  Indoor or outdoor?");
 		indoor = new JRadioButton("indoor");
 		outdoor = new JRadioButton("outdoor");
+		space = new JLabel("   ");
 		button.add(inOrOut);
 		button.add(indoor);
 		button.add(outdoor);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(indoor);
 		radioGroup.add(outdoor);
 		add(button);
 		
 		//question 5
-		cost = new JLabel ("How much money can you spend?");
+		cost = new JLabel ("  5)  How much money can you spend?");
 		lessThan = new JRadioButton("less than $10");
 		tenTwenty = new JRadioButton("$10-20");
 		TwentyFifty = new JRadioButton("$20-50");
 		fiftyPlus = new JRadioButton("$50+");
+		space = new JLabel("   ");
 		button.add(cost);
 		button.add(lessThan);
 		button.add(tenTwenty);
 		button.add(TwentyFifty);
 		button.add(fiftyPlus);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(lessThan);
 		radioGroup.add(tenTwenty);
@@ -135,14 +138,16 @@ class Entertainment extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 6
-		age = new JLabel ("How old are you?");
+		age = new JLabel ("  6)  How old are you?");
 		young = new JRadioButton("younger than 18");
 		eighteenTwenty = new JRadioButton("18-20");
 		twentyOnePlus = new JRadioButton("21+");
+		space = new JLabel("   ");
 		button.add(age);
 		button.add(young);
 		button.add(eighteenTwenty);
 		button.add(twentyOnePlus);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(young);
 		radioGroup.add(eighteenTwenty);
@@ -150,22 +155,26 @@ class Entertainment extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 7
-		distance = new JLabel ("How far can you travel?");
+		distance = new JLabel ("  7)  How far can you travel?");
 		fiveMiles = new JRadioButton("0-5 miles");
 		fiveFifteen = new JRadioButton("5-15 miles");
 		fifteenThirty = new JRadioButton("15-30 miles");
 		thirtyPlus = new JRadioButton("30+ miles");
+		space = new JLabel("   ");
 		button.add(distance);
 		button.add(fiveMiles);
 		button.add(fiveFifteen);
 		button.add(fifteenThirty);
 		button.add(thirtyPlus);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(fiveMiles);
 		radioGroup.add(fiveFifteen);
 		radioGroup.add(fifteenThirty);
 		radioGroup.add(thirtyPlus);
 		add(button);
+		
+		// action listeners
 		submit.addActionListener(this);
 		morning.addActionListener(this);
 		afternoon.addActionListener(this);
@@ -190,6 +199,8 @@ class Entertainment extends JFrame implements ActionListener{
 		fiveFifteen.addActionListener(this);
 		fifteenThirty.addActionListener(this);
 		thirtyPlus.addActionListener(this);
+		
+		// array to store results
 		int [] maxArray = new int [7];
 		maxArray[0] = 2;
 		maxArray[1] = 3;
@@ -199,7 +210,6 @@ class Entertainment extends JFrame implements ActionListener{
 		maxArray[5] = 2;
 		maxArray[6] = 3;
 	}
-	
 	
 	public void actionPerformed(ActionEvent e){
 		
@@ -295,6 +305,7 @@ class Entertainment extends JFrame implements ActionListener{
 			array[6] = 3;
 		}
 		
+		// testing result storage
 		System.out.println("1: " + array[0]);
 		System.out.println("2: " + array[1]);
 		System.out.println("3: " + array[2]);

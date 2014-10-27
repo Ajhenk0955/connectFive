@@ -2,6 +2,7 @@ package connectFive;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 
 class RSO extends JFrame implements ActionListener{
@@ -48,6 +49,7 @@ class RSO extends JFrame implements ActionListener{
 	private JLabel most;
 	private JLabel meet;
 	private JLabel donate;
+	private JLabel space;
 	private ButtonGroup radioGroup;
 
 	int [] array = new int [7];
@@ -61,13 +63,14 @@ class RSO extends JFrame implements ActionListener{
 		add(buttonJPanel, BorderLayout.SOUTH);
 		
 		//question 1
-		enjoy = new JLabel ("1) What do you enjoy doing (select one that applies most)?");
+		enjoy = new JLabel ("  1)  What do you enjoy doing (select one that applies most)?");
 		baking = new JRadioButton("Baking");
 		gaming = new JRadioButton("Gaming");
 		reading = new JRadioButton("Reading");
 		building = new JRadioButton("Building");
 		volunteering = new JRadioButton("Volunteering");
 		sports = new JRadioButton("Sports");
+		space = new JLabel("   ");
 		button.add(enjoy);
 		button.add(baking);
 		button.add(gaming);
@@ -75,6 +78,7 @@ class RSO extends JFrame implements ActionListener{
 		button.add(building);
 		button.add(volunteering);
 		button.add(sports);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(baking);
 		radioGroup.add(gaming);
@@ -85,13 +89,14 @@ class RSO extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 2
-		major = new JLabel ("2) What is your major?");
+		major = new JLabel ("  2)  What is your major?");
 		engineering = new JRadioButton("Engineering");
 		math  = new JRadioButton("Math");
 		hs = new JRadioButton("Health Professions and Social Works");
 		his = new JRadioButton("History");
 		eng = new JRadioButton("English");
 		arts = new JRadioButton("Arts");
+		space = new JLabel("   ");
 		button.add(major);
 		button.add(engineering);
 		button.add(math);
@@ -99,6 +104,7 @@ class RSO extends JFrame implements ActionListener{
 		button.add(his);
 		button.add(eng);
 		button.add(arts);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(engineering);
 		radioGroup.add(math);
@@ -108,25 +114,28 @@ class RSO extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 3
-		connect = new JLabel ("3) Do you prefer something major related?");
+		connect = new JLabel ("  3)  Do you prefer something major related?");
 		yes = new JRadioButton("Yes");
 		no = new JRadioButton("No");
+		space = new JLabel("   ");
 		button.add(connect);
 		button.add(yes);
 		button.add(no);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(yes);
 		radioGroup.add(no);
 		add(button);
 		
 		//question 4
-		least = new JLabel ("4) What is least interesting to you?");
+		least = new JLabel ("  4)  What is least interesting to you?");
 		baking2 = new JRadioButton("Baking");
 		gaming2 = new JRadioButton("Gaming");
 		reading2 = new JRadioButton("Reading");
 		building2 = new JRadioButton("Building");
 		volunteering2 = new JRadioButton("Volunteering");
 		sports2 = new JRadioButton("Sports");
+		space = new JLabel("   ");
 		button.add(least);
 		button.add(baking2);
 		button.add(gaming2);
@@ -134,6 +143,7 @@ class RSO extends JFrame implements ActionListener{
 		button.add(building2);
 		button.add(volunteering2);
 		button.add(sports2);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(baking2);
 		radioGroup.add(gaming);
@@ -144,7 +154,7 @@ class RSO extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 5
-		most = new JLabel ("5) Which category is most interesting to you?");
+		most = new JLabel ("  5)  Which category is most interesting to you?");
 		acad = new JRadioButton("Academic");
 		cult = new JRadioButton("Culture");
 		med = new JRadioButton("Media");
@@ -152,6 +162,7 @@ class RSO extends JFrame implements ActionListener{
 		rel = new JRadioButton("Religion");
 		ser = new JRadioButton("Service");
 		sports3 = new JRadioButton("Sports");
+		space = new JLabel("   ");
 		button.add(most);
 		button.add(acad);
 		button.add(cult);
@@ -160,6 +171,7 @@ class RSO extends JFrame implements ActionListener{
 		button.add(rel);
 		button.add(ser);
 		button.add(sports3);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(acad);
 		radioGroup.add(cult);
@@ -171,16 +183,18 @@ class RSO extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 6
-		meet = new JLabel ("6) How often are you available to meet?");
+		meet = new JLabel ("  6)  How often are you available to meet?");
 		multi = new JRadioButton("Multiple times a week");
 		week = new JRadioButton("Once a week");
 		bi = new JRadioButton("Biweekly");
 		month = new JRadioButton("Once a month");
+		space = new JLabel("   ");
 		button.add(meet);
 		button.add(multi);
 		button.add(week);
 		button.add(bi);
 		button.add(month);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(multi);
 		radioGroup.add(week);
@@ -189,16 +203,18 @@ class RSO extends JFrame implements ActionListener{
 		add(button);
 		
 		//question 7
-		donate = new JLabel ("7) How often can you donate to the RSO?");
+		donate = new JLabel ("  7)  How often can you donate to the RSO?");
 		zero = new JRadioButton("$0");
 		five = new JRadioButton("$5 - $10");
 		ten = new JRadioButton("$10 - $30");
 		thirty = new JRadioButton("$30+");
+		space = new JLabel("   ");
 		button.add(donate);
 		button.add(zero);
 		button.add(five);
 		button.add(ten);
 		button.add(thirty);
+		button.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(zero);
 		radioGroup.add(five);
