@@ -53,12 +53,12 @@ public class MenuHandler extends JFrame {
 		blankS.add(blank2);
 		add(blankS, BorderLayout.SOUTH);
 		
-		JPanel blankE = new JPanel(new GridLayout(0,8));
+		JPanel blankE = new JPanel(new GridLayout(0,6));
 		blank3 = new JLabel("   ");
 		blankE.add(blank3);
 		add(blankE, BorderLayout.EAST);
 		
-		JPanel blankW = new JPanel(new GridLayout(0,8));
+		JPanel blankW = new JPanel(new GridLayout(0,6));
 		blank4 = new JLabel("   ");
 		blankW.add(blank4);
 		add(blankW, BorderLayout.WEST);
