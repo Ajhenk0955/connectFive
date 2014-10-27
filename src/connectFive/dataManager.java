@@ -14,7 +14,7 @@ public class dataManager {
 	//might make array a list
 	private KDTree tree;
 
-	public dataManager(int questions){
+	public dataManager(int[] maxKey, int[] key){
 		tree = new KDTree(questions);
 	}
 	/*below does show an incomplete object
@@ -24,11 +24,13 @@ public class dataManager {
 	//UserID, number of questions, questionResponses(on a scale)
 	//maybe an array: length would be number of questions
 	//value at array[i] would be the answer on a scale of (10?)
+	 * 
+	 * in case the import kdtree isn't helpful
+	 * user imputs will be leafs (leafs don't have children)
+	 * questions will be branches
 	*/
-	public void addUserNode(object userAnswers){
-		//find the nodeKey and place node in KD-Tree
-		double[] key;
-		generateKey(userAnswers, key);
+	public void addUserLeaf(int[] maxKey, int[] key){
+		//place Leaf
 		
 		tree.insert(key, userAnswers);
 	}
