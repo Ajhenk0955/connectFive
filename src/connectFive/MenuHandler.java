@@ -71,7 +71,7 @@ public class MenuHandler extends JFrame {
 			public void actionPerformed(ActionEvent e){
 				profile profile1 = new profile();
 				profile1.setSize(360,640);
-				profile1.setVisible(true);
+				profile1.viewProfile();
 				setVisible(false);
 			}
 		});

@@ -8,6 +8,8 @@ import java.io.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import connectFive.MenuHandler;
+
 
 class profile extends JFrame {
 	
@@ -18,8 +20,10 @@ class profile extends JFrame {
 	String gender;
 	BufferedImage picture; 
 	BufferedImage map;
+	JFrame frame;
 	JButton Submit;
 	JButton Browse;
+	JButton menu;
 	JPanel grid;
 	JPanel namePanel;
 	JPanel genderpanel;
@@ -120,6 +124,11 @@ class profile extends JFrame {
 		
 			}
 			
+			else if (e.getSource()==menu) {
+				MenuHandler mainmenu= new MenuHandler();
+				frame.setVisible(false);
+				mainmenu.setVisible(true);
+			}	
 			else {
 				if(!namefield.getText().isEmpty()&&!addressfield.getText().isEmpty()&&!genderfield.getText().isEmpty()) {
 					name=namefield.getText();
@@ -127,23 +136,33 @@ class profile extends JFrame {
 					gender= genderfield.getText();
 					setVisible(false);
 					viewProfile();
+//					MenuHandler menu = new MenuHandler();
+//					menu.setVisible(true);
+					
 				}	
 			}
 		}
 	}
 	
 	public void viewProfile() {
-		JFrame frame= new JFrame("User Profile");
+		frame= new JFrame("User Profile");
 		JPanel imagepanel= new JPanel();
 		JPanel namepanel= new JPanel();
 		JPanel resultspanel= new JPanel();
+		JPanel menupanel= new JPanel();
+		
 		imagepanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		namepanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		resultspanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-				
+		menupanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+		
 		JLabel label;
 		JLabel nameandaddresslabel;
 		JLabel testresults;
+		menu= new JButton("Menu");
+		ButtonListener handler= new ButtonListener();
+		menu.addActionListener(handler);
+		
 		BufferedImage resizedImage= new BufferedImage(100,100,BufferedImage.TYPE_INT_ARGB);
 		label= new JLabel(new ImageIcon(resizedImage));
 		nameandaddresslabel= new JLabel("<html>"+name+"<br>"+address+"</html>");
@@ -162,11 +181,13 @@ class profile extends JFrame {
 		imagepanel.add(label);
 		imagepanel.add(nameandaddresslabel);
 		resultspanel.add(testresults);
+		menupanel.add(menu);
 		frame.add(Box.createRigidArea(new Dimension(0,10)));
 		frame.add(imagepanel);
 		frame.add(Box.createRigidArea(new Dimension(0,10)));
 		frame.add(resultspanel);
-		frame.add(Box.createRigidArea(new Dimension(0,500)));
+		frame.add(Box.createRigidArea(new Dimension(0,400)));
+		frame.add(menupanel);
 		frame.setSize(360, 640);
 		frame.setResizable(false);
 		frame.setVisible(true);

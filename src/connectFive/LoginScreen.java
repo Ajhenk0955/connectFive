@@ -93,7 +93,7 @@ public class LoginScreen extends JFrame {
 				if(username.getText().isEmpty() || password.getText().isEmpty()) {
 					user = username.getText();
 					pass = password.getText();	
-					JOptionPane.showMessageDialog(LoginScreen.this, String.format("Pleas"
+					JOptionPane.showMessageDialog(LoginScreen.this, String.format("Please"
 							+ "enter your username and password.", e.getActionCommand()));
 					
 					
