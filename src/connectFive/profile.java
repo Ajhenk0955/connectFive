@@ -99,6 +99,8 @@ class profile extends JFrame {
 		this.add(buttonpanel);
 		validate();
 		
+		this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		
 	}
 	
 	
@@ -130,14 +132,16 @@ class profile extends JFrame {
 				mainmenu.setVisible(true);
 			}	
 			else {
+				
+				// the DB needs to be scanned from this point to
+				// verify no duplicate username is being created
+				
 				if(!namefield.getText().isEmpty()&&!addressfield.getText().isEmpty()&&!genderfield.getText().isEmpty()) {
 					name=namefield.getText();
 					address=addressfield.getText();	
 					gender= genderfield.getText();
 					setVisible(false);
 					viewProfile();
-//					MenuHandler menu = new MenuHandler();
-//					menu.setVisible(true);
 					
 				}	
 			}
@@ -148,17 +152,34 @@ class profile extends JFrame {
 		frame= new JFrame("User Profile");
 		JPanel imagepanel= new JPanel();
 		JPanel namepanel= new JPanel();
-		JPanel resultspanel= new JPanel();
+		JPanel entresultspanel= new JPanel();
+		JPanel restresultspanel= new JPanel();
+		JPanel clubresultspanel=  new JPanel();
+		JPanel roomresultspanel= new JPanel();
+		JPanel carresultspanel= new JPanel();
 		JPanel menupanel= new JPanel();
+		
+		// DB needs to be called here and displayed
+		// within each respective panel
 		
 		imagepanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		namepanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-		resultspanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		entresultspanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		restresultspanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		clubresultspanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		roomresultspanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		carresultspanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+
 		menupanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		
 		JLabel label;
 		JLabel nameandaddresslabel;
-		JLabel testresults;
+		JLabel entresults;
+		JLabel restresults;
+		JLabel clubresults;
+		JLabel roomresults;
+		JLabel carresults;
+		
 		menu= new JButton("Menu");
 		ButtonListener handler= new ButtonListener();
 		menu.addActionListener(handler);
@@ -166,7 +187,11 @@ class profile extends JFrame {
 		BufferedImage resizedImage= new BufferedImage(100,100,BufferedImage.TYPE_INT_ARGB);
 		label= new JLabel(new ImageIcon(resizedImage));
 		nameandaddresslabel= new JLabel("<html>"+name+"<br>"+address+"</html>");
-		testresults= new JLabel("Test Results:");
+		entresults= new JLabel("Entertainment Results:");
+		restresults= new JLabel("Restaurant Results: ");
+		clubresults= new JLabel("Club Results: ");
+		roomresults= new JLabel("Roomate Results: ");
+		carresults= new JLabel("Carpool Results: ");
 		Graphics2D g= resizedImage.createGraphics();
 		g.setBackground(Color.WHITE);
 		g.drawImage(picture, 0, 0, 100,100,null);
@@ -180,18 +205,31 @@ class profile extends JFrame {
 		frame.setLayout(new BoxLayout(container, BoxLayout.PAGE_AXIS));
 		imagepanel.add(label);
 		imagepanel.add(nameandaddresslabel);
-		resultspanel.add(testresults);
+		entresultspanel.add(entresults);
+		restresultspanel.add(restresults);
+		clubresultspanel.add(clubresults);
+		roomresultspanel.add(roomresults);
+		carresultspanel.add(carresults);
+		
 		menupanel.add(menu);
 		frame.add(Box.createRigidArea(new Dimension(0,10)));
 		frame.add(imagepanel);
 		frame.add(Box.createRigidArea(new Dimension(0,10)));
-		frame.add(resultspanel);
-		frame.add(Box.createRigidArea(new Dimension(0,400)));
+		frame.add(entresultspanel);
+		frame.add(Box.createRigidArea(new Dimension(0,10)));
+		frame.add(restresultspanel);
+		frame.add(Box.createRigidArea(new Dimension(0,10)));
+		frame.add(clubresultspanel);
+		frame.add(Box.createRigidArea(new Dimension(0,10)));
+		frame.add(roomresultspanel);
+		frame.add(Box.createRigidArea(new Dimension(0,10)));
+		frame.add(carresultspanel);
+		frame.add(Box.createRigidArea(new Dimension(0,10)));
 		frame.add(menupanel);
 		frame.setSize(360, 640);
 		frame.setResizable(false);
 		frame.setVisible(true);
 		
-	
+		this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 	}
 }

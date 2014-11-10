@@ -2,11 +2,9 @@ package connectFive;
 
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
 
-class Carpool extends JFrame implements ActionListener{
-	private JButton submit;
+class Carpool extends QuestionFrame{
 	private JRadioButton give;
 	private JRadioButton receive;	
 	private JRadioButton me;
@@ -46,13 +44,9 @@ class Carpool extends JFrame implements ActionListener{
 	int [] array = new int [7];
 	
 	Carpool (){
-		super("Carpool Questionnaire");
+		super();
 		JPanel button = new JPanel(new GridLayout(0,1));
-		JPanel buttonJPanel = new JPanel();
-		submit = new JButton("Submit");
-		buttonJPanel.add(submit);
-		add(buttonJPanel, BorderLayout.SOUTH);
-		
+			
 		//question 1
 		look = new JLabel ("  1)  Are you looking to:");
 		give = new JRadioButton("Give a ride");
@@ -188,7 +182,6 @@ class Carpool extends JFrame implements ActionListener{
 		add(button);
 		
 		// action listener
-		submit.addActionListener(this);
 		give.addActionListener(this);
 		receive.addActionListener(this);
 		me.addActionListener(this);
@@ -222,70 +215,103 @@ class Carpool extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e){
 		
-		if(e.getSource() == give){
+		if(give.isSelected()){
 			array[0] = 0;
-		}else if(e.getSource() == receive){
+		}else if(receive.isSelected()){
 			array[0] = 1;
 		}
+		else{
+			array[0] = -1;
+		}
 		
-		if(e.getSource() == me){
+		if(me.isSelected()){
 			array[1] = 0;
-		}else if(e.getSource() == two){
+		}else if(two.isSelected()){
 			array[1] = 1;
-		}else if(e.getSource() == three){
+		}else if(three.isSelected()){
 			array[1] = 2;
-		}else if(e.getSource() == four){
+		}else if(four.isSelected()){
 			array[1] = 3;
 		}
+		else{
+			array[1] = -1;
+		}
 		
-		if(e.getSource() == female){
+		if(female.isSelected()){
 			array[2] = 0;
-		}else if(e.getSource() == male){
+		}else if(male.isSelected()){
 			array[2] = 1;
-		}else if(e.getSource() == none){
+		}else if(none.isSelected()){
 			array[2] = 2;
 		}
+		else{
+			array[2] = -1;
+		}
 		
-		if(e.getSource() == on){
+		if(on.isSelected()){
 			array[3] = 0;
-		}else if(e.getSource() == close){
+		}else if(close.isSelected()){
 			array[3] = 1;
-		}else if(e.getSource() == less5){
+		}else if(less5.isSelected()){
 			array[3] = 2;
-		}else if(e.getSource() == more5){
+		}else if(more5.isSelected()){
 			array[3] = 3;
 		}
+		else{
+			array[3] = -1;
+		}
 
-		if(e.getSource() == on2){
+		if(on2.isSelected()){
 			array[4] = 0;
-		}else if(e.getSource() == close2){
+		}else if(close2.isSelected()){
 			array[4] = 1;
-		}else if(e.getSource() == less52){
+		}else if(less52.isSelected()){
 			array[4] = 2;
-		}else if(e.getSource() == more52){
+		}else if(more52.isSelected()){
 			array[4] = 3;
 		}
-		
-		if(e.getSource() == now){
-			array[5] = 0;
-		}else if(e.getSource() == fifteen){
-			array[5] = 1;
-		}else if(e.getSource() == thirty){
-			array[5] = 2;
-		}else if(e.getSource() == hour){
-			array[5] = 3;
-		}else if(e.getSource() == hourP){
-			array[5] = 4;
+		else{
+			array[4] = -1;
 		}
 		
-		if(e.getSource() == fifteen2){
+		if(now.isSelected()){
+			array[5] = 0;
+		}else if(fifteen.isSelected()){
+			array[5] = 1;
+		}else if(thirty.isSelected()){
+			array[5] = 2;
+		}else if(hour.isSelected()){
+			array[5] = 3;
+		}else if(hourP.isSelected()){
+			array[5] = 4;
+		}
+		else{
+			array[5] = -1;
+		}
+		
+		if(fifteen2.isSelected()){
 			array[6] = 0;
-		}else if(e.getSource() == thirty2){
+		}else if(thirty2.isSelected()){
 			array[6] = 1;
-		}else if(e.getSource() == hour2){
+		}else if(hour2.isSelected()){
 			array[6] = 2;
-		}else if(e.getSource() == hourP2){
+		}else if(hourP2.isSelected()){
 			array[6] = 3;
+		}
+		else{
+			array[6] = -1;
+		}
+		
+		for(int i=0; i<array.length; i++){
+			if(array[i]<0){
+				submit.setEnabled(false);
+				break;
+			}
+			else{
+				submit.setEnabled(true);
+				// store results in DB
+				// insert code here
+			}
 		}
 		
 		System.out.println("1: " + array[0]);
@@ -295,23 +321,6 @@ class Carpool extends JFrame implements ActionListener{
 		System.out.println("5: " + array[4]);
 		System.out.println("6: " + array[5]);
 		System.out.println("7: " + array[6]);
-		
-		if(e.getSource() == submit){
-			JOptionPane.showMessageDialog(null, "You've submitted your test!");
-			profile pro = new profile();
-			pro.setSize(360,640);
-			pro.viewProfile();
-			setVisible(false);
-				
-		}
-	}
-	
 
-	public static void main( String args[] ){
-		   Carpool buttonFrame = new Carpool();
-		   buttonFrame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		   buttonFrame.setSize( 360, 640 ); // set frame size
-		   buttonFrame.setVisible( true ); // display frame
 	}
-
 }

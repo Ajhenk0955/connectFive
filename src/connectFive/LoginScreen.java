@@ -19,8 +19,6 @@ import javax.swing.JTextField;
 
 public class LoginScreen extends JFrame {
 
-	
-
 	private JButton login;
 	private JButton signUp;
 	private JTextField username;
@@ -34,6 +32,7 @@ public class LoginScreen extends JFrame {
 	
 	private String user;
 	private String pass;
+	private String empty;
 	
 	LoginScreen() {
 		super("Welcome to Connect Five!");
@@ -51,11 +50,11 @@ public class LoginScreen extends JFrame {
 		
 		// center
 		JPanel panel = new JPanel(new GridLayout (25,1));
-		username = new JTextField("");
+		username = new JTextField(user);
 		panel.add(username);
 		add(panel, BorderLayout.CENTER);
 		
-		password = new JPasswordField("");
+		password = new JPasswordField(pass);
 		panel.add(password);
 		add(panel, BorderLayout.CENTER);
 		
@@ -90,21 +89,20 @@ public class LoginScreen extends JFrame {
 		add(loginPanel, BorderLayout.SOUTH);
 		login.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				if(username.getText().isEmpty() || password.getText().isEmpty()) {
-					user = username.getText();
-					pass = password.getText();	
-					JOptionPane.showMessageDialog(LoginScreen.this, String.format("Please"
+				// this is where the username and password
+				// need to be verified with the DB
+				
+				if(username.getText().isEmpty() || password.getText().isEmpty()) {	
+					JOptionPane.showMessageDialog(LoginScreen.this, String.format("Please "
 							+ "enter your username and password.", e.getActionCommand()));
-					
-					
+					username.setText(empty);
+					password.setText(empty);
 				}else {
 					MenuHandler menu = new MenuHandler();
 					menu.setSize(360,640);
 					menu.setVisible(true);
 					setVisible(false);	
 				}
-				
-				
 			}
 		});
 		
@@ -117,6 +115,7 @@ public class LoginScreen extends JFrame {
 				pro.setSize(360,640);
 				pro.setVisible(true);
 				setVisible(false);
+				pro.setResizable(false);
 			}
 		});
 	}

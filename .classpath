@@ -2,7 +2,5 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/Andrew/Documents/GitHub/connectFive/javaml-0.1.7/lib"/>
-	<classpathentry kind="lib" path="C:/Users/Andrew/Documents/GitHub/connectFive/javaml-0.1.7/javaml-0.1.7.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

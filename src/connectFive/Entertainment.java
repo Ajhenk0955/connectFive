@@ -2,11 +2,9 @@ package connectFive;
 
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
 
-class Entertainment extends JFrame implements ActionListener{
-	private JButton submit;
+class Entertainment extends QuestionFrame{
 	private JRadioButton morning;
 	private JRadioButton afternoon;
 	private JRadioButton night;
@@ -43,12 +41,8 @@ class Entertainment extends JFrame implements ActionListener{
 	int [] array = new int [7];
 	
 	Entertainment (){
-		super("Entertainment Questionnaire");
+		super();
 		JPanel button = new JPanel(new GridLayout(0,1));
-		JPanel buttonJPanel = new JPanel();
-		submit = new JButton("Submit");
-		buttonJPanel.add(submit);
-		add(buttonJPanel, BorderLayout.SOUTH);
 		
 		//question 1
 		time = new JLabel ("  1)  What is the time of the day?");
@@ -176,7 +170,6 @@ class Entertainment extends JFrame implements ActionListener{
 		add(button);
 		
 		// action listeners
-		submit.addActionListener(this);
 		morning.addActionListener(this);
 		afternoon.addActionListener(this);
 		night.addActionListener(this);
@@ -215,96 +208,129 @@ class Entertainment extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e){
 		
-		if(e.getSource() == morning){
+		if(morning.isSelected()){
 			array[0] = 0;
 		}
 		
-		else if(e.getSource() == afternoon){
+		else if(afternoon.isSelected()){
 			array[0] = 1;
 		}
 		
-		else if(e.getSource() == night){
+		else if(night.isSelected()){
 			array[0] = 2;
 		}
+		else{
+			array[0] = -1;
+		}
 		
-		if(e.getSource() == sunny){
+		if(sunny.isSelected()){
 			array[1] = 0;
 		}
 		
-		else if(e.getSource() == cloudy){
+		else if(cloudy.isSelected()){
 			array[1] = 1;
 		}
 		
-		else if(e.getSource() == rainy){
+		else if(rainy.isSelected()){
 			array[1] = 2;
 		}
 		
-		else if(e.getSource() == storming){
+		else if(storming.isSelected()){
 			array[1] = 3;
 		}
+		else{
+			array[1] = -1;
+		}
 		
-		if(e.getSource() == allDay){
+		if(allDay.isSelected()){
 			array[2] = 0;
 		}
 		
-		else if(e.getSource() == twoHours){
+		else if(twoHours.isSelected()){
 			array[2] = 1;
 		}
 		
-		else if(e.getSource() == twoFiveH){
+		else if(twoFiveH.isSelected()){
 			array[2] = 2;
 		}
+		else{
+			array[2] = -1;
+		}
 		
-		if(e.getSource() == indoor){
+		if(indoor.isSelected()){
 			array[3] = 0;
 		}
 		
-		else if(e.getSource() == outdoor){
+		else if(outdoor.isSelected()){
 			array[3] = 1;
 		}
+		else{
+			array[3] = -1;
+		}
 		
-		if(e.getSource() == lessThan){
+		if(lessThan.isSelected()){
 			array[4] = 0;
 		}
 		
-		else if(e.getSource() == tenTwenty){
+		else if(tenTwenty.isSelected()){
 			array[4] = 1;
 		}
 		
-		else if(e.getSource() == TwentyFifty){
+		else if(TwentyFifty.isSelected()){
 			array[4] = 2;
 		}
 		
-		else if(e.getSource() == fiftyPlus){
+		else if(fiftyPlus.isSelected()){
 			array[4] = 3;
 		}
+		else{
+			array[4] = -1;
+		}
 		
-		if(e.getSource() == young){
+		if(young.isSelected()){
 			array[5] = 0;
 		}
 		
-		else if(e.getSource() == eighteenTwenty){
+		else if(eighteenTwenty.isSelected()){
 			array[5] = 1;
 		}
 		
-		else if(e.getSource() == twentyOnePlus){
+		else if(twentyOnePlus.isSelected()){
 			array[5] = 2;
 		}
+		else{
+			array[5] = -1;
+		}
 		
-		if(e.getSource() == fiveMiles){
+		if(fiveMiles.isSelected()){
 			array[6] = 0;
 		}
 		
-		else if(e.getSource() == fiveFifteen){
+		else if(fiveFifteen.isSelected()){
 			array[6] = 1;
 		}
 		
-		else if(e.getSource() == fifteenThirty){
+		else if(fifteenThirty.isSelected()){
 			array[6] = 2;
 		}
 		
-		else if(e.getSource() == thirtyPlus){
+		else if(thirtyPlus.isSelected()){
 			array[6] = 3;
+		}
+		else{
+			array[6] = -1;
+		}
+		
+		for(int i=0; i<array.length; i++){
+			if(array[i]<0){
+				submit.setEnabled(false);
+				break;
+			}
+			else{
+				submit.setEnabled(true);
+				// store results in DB
+				// insert code here
+			}
 		}
 		
 		// testing result storage
@@ -315,23 +341,6 @@ class Entertainment extends JFrame implements ActionListener{
 		System.out.println("5: " + array[4]);
 		System.out.println("6: " + array[5]);
 		System.out.println("7: " + array[6]);
-		
-		if(e.getSource() == submit){
-			JOptionPane.showMessageDialog(null, "You've submitted your test!");
-			profile pro = new profile();
-			pro.setSize(360,640);
-			pro.viewProfile();
-			setVisible(false);
-			
-		}
-	}
-	
 
-	public static void main( String args[] ){
-		   Entertainment buttonFrame = new Entertainment();
-		   buttonFrame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		   buttonFrame.setSize( 360, 640 ); // set frame size
-		   buttonFrame.setVisible( true ); // display frame
 	}
-
 }

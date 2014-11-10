@@ -5,8 +5,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-class Restaurant extends JFrame implements ActionListener{
-	private JButton submit;
+class Restaurant extends QuestionFrame {
 	private JRadioButton vegan;
 	private JRadioButton vegetarian;
 	private JRadioButton sea;
@@ -45,12 +44,8 @@ class Restaurant extends JFrame implements ActionListener{
 	int [] array = new int [6];
 	
 	Restaurant (){
-		super("Restaurant Questionnaire");
+		super();
 		JPanel button = new JPanel(new GridLayout(0,1));
-		JPanel buttonJPanel = new JPanel();
-		submit = new JButton("Submit");
-		buttonJPanel.add(submit);
-		add(buttonJPanel, BorderLayout.SOUTH);
 		
 		//question 1
 		type = new JLabel ("  1)  Which of these best describes you?");
@@ -179,7 +174,6 @@ class Restaurant extends JFrame implements ActionListener{
 		add(button);
 				
 		// action listener
-		submit.addActionListener(this);
 		vegan.addActionListener(this);
 		vegetarian.addActionListener(this);
 		sea.addActionListener(this);
@@ -213,68 +207,99 @@ class Restaurant extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e){
 		
-		if(e.getSource() == vegan){
+		if(vegan.isSelected()){
 			array[0] = 0;
-		}else if(e.getSource() == vegetarian){
+		}else if(vegetarian.isSelected()){
 			array[0] = 1;
-		}else if(e.getSource() == sea){
+		}else if(sea.isSelected()){
 			array[0] = 2;
-		}else if(e.getSource() == gluten){
+		}else if(gluten.isSelected()){
 			array[0] = 3;
-		}else if(e.getSource() == none){
+		}else if(none.isSelected()){
 			array[0] = 4;
 		}
+		else{
+			array[0] = -1;
+		}
 		
-		if(e.getSource() == african){
+		if(african.isSelected()){
 			array[1] = 0;
-		}else if(e.getSource() == asian){
+		}else if(asian.isSelected()){
 			array[1] = 1;
-		}else if(e.getSource() == european){
+		}else if(european.isSelected()){
 			array[1] = 2;
-		}else if(e.getSource() == oceanic){
+		}else if(oceanic.isSelected()){
 			array[1] = 3;
-		}else if(e.getSource() == americas){
+		}else if(americas.isSelected()){
 			array[1] = 4;
 		}
+		else{
+			array[1] = -1;
+		}
 		
-		if(e.getSource() == breakfast){
+		if(breakfast.isSelected()){
 			array[2] = 0;
-		}else if(e.getSource() == lunch){
+		}else if(lunch.isSelected()){
 			array[2] = 1;
-		}else if(e.getSource() == dinner){
+		}else if(dinner.isSelected()){
 			array[2] = 2;
 		}
+		else{
+			array[2] = -1;
+		}
 		
-		if(e.getSource() == morning){
+		if(morning.isSelected()){
 			array[3] = 0;
-		}else if(e.getSource() == midday){
+		}else if(midday.isSelected()){
 			array[3] = 1;
-		}else if(e.getSource() == afternoon){
+		}else if(afternoon.isSelected()){
 			array[3] = 2;
-		}else if(e.getSource() == evening){
+		}else if(evening.isSelected()){
 			array[3] = 3;
-		}else if(e.getSource() == late){
+		}else if(late.isSelected()){
 			array[3] = 4;
 		}
-		
-		if(e.getSource() == less1){
-			array[4] = 0;
-		}else if(e.getSource() == more1){
-			array[4] = 1;
-		}else if(e.getSource() == less5){
-			array[4] = 2;
-		}else if(e.getSource() == more5){
-			array[4] = 3;
+		else{
+			array[3] = -1;
 		}
 		
-		if(e.getSource() == zero){
+		if(less1.isSelected()){
+			array[4] = 0;
+		}else if(more1.isSelected()){
+			array[4] = 1;
+		}else if(less5.isSelected()){
+			array[4] = 2;
+		}else if(more5.isSelected()){
+			array[4] = 3;
+		}
+		else{
+			array[4] = -1;
+		}
+		
+		if(zero.isSelected()){
 			array[5] = 0;
-		}else if(e.getSource() == ten){
+		}else if(ten.isSelected()){
 			array[5] = 1;
-		}else if(e.getSource() == twenty){
+		}else if(twenty.isSelected()){
 			array[5] = 2;
-		}else if(e.getSource() == thirty){
+		}else if(thirty.isSelected()){
 			array[5] = 3;
+		}
+		else{
+			array[5] = -1;
+		}
+		
+		
+		for(int i=0; i<array.length; i++){
+			if(array[i]<0){
+				submit.setEnabled(false);
+				break;
+			}
+			else{
+				submit.setEnabled(true);
+				// store results in DB
+				// insert code here
+			}
 		}
 				
 		System.out.println("1: " + array[0]);
@@ -283,22 +308,6 @@ class Restaurant extends JFrame implements ActionListener{
 		System.out.println("4: " + array[3]);
 		System.out.println("5: " + array[4]);
 		System.out.println("6: " + array[5]);
-		
-		if(e.getSource() == submit){
-			JOptionPane.showMessageDialog(null, "You've submitted your test!");
-			profile pro = new profile();
-			pro.setSize(360,640);
-			pro.viewProfile();
-			setVisible(false);
-		}
-	}
-	
 
-	public static void main( String args[] ){
-		   Restaurant buttonFrame = new Restaurant();
-		   buttonFrame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		   buttonFrame.setSize( 360, 640 ); // set frame size
-		   buttonFrame.setVisible( true ); // display frame
 	}
-
 }

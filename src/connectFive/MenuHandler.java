@@ -23,6 +23,7 @@ public class MenuHandler extends JFrame {
 	private JButton food;
 	private JButton clubs;
 	private JButton roommate;
+	private JButton signout;
 	private JLabel blank;
 	private JLabel blank2;
 	private JLabel blank3;
@@ -33,7 +34,7 @@ public class MenuHandler extends JFrame {
 	MenuHandler(){
 		super("Main Menu");
 		
-		JPanel blankN = new JPanel(new GridLayout(8,0));
+		JPanel blankN = new JPanel(new GridLayout(10,0));
 		blank = new JLabel("  ");
 		blankN.add(blank);
 		add(blankN, BorderLayout.NORTH);
@@ -47,23 +48,18 @@ public class MenuHandler extends JFrame {
 				+ "                     Please make a selection!");
 		blankN.add(message);
 		add(blankN, BorderLayout.NORTH);
-		
-		JPanel blankS = new JPanel(new GridLayout(8,0));
-		blank2 = new JLabel("   ");
-		blankS.add(blank2);
-		add(blankS, BorderLayout.SOUTH);
-		
-		JPanel blankE = new JPanel(new GridLayout(0,6));
+				
+		JPanel blankE = new JPanel(new GridLayout(0,10));
 		blank3 = new JLabel("   ");
 		blankE.add(blank3);
 		add(blankE, BorderLayout.EAST);
 		
-		JPanel blankW = new JPanel(new GridLayout(0,6));
+		JPanel blankW = new JPanel(new GridLayout(0,10));
 		blank4 = new JLabel("   ");
 		blankW.add(blank4);
 		add(blankW, BorderLayout.WEST);
 		
-		JPanel menu = new JPanel(new GridLayout(3,1));
+		JPanel menu = new JPanel(new GridLayout(9,0));
 		profile = new JButton("Profile");
 		menu.add(profile);
 		add(menu, BorderLayout.CENTER);
@@ -73,6 +69,8 @@ public class MenuHandler extends JFrame {
 				profile1.setSize(360,640);
 				profile1.viewProfile();
 				setVisible(false);
+				profile1.setResizable(false);
+				profile1.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 			}
 		});
 		
@@ -86,6 +84,8 @@ public class MenuHandler extends JFrame {
 				ent.setSize(360,640);
 				ent.setVisible(true);
 				setVisible(false);
+				ent.setResizable(false);
+				ent.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 			}
 		});
 		
@@ -97,7 +97,9 @@ public class MenuHandler extends JFrame {
 				Carpool carpool = new Carpool();
 				carpool.setSize(360,640);
 				carpool.setVisible(true);
+				carpool.setResizable(false);
 				setVisible(false);
+				carpool.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 			}
 		});
 		
@@ -109,7 +111,9 @@ public class MenuHandler extends JFrame {
 				RSO clubs = new RSO();
 				clubs.setSize(360,640);
 				clubs.setVisible(true);
+				clubs.setResizable(false);
 				setVisible(false);
+				clubs.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 			}
 		});
 		
@@ -121,7 +125,9 @@ public class MenuHandler extends JFrame {
 				Restaurant food = new Restaurant();
 				food.setSize(360,640);
 				food.setVisible(true);
+				food.setResizable(false);
 				setVisible(false);
+				food.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 			}
 		});
 		
@@ -133,11 +139,33 @@ public class MenuHandler extends JFrame {
 				Roommate rm = new Roommate();
 				rm.setSize(360,640);
 				rm.setVisible(true);
+				rm.setResizable(false);
 				setVisible(false);
+				rm.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+			}
+		});
+
+		blank2 = new JLabel("  ");
+		menu.add(blank2);
+		add(menu, BorderLayout.CENTER);
+		
+		JPanel so = new JPanel();
+		signout = new JButton("Sign out");
+		so.add(signout);
+		add(so, BorderLayout.SOUTH);
+		signout.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				LoginScreen login=new LoginScreen();
+				login.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+				login.setSize(360,640);
+				login.setResizable(false);
+				setVisible(false);
+				login.setVisible(true);
 			}
 		});
 		
 		this.setSize(360,640);
-		
+		this.setResizable(false);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }

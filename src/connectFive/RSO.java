@@ -5,8 +5,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-class RSO extends JFrame implements ActionListener{
-	private JButton submit;
+class RSO extends QuestionFrame{
 	private JRadioButton baking;
 	private JRadioButton gaming;
 	private JRadioButton reading;
@@ -55,12 +54,8 @@ class RSO extends JFrame implements ActionListener{
 	int [] array = new int [7];
 	
 	RSO (){
-		super("RSO Questionnaire");
+		super();
 		JPanel button = new JPanel(new GridLayout(0,1));
-		JPanel buttonJPanel = new JPanel();
-		submit = new JButton("Submit");
-		buttonJPanel.add(submit);
-		add(buttonJPanel, BorderLayout.SOUTH);
 		
 		//question 1
 		enjoy = new JLabel ("  1)  What do you enjoy doing (select one that applies most)?");
@@ -223,7 +218,6 @@ class RSO extends JFrame implements ActionListener{
 		add(button);
 		
 		// action listener
-		submit.addActionListener(this);
 		baking.addActionListener(this);
 		gaming.addActionListener(this);
 		reading.addActionListener(this);
@@ -266,88 +260,122 @@ class RSO extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e){
 		
-		if(e.getSource() == baking){
+		if(baking.isSelected()){
+		//if(e.getSource() == baking){
 			array[0] = 0;
-		}else if(e.getSource() == gaming){
+		}else if(gaming.isSelected()){
 			array[0] = 1;
-		}else if(e.getSource() == reading){
+		}else if(reading.isSelected()){
 			array[0] = 2;
-		}else if(e.getSource() == building){
+		}else if(building.isSelected()){
 			array[0] = 3;
-		}else if(e.getSource() == volunteering){
+		}else if(volunteering.isSelected()){
 			array[0] = 4;
-		}else if(e.getSource() == sports){
+		}else if(sports.isSelected()){
 			array[0] = 5;
 		}
+		else {
+			array[0] = -1;
+		}
 		
-		if(e.getSource() == engineering){
+		if(engineering.isSelected()){
 			array[1] = 0;
-		}else if(e.getSource() == math){
+		}else if(math.isSelected()){
 			array[1] = 1;
-		}else if(e.getSource() == hs){
+		}else if(hs.isSelected()){
 			array[1] = 2;
-		}else if(e.getSource() == his){
+		}else if(his.isSelected()){
 			array[1] = 3;
-		}else if(e.getSource() == eng){
+		}else if(eng.isSelected()){
 			array[1] = 4;
-		}else if(e.getSource() == arts){
+		}else if(arts.isSelected()){
 			array[1] = 5;
 		}
+		else{
+			array[1] = -1;
+		}
 		
-		if(e.getSource() == yes){
+		if(yes.isSelected()){
 			array[2] = 0;
-		}else if(e.getSource() == no){
+		}else if(no.isSelected()){
 			array[2] = 1;
 		}
+		else{
+			array[2] = -1;
+		}
 		
-		if(e.getSource() == baking2){
+		if(baking2.isSelected()){
 			array[3] = 0;
-		}else if(e.getSource() == gaming2){
+		}else if(gaming2.isSelected()){
 			array[3] = 1;
-		}else if(e.getSource() == reading2){
+		}else if(reading2.isSelected()){
 			array[3] = 2;
-		}else if(e.getSource() == building2){
+		}else if(building2.isSelected()){
 			array[3] = 3;
-		}else if(e.getSource() == volunteering2){
+		}else if(volunteering2.isSelected()){
 			array[3] = 4;
-		}else if(e.getSource() == sports2){
+		}else if(sports2.isSelected()){
 			array[3] = 5;
 		}
+		else{
+			array[3] = -1;
+		}
 		
-		if(e.getSource() == acad){
+		if(acad.isSelected()){
 			array[4] = 0;
-		}else if(e.getSource() == cult){
+		}else if(cult.isSelected()){
 			array[4] = 1;
-		}else if(e.getSource() == med){
+		}else if(med.isSelected()){
 			array[4] = 2;
-		}else if(e.getSource() == pol){
+		}else if(pol.isSelected()){
 			array[4] = 3;
-		}else if(e.getSource() == rel){
+		}else if(rel.isSelected()){
 			array[4] = 4;
-		}else if(e.getSource() == ser){
+		}else if(ser.isSelected()){
 			array[4] = 5;
-		}else if(e.getSource() == sports3){
+		}else if(sports3.isSelected()){
 			array[4] = 6;
 		}
-		
-		if(e.getSource() == multi){
-			array[5] = 0;
-		}else if(e.getSource() == week){
-			array[5] = 1;
-		}else if(e.getSource() == bi){
-			array[5] = 2;
-		}else if(e.getSource() == month){
-			array[5] = 3;
+		else{
+			array[4] = -1;
 		}
 		
-		if(e.getSource() == zero){
+		if(multi.isSelected()){
+			array[5] = 0;
+		}else if(week.isSelected()){
+			array[5] = 1;
+		}else if(bi.isSelected()){
+			array[5] = 2;
+		}else if(month.isSelected()){
+			array[5] = 3;
+		}
+		else {
+			array[5] = -1;
+		}
+		
+		if(zero.isSelected()){
 			array[6] = 0;
-		}else if(e.getSource() == five){
+		}else if(five.isSelected()){
 			array[6] = 1;
-		}else if(e.getSource() == ten){
+		}else if(ten.isSelected()){
 			array[6] = 2;
-		}else if(e.getSource() == thirty){
+		}else if(thirty.isSelected()){
 			array[6] = 3;
+		}
+		else{
+			array[6] = -1;
+		}
+		
+		for(int i=0; i<array.length; i++){
+			if(array[i]<0){
+				submit.setEnabled(false);
+				break;
+			}
+			else{
+				submit.setEnabled(true);
+				// store results in DB
+				// insert code here
+			}
 		}
 		
 		System.out.println("1: " + array[0]);
@@ -357,22 +385,5 @@ class RSO extends JFrame implements ActionListener{
 		System.out.println("5: " + array[4]);
 		System.out.println("6: " + array[5]);
 		System.out.println("7: " + array[6]);
-		
-		if(e.getSource() == submit){
-			JOptionPane.showMessageDialog(null, "You've submitted your test!");
-			profile pro = new profile();
-			pro.setSize(360,640);
-			pro.viewProfile();
-			setVisible(false);
-		}
-	}
-	
-
-	public static void main( String args[] ){
-		   RSO buttonFrame = new RSO();
-		   buttonFrame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		   buttonFrame.setSize( 360, 640 ); // set frame size
-		   buttonFrame.setVisible( true ); // display frame
-	}
-
+	}	
 }

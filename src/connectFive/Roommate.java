@@ -5,8 +5,8 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-class Roommate extends JFrame implements ActionListener{
-	private JButton submit;
+class Roommate extends QuestionFrame{
+
 	private JRadioButton fem;
 	private JRadioButton male;
 	private JRadioButton fresh;
@@ -39,13 +39,9 @@ class Roommate extends JFrame implements ActionListener{
 	int [] array = new int [6];
 	
 	Roommate (){
-		super("Roommate Questionnaire");
+		super();
 		JPanel button = new JPanel(new GridLayout(0,1));
-		JPanel buttonJPanel = new JPanel();
-		submit = new JButton("Submit");
-		buttonJPanel.add(submit);
-		add(buttonJPanel, BorderLayout.SOUTH);
-		
+
 		//question 1
 		gender = new JLabel ("  1)  Are you a female or male?");
 		fem = new JRadioButton("Female");
@@ -158,7 +154,7 @@ class Roommate extends JFrame implements ActionListener{
 		add(button);
 		
 		// action listeners
-		submit.addActionListener(this);
+		
 		fem.addActionListener(this);
 		male.addActionListener(this);
 		fresh.addActionListener(this);
@@ -187,63 +183,81 @@ class Roommate extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e){
 		
 		// question 1
-		if(e.getSource() == fem){
+		if(fem.isSelected()){
 			array[0] = 0;
-		}else if(e.getSource() == male){
+		}else if(male.isSelected()){
 			array[0] = 1;
+		}
+		else{
+			array[0] = -1;
 		}
 		
 		// question 2
-		if(e.getSource() == fresh){
+		if(fresh.isSelected()){
 			array[1] = 0;
-		}else if(e.getSource() == soph){
+		}else if(soph.isSelected()){
 			array[1] = 1;
-		}else if(e.getSource() == jun){
+		}else if(jun.isSelected()){
 			array[1] = 2;
-		}else if(e.getSource() == sen){
+		}else if(sen.isSelected()){
 			array[1] = 3;
-		}else if(e.getSource() == grad){
+		}else if(grad.isSelected()){
 			array[1] = 4;
+		}
+		else{
+			array[1] = -1;
 		}
 		
 		// question 3
-		if(e.getSource() == dawn){
+		if(dawn.isSelected()){
 			array[2] = 0;
-		}else if(e.getSource() == bird){
+		}else if(bird.isSelected()){
 			array[2] = 1;
-		}else if(e.getSource() == owl){
+		}else if(owl.isSelected()){
 			array[2] = 2;
+		}
+		else{
+			array[2] = -1;
 		}
 		
 		// question 4
-		if(e.getSource() == less){
+		if(less.isSelected()){
 			array[3] = 0;
-		}else if(e.getSource() == more){
+		}else if(more.isSelected()){
 			array[3] = 1;
-		}else if(e.getSource() == any){
+		}else if(any.isSelected()){
 			array[3] = 2;
+		}
+		else{
+			array[3] = -1;
 		}
 		
 		// question 5
-		if(e.getSource() == soc){
+		if(soc.isSelected()){
 			array[4] = 0;
-		}else if(e.getSource() == rec){
+		}else if(rec.isSelected()){
 			array[4] = 1;
-		}else if(e.getSource() == dep){
+		}else if(dep.isSelected()){
 			array[4] = 2;
-		}else if(e.getSource() == unre){
+		}else if(unre.isSelected()){
 			array[4] = 3;
+		}
+		else{
+			array[4] = -1;
 		}
 		
 		// question 6
-		if(e.getSource() == godly){
+		if(godly.isSelected()){
 			array[5] = 0;
-		}else if(e.getSource() == reg){
+		}else if(reg.isSelected()){
 			array[5] = 1;
-		}else if(e.getSource() == often){
+		}else if(often.isSelected()){
 			array[5] = 2;
-		}else if(e.getSource() == pigsty){
+		}else if(pigsty.isSelected()){
 			array[5] = 3;
+		}
+		else{
+			array[5] = -1;
 		}
 		
 		// testing result storage
@@ -254,21 +268,17 @@ class Roommate extends JFrame implements ActionListener{
 		System.out.println("5: " + array[4]);
 		System.out.println("6: " + array[5]);
 		
-		if(e.getSource() == submit){
-			JOptionPane.showMessageDialog(null, "You've submitted your test!");
-			profile pro = new profile();
-			pro.setSize(360,640);
-			pro.viewProfile();
-			setVisible(false);
+		for(int i=0; i<array.length; i++){
+			if(array[i]<0){
+				submit.setEnabled(false);
+				break;
+			}
+			else{
+				submit.setEnabled(true);
+				// store results in DB
+				// insert code here
+			}
 		}
+		
 	}
-	
-
-	public static void main( String args[] ){
-		   Roommate buttonFrame = new Roommate();
-		   buttonFrame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		   buttonFrame.setSize( 360, 640 ); // set frame size
-		   buttonFrame.setVisible( true ); // display frame
-	}
-
 }
