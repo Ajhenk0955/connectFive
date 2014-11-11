@@ -2,6 +2,7 @@ package connectFive;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 
 class Entertainment extends QuestionFrame{
@@ -43,9 +44,11 @@ class Entertainment extends QuestionFrame{
 	Entertainment (){
 		super();
 		JPanel button = new JPanel(new GridLayout(0,1));
+		button.setBackground(Color.BLACK);
 		
 		//question 1
 		time = new JLabel ("  1)  What is the time of the day?");
+		time.setForeground(Color.WHITE);
 		morning = new JRadioButton("morning");
 		afternoon = new JRadioButton("afternoon");
 		night = new JRadioButton("night");
@@ -60,6 +63,17 @@ class Entertainment extends QuestionFrame{
 		radioGroup1.add(afternoon);
 		radioGroup1.add(night);
 		add(button);
+		
+		// text color
+		time.setForeground(Color.WHITE);
+		morning.setForeground(Color.WHITE);
+		afternoon.setForeground(Color.WHITE);
+		night.setForeground(Color.WHITE);
+		
+		// background color
+		morning.setBackground(Color.BLACK);
+		afternoon.setBackground(Color.BLACK);
+		night.setBackground(Color.BLACK);
 		
 		//question 2
 		weather = new JLabel ("  2)  What is the weather like?");
@@ -81,6 +95,20 @@ class Entertainment extends QuestionFrame{
 		radioGroup.add(storming);
 		add(button);
 		
+		// text color
+		weather.setForeground(Color.WHITE);
+		sunny.setForeground(Color.WHITE);
+		cloudy.setForeground(Color.WHITE);
+		rainy.setForeground(Color.WHITE);
+		storming.setForeground(Color.WHITE);
+				
+		// background color
+		weather.setBackground(Color.BLACK);
+		sunny.setBackground(Color.BLACK);
+		cloudy.setBackground(Color.BLACK);
+		rainy.setBackground(Color.BLACK);
+		storming.setBackground(Color.BLACK);
+		
 		//question 3
 		length = new JLabel ("  3)  How long do you want to be out for?");
 		allDay = new JRadioButton("all day");
@@ -98,6 +126,18 @@ class Entertainment extends QuestionFrame{
 		radioGroup.add(twoFiveH);
 		add(button);
 		
+		// text color
+		length.setForeground(Color.WHITE);
+		allDay.setForeground(Color.WHITE);
+		twoHours.setForeground(Color.WHITE);
+		twoFiveH.setForeground(Color.WHITE);
+				
+		// background color
+		length.setBackground(Color.BLACK);
+		allDay.setBackground(Color.BLACK);
+		twoHours.setBackground(Color.BLACK);
+		twoFiveH.setBackground(Color.BLACK);
+		
 		//question 4
 		inOrOut = new JLabel ("  4)  Indoor or outdoor?");
 		indoor = new JRadioButton("indoor");
@@ -111,6 +151,16 @@ class Entertainment extends QuestionFrame{
 		radioGroup.add(indoor);
 		radioGroup.add(outdoor);
 		add(button);
+		
+		// text color
+		inOrOut.setForeground(Color.WHITE);
+		indoor.setForeground(Color.WHITE);
+		outdoor.setForeground(Color.WHITE);
+				
+		// background color
+		inOrOut.setBackground(Color.BLACK);
+		indoor.setBackground(Color.BLACK);
+		outdoor.setBackground(Color.BLACK);
 		
 		//question 5
 		cost = new JLabel ("  5)  How much money can you spend?");
@@ -132,6 +182,20 @@ class Entertainment extends QuestionFrame{
 		radioGroup.add(fiftyPlus);
 		add(button);
 		
+		// text color
+		cost.setForeground(Color.WHITE);
+		lessThan.setForeground(Color.WHITE);
+		tenTwenty.setForeground(Color.WHITE);
+		TwentyFifty.setForeground(Color.WHITE);
+		fiftyPlus.setForeground(Color.WHITE);
+				
+		// background color
+		cost.setBackground(Color.BLACK);
+		lessThan.setBackground(Color.BLACK);
+		tenTwenty.setBackground(Color.BLACK);
+		TwentyFifty.setBackground(Color.BLACK);
+		fiftyPlus.setBackground(Color.BLACK);
+		
 		//question 6
 		age = new JLabel ("  6)  How old are you?");
 		young = new JRadioButton("younger than 18");
@@ -148,6 +212,18 @@ class Entertainment extends QuestionFrame{
 		radioGroup.add(eighteenTwenty);
 		radioGroup.add(twentyOnePlus);
 		add(button);
+		
+		// text color
+		age.setForeground(Color.WHITE);
+		young.setForeground(Color.WHITE);
+		eighteenTwenty.setForeground(Color.WHITE);
+		twentyOnePlus.setForeground(Color.WHITE);
+				
+		// background color
+		age.setBackground(Color.BLACK);
+		young.setBackground(Color.BLACK);
+		eighteenTwenty.setBackground(Color.BLACK);
+		twentyOnePlus.setBackground(Color.BLACK);
 		
 		//question 7
 		distance = new JLabel ("  7)  How far can you travel?");
@@ -168,6 +244,20 @@ class Entertainment extends QuestionFrame{
 		radioGroup.add(fifteenThirty);
 		radioGroup.add(thirtyPlus);
 		add(button);
+		
+		// text color
+		distance.setForeground(Color.WHITE);
+		fiveMiles.setForeground(Color.WHITE);
+		fiveFifteen.setForeground(Color.WHITE);
+		fifteenThirty.setForeground(Color.WHITE);
+		thirtyPlus.setForeground(Color.WHITE);
+				
+		// background color
+		distance.setBackground(Color.BLACK);
+		fiveMiles.setBackground(Color.BLACK);
+		fiveFifteen.setBackground(Color.BLACK);
+		fifteenThirty.setBackground(Color.BLACK);
+		thirtyPlus.setBackground(Color.BLACK);
 		
 		// action listeners
 		morning.addActionListener(this);

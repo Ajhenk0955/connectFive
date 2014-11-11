@@ -12,6 +12,7 @@ abstract class QuestionFrame extends JFrame implements ActionListener{
 	QuestionFrame(){
 		setTitle(getClass().getSimpleName() + " Questionnaire");
 		JPanel buttonJPanel = new JPanel();
+		buttonJPanel.setBackground(Color.BLACK);
 		submit = new JButton("Submit");
 		buttonJPanel.add(submit);
 		add(buttonJPanel, BorderLayout.SOUTH);

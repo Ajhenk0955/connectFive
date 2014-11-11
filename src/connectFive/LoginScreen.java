@@ -1,6 +1,7 @@
 package connectFive;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -41,7 +42,10 @@ public class LoginScreen extends JFrame {
 		JPanel header = new JPanel(new GridLayout (10,1));
 		welcome = new JLabel("                                     "
 				+ "Welcome to Connect Five!");
+		welcome.setForeground(Color.WHITE);
 		header.add(welcome, BorderLayout.NORTH);
+		header.setOpaque(true);
+		header.setBackground(Color.BLACK);
 		add(header, BorderLayout.NORTH);
 		
 		blank = new JLabel(" ");
@@ -52,6 +56,8 @@ public class LoginScreen extends JFrame {
 		JPanel panel = new JPanel(new GridLayout (25,1));
 		username = new JTextField(user);
 		panel.add(username);
+		panel.setOpaque(true);
+		panel.setBackground(Color.BLACK);
 		add(panel, BorderLayout.CENTER);
 		
 		password = new JPasswordField(pass);
@@ -65,10 +71,14 @@ public class LoginScreen extends JFrame {
 		// west
 		JPanel westBlank = new JPanel(new GridLayout (25,1));
 		userLabel = new JLabel("              Username: ");
+		userLabel.setForeground(Color.WHITE);
 		westBlank.add(userLabel);
+		westBlank.setOpaque(true);
+		westBlank.setBackground(Color.BLACK);
 		add(westBlank, BorderLayout.WEST);
 		
 		passLabel = new JLabel("              Password: ");
+		passLabel.setForeground(Color.WHITE);
 		westBlank.add(passLabel);
 		add(westBlank, BorderLayout.WEST);
 		
@@ -76,6 +86,8 @@ public class LoginScreen extends JFrame {
 		JPanel eastBlank = new JPanel(new GridLayout (30,1));
 		blank = new JLabel("              ");
 		eastBlank.add(blank);
+		eastBlank.setOpaque(true);
+		eastBlank.setBackground(Color.BLACK);
 		add(eastBlank, BorderLayout.EAST);
 		
 		blank2 = new JLabel("              ");
@@ -86,6 +98,8 @@ public class LoginScreen extends JFrame {
 		JPanel loginPanel = new JPanel(new FlowLayout());
 		login = new JButton("Login");
 		loginPanel.add(login);
+		loginPanel.setOpaque(true);
+		loginPanel.setBackground(Color.BLACK);
 		add(loginPanel, BorderLayout.SOUTH);
 		login.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
