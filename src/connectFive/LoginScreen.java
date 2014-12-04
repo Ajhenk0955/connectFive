@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -38,69 +39,29 @@ public class LoginScreen extends JFrame {
 	LoginScreen() {
 		super("Welcome to Connect Five!");
 		
-		// north
-		JPanel header = new JPanel(new GridLayout (10,1));
-		welcome = new JLabel("                                     "
-				+ "Welcome to Connect Five!");
-		welcome.setForeground(Color.WHITE);
-		header.add(welcome, BorderLayout.NORTH);
-		header.setOpaque(true);
-		header.setBackground(Color.BLACK);
-		add(header, BorderLayout.NORTH);
-		
-		blank = new JLabel(" ");
-		header.add(blank);
-		add(header, BorderLayout.NORTH);
-		
-		// center
-		JPanel panel = new JPanel(new GridLayout (25,1));
-		username = new JTextField(user);
-		panel.add(username);
-		panel.setOpaque(true);
-		panel.setBackground(Color.BLACK);
-		add(panel, BorderLayout.CENTER);
-		
-		password = new JPasswordField(pass);
-		panel.add(password);
-		add(panel, BorderLayout.CENTER);
-		
-		blank3 = new JLabel("              ");
-		panel.add(blank3);
-		add(panel);
-		
-		// west
-		JPanel westBlank = new JPanel(new GridLayout (25,1));
-		userLabel = new JLabel("              Username: ");
-		userLabel.setForeground(Color.WHITE);
-		westBlank.add(userLabel);
-		westBlank.setOpaque(true);
-		westBlank.setBackground(Color.BLACK);
-		add(westBlank, BorderLayout.WEST);
-		
-		passLabel = new JLabel("              Password: ");
-		passLabel.setForeground(Color.WHITE);
-		westBlank.add(passLabel);
-		add(westBlank, BorderLayout.WEST);
+		this.setLayout(null);
 		
 		//east
 		JPanel eastBlank = new JPanel(new GridLayout (30,1));
-		blank = new JLabel("              ");
-		eastBlank.add(blank);
-		eastBlank.setOpaque(true);
-		eastBlank.setBackground(Color.BLACK);
-		add(eastBlank, BorderLayout.EAST);
+		eastBlank.setOpaque(false);
+		eastBlank.setLayout(null);
+		eastBlank.setBounds(0, 0, 360, 640);
+		this.add(eastBlank);
 		
-		blank2 = new JLabel("              ");
-		eastBlank.add(blank2);
-		add(eastBlank, BorderLayout.EAST);
+		username = new JTextField();
+		username.setText("Username");
+		username.setBounds(50, 100, 260, 50);
+		eastBlank.add(username);
 		
-		// south
-		JPanel loginPanel = new JPanel(new FlowLayout());
+		password = new JPasswordField();
+		password.setText("password");
+		password.setBounds(50, 175, 260, 50);
+		eastBlank.add(password);
+		
+		
 		login = new JButton("Login");
-		loginPanel.add(login);
-		loginPanel.setOpaque(true);
-		loginPanel.setBackground(Color.BLACK);
-		add(loginPanel, BorderLayout.SOUTH);
+		login.setBounds(50, 570, 100, 40);
+		eastBlank.add(login);
 		login.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				// this is where the username and password
@@ -121,17 +82,22 @@ public class LoginScreen extends JFrame {
 		});
 		
 		signUp = new JButton("Sign Up");
-		loginPanel.add(signUp);
-		add(loginPanel, BorderLayout.SOUTH);
+		signUp.setBounds(210, 570, 100, 40);
+		eastBlank.add(signUp);
 		signUp.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				profile pro = new profile();
+				ProfileRev pro = new ProfileRev();
 				pro.setSize(360,640);
 				pro.setVisible(true);
 				setVisible(false);
 				pro.setResizable(false);
 			}
 		});
+		
+		JLabel background = new JLabel();
+		background.setIcon(new ImageIcon("imgs/background6.png"));
+		background.setBounds(0,0,360,640);
+		this.add(background);
 	}
 
 }

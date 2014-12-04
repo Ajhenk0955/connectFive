@@ -7,6 +7,12 @@ import javax.swing.*;
 
 class Roommate extends QuestionFrame{
 
+	private JPanel question1;
+	private JPanel question2;
+	private JPanel question3;
+	private JPanel question4;
+	private JPanel question5;
+	private JPanel question6;
 	private JRadioButton fem;
 	private JRadioButton male;
 	private JRadioButton fresh;
@@ -41,22 +47,29 @@ class Roommate extends QuestionFrame{
 	Roommate (){
 		super();
 		JPanel button = new JPanel(new GridLayout(0,1));
+		button.setOpaque(false);
+		button.setLayout(null);
 
 		//question 1
+		question1 = new JPanel();
+		question1.setOpaque(false);
+		question1.setLayout(new BoxLayout(question1, BoxLayout.Y_AXIS));
 		gender = new JLabel ("  1)  Are you a female or male?");
 		fem = new JRadioButton("Female");
 		male = new JRadioButton("Male");
 		space = new JLabel("   ");
-		button.add(gender);
-		button.add(fem);
-		button.add(male);
-		button.add(space);
+		question1.add(gender);
+		question1.add(fem);
+		question1.add(male);
+		question1.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(fem);
 		radioGroup.add(male);
-		add(button);
 		
 		//question 2
+		question2 = new JPanel();
+		question2.setOpaque(false);
+		question2.setLayout(new BoxLayout(question2, BoxLayout.Y_AXIS));
 		year = new JLabel ("  2)  What year of college are you in?");
 		fresh = new JRadioButton("Freshman");
 		soph = new JRadioButton("Sophomore");
@@ -64,94 +77,101 @@ class Roommate extends QuestionFrame{
 		sen = new JRadioButton("Senior");
 		grad = new JRadioButton("Graduate");
 		space = new JLabel("   ");
-		button.add(year);
-		button.add(fresh);
-		button.add(soph);
-		button.add(jun);
-		button.add(sen);
-		button.add(grad);
-		button.add(space);
+		question2.add(year);
+		question2.add(fresh);
+		question2.add(soph);
+		question2.add(jun);
+		question2.add(sen);
+		question2.add(grad);
+		question2.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(fresh);
 		radioGroup.add(soph);
 		radioGroup.add(jun);
 		radioGroup.add(sen);
 		radioGroup.add(grad);
-		add(button);
 		
 		//question 3
+		question3 = new JPanel();
+		question3.setOpaque(false);
+		question3.setLayout(new BoxLayout(question3, BoxLayout.Y_AXIS));
 		wake = new JLabel ("  3)  Which of these best describes you?");
 		dawn = new JRadioButton("Up at dawn");
 		bird = new JRadioButton("Early bird");
 		owl = new JRadioButton("Night owl");
 		space = new JLabel("   ");
-		button.add(wake);
-		button.add(dawn);
-		button.add(bird);
-		button.add(owl);
-		button.add(space);
+		question3.add(wake);
+		question3.add(dawn);
+		question3.add(bird);
+		question3.add(owl);
+		question3.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(dawn);
 		radioGroup.add(bird);
 		radioGroup.add(owl);
-		add(button);
 		
 		//question 4
+		question4 = new JPanel();
+		question4.setOpaque(false);
+		question4.setLayout(new BoxLayout(question4, BoxLayout.Y_AXIS));
 		you = new JLabel ("  4)  What type of person would you like to room with?");
 		less = new JRadioButton("Less like you");
 		more = new JRadioButton("More like you");
 		any = new JRadioButton("Anyone will do");
 		space = new JLabel("   ");
-		button.add(you);
-		button.add(less);
-		button.add(more);
-		button.add(any);
-		button.add(space);
+		question4.add(you);
+		question4.add(less);
+		question4.add(more);
+		question4.add(any);
+		question4.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(less);
 		radioGroup.add(more);
 		radioGroup.add(any);
-		add(button);
 		
 		//question 5
+		question5 = new JPanel();
+		question5.setOpaque(false);
+		question5.setLayout(new BoxLayout(question5, BoxLayout.Y_AXIS));
 		pers = new JLabel ("  5)  Which of these best describes you?");
 		soc = new JRadioButton("Social");
 		rec = new JRadioButton("Reclusive");
 		dep = new JRadioButton("Dependable");
 		unre = new JRadioButton("Unreliable");
 		space = new JLabel("   ");
-		button.add(pers);
-		button.add(soc);
-		button.add(rec);
-		button.add(dep);
-		button.add(unre);
-		button.add(space);
+		question5.add(pers);
+		question5.add(soc);
+		question5.add(rec);
+		question5.add(dep);
+		question5.add(unre);
+		question5.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(soc);
 		radioGroup.add(rec);
 		radioGroup.add(dep);
 		radioGroup.add(unre);
-		add(button);
 		
 		//question 6
+		question6 = new JPanel();
+		question6.setOpaque(false);
+		question6.setLayout(new BoxLayout(question6, BoxLayout.Y_AXIS));
 		clean = new JLabel ("  6)  How often do you clean?");
 		godly = new JRadioButton("Cleanliness is next to godliness");
 		reg = new JRadioButton("Cleaning happens on a regular basis");
 		often = new JRadioButton("Cleaning should happen more often");
 		pigsty = new JRadioButton("Pigsty is the way to go");
 		space = new JLabel("   ");
-		button.add(clean);
-		button.add(godly);
-		button.add(reg);
-		button.add(often);
-		button.add(pigsty);
-		button.add(space);
+		question6.add(clean);
+		question6.add(godly);
+		question6.add(reg);
+		question6.add(often);
+		question6.add(pigsty);
+		question6.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(godly);
 		radioGroup.add(reg);
 		radioGroup.add(often);
 		radioGroup.add(pigsty);
-		add(button);
 		
 		// action listeners
 		
@@ -176,6 +196,37 @@ class Roommate extends QuestionFrame{
 		reg.addActionListener(this);
 		often.addActionListener(this);
 		pigsty.addActionListener(this);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 0, 360, 640);
+		add(scrollPane);
+		
+		JPanel viewPanel=new JPanel();
+		viewPanel.setOpaque(false);
+		viewPanel.setLayout(new BoxLayout(viewPanel, BoxLayout.Y_AXIS));
+		viewPanel.add(question1);
+		viewPanel.add(question2);
+		viewPanel.add(question3);
+		viewPanel.add(question4);
+		viewPanel.add(question5);
+		viewPanel.add(question6);
+		viewPanel.add(submit);
+		
+		JViewport view=new JViewport();
+		view.setView(viewPanel);
+		view.setOpaque(false);
+		
+		scrollPane.setViewport(view);
+		scrollPane.getViewport().setOpaque(false);
+		scrollPane.setOpaque(false);
+		
+		
+		JLabel background = new JLabel();
+		background.setIcon(new ImageIcon("imgs/background3.png"));
+		background.setBounds(0, 0, 360, 640);
+		add(background);
+		
+		this.add(button);
 		
 	}
 	

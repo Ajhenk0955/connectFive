@@ -1,17 +1,36 @@
 package connectFive;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.JViewport;
 
-import connectFive.MenuHandler;
+import connectFive.ProfileRev.ButtonListener;
 
-
-class profile extends JFrame {
+public class ProfileRev extends JFrame{
 	
 	boolean created;
 	String credentials;
@@ -32,6 +51,22 @@ class profile extends JFrame {
 	JPanel buttonpanel;
 	JFileChooser chooser;
 	
+	JLabel ent1;
+	JLabel ent2;
+	JLabel ent3;
+	JLabel food1;
+	JLabel food2;
+	JLabel food3;
+	JLabel club1;
+	JLabel club2;
+	JLabel club3;
+	JLabel room1;
+	JLabel room2;
+	JLabel room3;
+	JLabel car1;
+	JLabel car2;
+	JLabel car3;
+	
 	JTextField imagepath;
 	JTextField namefield;
 	JTextField addressfield;
@@ -41,77 +76,74 @@ class profile extends JFrame {
 	JLabel enterGender;
 	JLabel enterAddress;
 	JLabel enterImage;
-	
-	
-	public profile(){
+
+	public ProfileRev(){
 		super("Create Profile");
-		Submit= new JButton("Submit");
-		Browse= new JButton("Browse");
+		this.setLayout(null);
 		
-		namePanel= new JPanel();
-		namePanel.setOpaque(false);
-		genderpanel= new JPanel();
-		genderpanel.setOpaque(false);
-		addresspanel= new JPanel();
-		addresspanel.setOpaque(false);
-		picturepanel= new JPanel();
-		picturepanel.setOpaque(false);
-		buttonpanel= new JPanel();
-		buttonpanel.setOpaque(false);
+		chooser = new JFileChooser();
 		
-		chooser= new JFileChooser();
+		Submit = new JButton("Submit");
+		Browse = new JButton("Browse");
 		
-		FlowLayout flowlayout= new FlowLayout(FlowLayout.LEFT);
+		JPanel button = new JPanel();
+		button.setOpaque(false);
+		button.setBounds(0,0,360,640);
+		button.setLayout(null);
 		
-		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
+		enterName = new JLabel("Name: ");
+		namefield = new JTextField();
+		enterName.setForeground(Color.WHITE);
+		enterName.setBounds(10, 30, 100, 50);
+		namefield.setBounds(130, 30, 200, 50);
+		button.add(enterName);
+		button.add(namefield);
 		
-		enterName= new JLabel("Name:      ");
-		namefield= new JTextField(8);
-		enterAddress= new JLabel("Address: ");
-		addressfield= new JTextField(15);
-		enterImage= new JLabel("Upload your favorite picture: ");
-		imagepath= new JTextField(20);
-		enterGender= new JLabel("M/F:           ");
-		genderfield= new JTextField(3);
-		namePanel.setLayout(flowlayout);
-		namePanel.add(enterName);
-		namePanel.add(namefield);		
-		genderpanel.setLayout(flowlayout);
-		genderpanel.add(enterGender);
-		genderpanel.add(genderfield);
-		addresspanel.setLayout(flowlayout);
-		addresspanel.add(enterAddress);
-		addresspanel.add(addressfield);
-		picturepanel.setLayout(flowlayout);
-		picturepanel.add(enterImage);
-		picturepanel.add(imagepath);
-		picturepanel.add(Browse);
-		buttonpanel.add(Submit);
+		enterAddress = new JLabel("Address: ");
+		addressfield = new JTextField();
+		enterAddress.setBounds(10, 110, 100, 50);
+		enterAddress.setForeground(Color.WHITE);
+		addressfield.setBounds(130, 110, 200, 50);
+		button.add(enterAddress);
+		button.add(addressfield);
+		
+		enterGender = new JLabel("M/F: ");
+		genderfield = new JTextField();
+		enterGender.setBounds(10, 190, 100, 50);
+		enterGender.setForeground(Color.WHITE);
+		genderfield.setBounds(130, 190, 200, 50);
+		button.add(enterGender);
+		button.add(genderfield);
+		
+		enterImage = new JLabel("Enter your favorite image:");
+		imagepath = new JTextField();
+		Browse = new JButton("Browse");
+		enterImage.setBounds(10, 270, 100, 50);
+		enterImage.setForeground(Color.WHITE);
+		imagepath.setBounds(130, 270, 150, 50);
+		Browse.setBounds(290, 270, 50, 50);
+		button.add(enterImage);
+		button.add(imagepath);
+		button.add(Browse);
+		
+		Submit = new JButton("Submit");
+		Submit.setBounds(130, 580, 100, 50);
+		button.add(Submit);
 		
 		ButtonListener handler= new ButtonListener();
 		Browse.addActionListener(handler);
 		Submit.addActionListener(handler);
 		
-		this.add(namePanel);
-		this.add(Box.createRigidArea(new Dimension(0,10)));
-		this.add(genderpanel);
-		this.add(Box.createRigidArea(new Dimension(0,10)));
-		this.add(addresspanel);
-		this.add(Box.createRigidArea(new Dimension(0,10)));
-		this.add(picturepanel);
-		this.add(Box.createRigidArea(new Dimension(0,10))); 
-		this.add(Box.createRigidArea(new Dimension(0,300)));
-		this.add(buttonpanel);
-		validate();
+		add(button);
 		
-		this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel background = new JLabel();
 		background.setIcon(new ImageIcon("imgs/background6.png"));
 		background.setBounds(0, 0, 360, 640);
 		add(background);
+		
 	}
-	
 	
 	class ButtonListener implements ActionListener {
 		
@@ -124,6 +156,8 @@ class profile extends JFrame {
 					File file= chooser.getSelectedFile();
 					String filepath=chooser.getName(file);
 					imagepath.setText(filepath);
+					
+					
 					
 					try {
 						picture= ImageIO.read(file);
@@ -145,7 +179,7 @@ class profile extends JFrame {
 				// the DB needs to be scanned from this point to
 				// verify no duplicate username is being created
 				
-				if(!namefield.getText().isEmpty()&&!addressfield.getText().isEmpty()&&!genderfield.getText().isEmpty()) {
+				if(!namefield.getText().isEmpty() && !addressfield.getText().isEmpty() && !genderfield.getText().isEmpty() && !imagepath.getText().isEmpty()) {
 					name=namefield.getText();
 					address=addressfield.getText();	
 					gender= genderfield.getText();
@@ -157,24 +191,27 @@ class profile extends JFrame {
 		}
 	}
 	
-	public void viewProfile() {
+	public void viewProfile(){
+		
 		frame= new JFrame("User Profile");
 		JPanel imagepanel= new JPanel();
-		imagepanel.setOpaque(false);
+		imagepanel.setBackground(Color.WHITE);
 		JPanel namepanel= new JPanel();
-		namepanel.setOpaque(false);
+		namepanel.setBackground(Color.WHITE);
 		JPanel entresultspanel= new JPanel();
-		entresultspanel.setOpaque(false);
+		entresultspanel.setBackground(Color.WHITE);
 		JPanel restresultspanel= new JPanel();
-		restresultspanel.setOpaque(false);
+		restresultspanel.setBackground(Color.WHITE);
 		JPanel clubresultspanel=  new JPanel();
-		clubresultspanel.setOpaque(false);
+		clubresultspanel.setBackground(Color.WHITE);
 		JPanel roomresultspanel= new JPanel();
-		roomresultspanel.setOpaque(false);
+		roomresultspanel.setBackground(Color.WHITE);
 		JPanel carresultspanel= new JPanel();
-		carresultspanel.setOpaque(false);
+		carresultspanel.setBackground(Color.WHITE);
 		JPanel menupanel= new JPanel();
-		menupanel.setOpaque(false);
+		menupanel.setBackground(Color.WHITE);
+		
+		frame.setBackground(Color.BLACK);
 		
 		// DB needs to be called here and displayed
 		// within each respective panel
@@ -228,6 +265,7 @@ class profile extends JFrame {
 		roomresultspanel.add(roomresults);
 		carresultspanel.add(carresults);
 		
+		
 		menupanel.add(menu);
 		frame.add(Box.createRigidArea(new Dimension(0,10)));
 		frame.add(imagepanel);
@@ -248,5 +286,12 @@ class profile extends JFrame {
 		frame.setVisible(true);
 		
 		this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		
+//		JLabel background = new JLabel();
+//		background.setIcon(new ImageIcon("imgs/background6.png"));
+//		background.setBounds(0, 0, 360, 640);
+//		frame.add(background);
 	}
 }
+
+

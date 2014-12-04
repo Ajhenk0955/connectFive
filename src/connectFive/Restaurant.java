@@ -6,6 +6,12 @@ import java.awt.event.*;
 import javax.swing.*;
 
 class Restaurant extends QuestionFrame {
+	private JPanel question1;
+	private JPanel question2;
+	private JPanel question3;
+	private JPanel question4;
+	private JPanel question5;
+	private JPanel question6;
 	private JRadioButton vegan;
 	private JRadioButton vegetarian;
 	private JRadioButton sea;
@@ -46,8 +52,13 @@ class Restaurant extends QuestionFrame {
 	Restaurant (){
 		super();
 		JPanel button = new JPanel(new GridLayout(0,1));
+		button.setOpaque(false);
+		button.setLayout(null);
 		
 		//question 1
+		question1 = new JPanel();
+		question1.setOpaque(false);
+		question1.setLayout(new BoxLayout(question1, BoxLayout.Y_AXIS));
 		type = new JLabel ("  1)  Which of these best describes you?");
 		vegan = new JRadioButton("Vegan");
 		vegetarian = new JRadioButton("Vegetarian");
@@ -55,22 +66,24 @@ class Restaurant extends QuestionFrame {
 		gluten = new JRadioButton("Gluten intolerant");
 		none = new JRadioButton("No restrictions");
 		space = new JLabel("   ");
-		button.add(type);
-		button.add(vegan);
-		button.add(vegetarian);
-		button.add(sea);
-		button.add(gluten);
-		button.add(none);
-		button.add(space);
+		question1.add(type);
+		question1.add(vegan);
+		question1.add(vegetarian);
+		question1.add(sea);
+		question1.add(gluten);
+		question1.add(none);
+		question1.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(vegan);
 		radioGroup.add(vegetarian);
 		radioGroup.add(sea);
 		radioGroup.add(gluten);
 		radioGroup.add(none);
-		add(button);
 		
 		//question 2
+		question2 = new JPanel();
+		question2.setOpaque(false);
+		question2.setLayout(new BoxLayout(question2, BoxLayout.Y_AXIS));
 		cuisine = new JLabel ("  2)  What type of cuisine are you in the mood for?");
 		african = new JRadioButton("African");
 		asian  = new JRadioButton("Asian");
@@ -78,39 +91,43 @@ class Restaurant extends QuestionFrame {
 		oceanic = new JRadioButton("Oceanic");
 		americas = new JRadioButton("Americas");
 		space = new JLabel("   ");
-		button.add(cuisine);
-		button.add(african);
-		button.add(asian);
-		button.add(european);
-		button.add(oceanic);
-		button.add(americas);
-		button.add(space);
+		question2.add(cuisine);
+		question2.add(african);
+		question2.add(asian);
+		question2.add(european);
+		question2.add(oceanic);
+		question2.add(americas);
+		question2.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(african);
 		radioGroup.add(asian);
 		radioGroup.add(european);
 		radioGroup.add(oceanic);
 		radioGroup.add(americas);
-		add(button);
 		
 		//question 3
+		question3 = new JPanel();
+		question3.setOpaque(false);
+		question3.setLayout(new BoxLayout(question3, BoxLayout.Y_AXIS));
 		meal = new JLabel ("  3)  Which meal type are you hungry for?");
 		breakfast = new JRadioButton("Breakfast");
 		lunch = new JRadioButton("Lunch");
 		dinner = new JRadioButton("Dinner");
 		space = new JLabel("   ");
-		button.add(meal);
-		button.add(breakfast);
-		button.add(lunch);
-		button.add(dinner);
-		button.add(space);
+		question3.add(meal);
+		question3.add(breakfast);
+		question3.add(lunch);
+		question3.add(dinner);
+		question3.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(breakfast);
 		radioGroup.add(lunch);
 		radioGroup.add(dinner);
-		add(button);
 		
 		//question 4
+		question4 = new JPanel();
+		question4.setOpaque(false);
+		question4.setLayout(new BoxLayout(question4, BoxLayout.Y_AXIS));
 		time = new JLabel ("  4)  What time are you planning to eat?");
 		morning = new JRadioButton("Morning");
 		midday = new JRadioButton("Midday");
@@ -118,60 +135,63 @@ class Restaurant extends QuestionFrame {
 		evening = new JRadioButton("Evening");
 		late = new JRadioButton("Late night");
 		space = new JLabel("   ");
-		button.add(time);
-		button.add(morning);
-		button.add(midday);
-		button.add(afternoon);
-		button.add(evening);
-		button.add(late);
-		button.add(space);
+		question4.add(time);
+		question4.add(morning);
+		question4.add(midday);
+		question4.add(afternoon);
+		question4.add(evening);
+		question4.add(late);
+		question4.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(morning);
 		radioGroup.add(midday);
 		radioGroup.add(afternoon);
 		radioGroup.add(evening);
 		radioGroup.add(late);
-		add(button);
 		
 		//question 5
+		question5 = new JPanel();
+		question5.setOpaque(false);
+		question5.setLayout(new BoxLayout(question5, BoxLayout.Y_AXIS));
 		travel = new JLabel ("  5)  How far are you willing to travel?");
 		less1 = new JRadioButton("Less than a mile");
 		more1 = new JRadioButton("More than a mile");
 		less5 = new JRadioButton("Less than five miles");
 		more5 = new JRadioButton("More than five miles");
 		space = new JLabel("   ");
-		button.add(travel);
-		button.add(less1);
-		button.add(more1);
-		button.add(less5);
-		button.add(more5);
-		button.add(space);
+		question5.add(travel);
+		question5.add(less1);
+		question5.add(more1);
+		question5.add(less5);
+		question5.add(more5);
+		question5.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(less1);
 		radioGroup.add(more1);
 		radioGroup.add(less5);
 		radioGroup.add(more5);
-		add(button);
 		
 		//question 6
+		question6 = new JPanel();
+		question6.setOpaque(false);
+		question6.setLayout(new BoxLayout(question6, BoxLayout.Y_AXIS));
 		price = new JLabel ("  6)  How much are you willing to spend on a meal?");
 		zero = new JRadioButton("$0 - $9");
 		ten = new JRadioButton("$10 - $19");
 		twenty = new JRadioButton("$20 - $29");
 		thirty = new JRadioButton("$30+");
 		space = new JLabel("   ");
-		button.add(price);
-		button.add(zero);
-		button.add(ten);
-		button.add(twenty);
-		button.add(thirty);
-		button.add(space);
+		question6.add(price);
+		question6.add(zero);
+		question6.add(ten);
+		question6.add(twenty);
+		question6.add(thirty);
+		question6.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(zero);
 		radioGroup.add(ten);
 		radioGroup.add(twenty);
 		radioGroup.add(thirty);
-		add(button);
 				
 		// action listener
 		vegan.addActionListener(this);
@@ -201,6 +221,36 @@ class Restaurant extends QuestionFrame {
 		twenty.addActionListener(this);
 		thirty.addActionListener(this);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 0, 360, 640);
+		add(scrollPane);
+		
+		JPanel viewPanel=new JPanel();
+		viewPanel.setOpaque(false);
+		viewPanel.setLayout(new BoxLayout(viewPanel, BoxLayout.Y_AXIS));
+		viewPanel.add(question1);
+		viewPanel.add(question2);
+		viewPanel.add(question3);
+		viewPanel.add(question4);
+		viewPanel.add(question5);
+		viewPanel.add(question6);
+		viewPanel.add(submit);
+		
+		JViewport view=new JViewport();
+		view.setView(viewPanel);
+		view.setOpaque(false);
+		
+		scrollPane.setViewport(view);
+		scrollPane.getViewport().setOpaque(false);
+		scrollPane.setOpaque(false);
+		
+		
+		JLabel background = new JLabel();
+		background.setIcon(new ImageIcon("imgs/background5.png"));
+		background.setBounds(0, 0, 360, 640);
+		add(background);
+		
+		this.add(button);
 	}
 	
 	
