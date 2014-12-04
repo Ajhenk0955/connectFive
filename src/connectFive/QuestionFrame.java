@@ -5,17 +5,20 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+@SuppressWarnings("serial")
 abstract class QuestionFrame extends JFrame implements ActionListener{
 	protected JButton submit;
-	
 	
 	QuestionFrame(){
 		setTitle(getClass().getSimpleName() + " Questionnaire");
 		JPanel buttonJPanel = new JPanel();
+		buttonJPanel.setLayout(null);
 		buttonJPanel.setBackground(Color.BLACK);
 		submit = new JButton("Submit");
 		buttonJPanel.add(submit);
-		add(buttonJPanel, BorderLayout.SOUTH);
+		submit.setBounds(0, 0, 100, 40);
+		buttonJPanel.setOpaque(false);
+		add(buttonJPanel);
 		submit.setEnabled(false);		
 		submit.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent event){
@@ -23,7 +26,7 @@ abstract class QuestionFrame extends JFrame implements ActionListener{
 					System.out.println("submitted");
 					JOptionPane.showMessageDialog(QuestionFrame.this, "Submitted!");
 					setVisible(false);
-					profile pro = new profile();
+					ProfileRev pro = new ProfileRev();
 					pro.setSize(360,640);
 					pro.viewProfile();
 					pro.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );

@@ -2,9 +2,18 @@ package connectFive;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 
+@SuppressWarnings("serial")
 class Carpool extends QuestionFrame{
+	private JPanel question1;
+	private JPanel question2;
+	private JPanel question3;
+	private JPanel question4;
+	private JPanel question5;
+	private JPanel question6;
+	private JPanel question7;
 	private JRadioButton give;
 	private JRadioButton receive;	
 	private JRadioButton me;
@@ -46,99 +55,119 @@ class Carpool extends QuestionFrame{
 	Carpool (){
 		super();
 		JPanel button = new JPanel(new GridLayout(0,1));
-			
+		button.setOpaque(false);
+		button.setLayout(null);
+		
 		//question 1
+		question1 = new JPanel();
+		question1.setOpaque(false);
+		question1.setLayout(new BoxLayout(question1, BoxLayout.Y_AXIS));
 		look = new JLabel ("  1)  Are you looking to:");
 		give = new JRadioButton("Give a ride");
 		receive = new JRadioButton("Receive a ride");
 		space = new JLabel("  ");
-		button.add(look);
-		button.add(give);
-		button.add(receive);
-		button.add(space);
+		question1.add(look);
+		question1.add(give);
+		question1.add(receive);
+		question1.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(give);
 		radioGroup.add(receive);
-		add(button);
 		
 		//question 2
+		question2 = new JPanel();
+		question2.setOpaque(false);
+		question2.setLayout(new BoxLayout(question2, BoxLayout.Y_AXIS));
 		party = new JLabel ("  2)  How many people are in your party?");
 		me = new JRadioButton("Just me");
 		two  = new JRadioButton("Two");
 		three = new JRadioButton("Three");
 		four = new JRadioButton("Four");
 		space = new JLabel("  ");
-		button.add(party);
-		button.add(me);
-		button.add(two);
-		button.add(three);
-		button.add(four);
-		button.add(space);
+		question2.add(party);
+		question2.add(me);
+		question2.add(two);
+		question2.add(three);
+		question2.add(four);
+		question2.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(me);
 		radioGroup.add(two);
 		radioGroup.add(three);
 		radioGroup.add(four);
-		add(button);
+		//button.add(question2);
+		//add(button);
 		
 		//question 3
+		question3 = new JPanel();
+		question3.setOpaque(false);
+		question3.setLayout(new BoxLayout(question3, BoxLayout.Y_AXIS));
 		prefer = new JLabel ("  3)  Who would you prefer to ride with?");
 		female = new JRadioButton("A female");
 		male = new JRadioButton("A male");
 		none = new JRadioButton("No preference");
 		space = new JLabel("  ");
-		button.add(prefer);
-		button.add(female);
-		button.add(male);
-		button.add(none);
-		button.add(space);
+		question3.add(prefer);
+		question3.add(female);
+		question3.add(male);
+		question3.add(none);
+		question3.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(female);
 		radioGroup.add(male);
 		radioGroup.add(none);
-		add(button);
+		//add(button);
 		
 		//question 4
+		question4 = new JPanel();
+		question4.setOpaque(false);
+		question4.setLayout(new BoxLayout(question4, BoxLayout.Y_AXIS));
 		whereAt = new JLabel ("  4)  Where are you?");
 		on = new JRadioButton("On campus");
 		close = new JRadioButton("Within a mile of campus");
 		less5 = new JRadioButton("Less than five miles from campus");
 		more5 = new JRadioButton("More than five miles from campus");
 		space = new JLabel("  ");
-		button.add(whereAt);
-		button.add(on);
-		button.add(close);
-		button.add(less5);
-		button.add(more5);
-		button.add(space);
+		question4.add(whereAt);
+		question4.add(on);
+		question4.add(close);
+		question4.add(less5);
+		question4.add(more5);
+		question4.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(on);
 		radioGroup.add(close);
 		radioGroup.add(less5);
 		radioGroup.add(more5);
-		add(button);
+		//add(button);
 		
 		//question 5
+		question5 = new JPanel();
+		question5.setOpaque(false);
+		question5.setLayout(new BoxLayout(question5, BoxLayout.Y_AXIS));
 		whereTo = new JLabel ("  5)  Where are you going?");
 		on2 = new JRadioButton("On campus");
 		close2 = new JRadioButton("Within a mile of campus");
 		less52 = new JRadioButton("Less than five miles from campus");
 		more52 = new JRadioButton("More than five miles from campus");
 		space = new JLabel("  ");
-		button.add(whereTo);
-		button.add(on2);
-		button.add(close2);
-		button.add(less52);
-		button.add(more52);
-		button.add(space);
+		question5.add(whereTo);
+		question5.add(on2);
+		question5.add(close2);
+		question5.add(less52);
+		question5.add(more52);
+		question5.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(on2);
 		radioGroup.add(close2);
 		radioGroup.add(less52);
 		radioGroup.add(more52);
-		add(button);
+		//add(button);
 		
 		//question 6
+		question6 = new JPanel();
+		question6.setOpaque(false);
+		question6.setLayout(new BoxLayout(question6, BoxLayout.Y_AXIS));
 		depart = new JLabel ("  6)  What time do you need to depart?");
 		now = new JRadioButton("Now");
 		fifteen = new JRadioButton("15 minutes");
@@ -146,40 +175,43 @@ class Carpool extends QuestionFrame{
 		hour = new JRadioButton("1 hour");
 		hourP = new JRadioButton("More than an hour");
 		space = new JLabel("  ");
-		button.add(depart);
-		button.add(now);
-		button.add(fifteen);
-		button.add(thirty);
-		button.add(hour);
-		button.add(hourP);
-		button.add(space);
+		question6.add(depart);
+		question6.add(now);
+		question6.add(fifteen);
+		question6.add(thirty);
+		question6.add(hour);
+		question6.add(hourP);
+		question6.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(now);
 		radioGroup.add(fifteen);
 		radioGroup.add(thirty);
 		radioGroup.add(hour);
 		radioGroup.add(hourP);
-		add(button);
+		//add(button);
 		
 		//question 7
+		question7 = new JPanel();
+		question7.setOpaque(false);
+		question7.setLayout(new BoxLayout(question7, BoxLayout.Y_AXIS));
 		arrive = new JLabel ("  7)  What time do you need to arrive?");
 		fifteen2 = new JRadioButton("15 minutes");
 		thirty2 = new JRadioButton("30 minutes");
 		hour2 = new JRadioButton("1 hour");
 		hourP2 = new JRadioButton("More than an hour");
 		space = new JLabel("  ");
-		button.add(arrive);
-		button.add(fifteen2);
-		button.add(thirty2);
-		button.add(hour2);
-		button.add(hourP2);
-		button.add(space);
+		question7.add(arrive);
+		question7.add(fifteen2);
+		question7.add(thirty2);
+		question7.add(hour2);
+		question7.add(hourP2);
+		question7.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(fifteen2);
 		radioGroup.add(thirty2);
 		radioGroup.add(hour2);
 		radioGroup.add(hourP2);
-		add(button);
+		//add(button);
 		
 		// action listener
 		give.addActionListener(this);
@@ -208,7 +240,39 @@ class Carpool extends QuestionFrame{
 		thirty2.addActionListener(this);
 		hour2.addActionListener(this);
 		hourP2.addActionListener(this);
-				
+		
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 0, 360, 640);
+		add(scrollPane);
+		
+		JPanel viewPanel=new JPanel();
+		viewPanel.setOpaque(false);
+		viewPanel.setLayout(new BoxLayout(viewPanel, BoxLayout.Y_AXIS));
+		viewPanel.add(question1);
+		viewPanel.add(question2);
+		viewPanel.add(question3);
+		viewPanel.add(question4);
+		viewPanel.add(question5);
+		viewPanel.add(question6);
+		viewPanel.add(question7);
+		viewPanel.add(submit);
+		
+		JViewport view=new JViewport();
+		view.setView(viewPanel);
+		view.setOpaque(false);
+		
+		scrollPane.setViewport(view);
+		scrollPane.getViewport().setOpaque(false);
+		scrollPane.setOpaque(false);
+		
+		
+		JLabel background = new JLabel();
+		background.setIcon(new ImageIcon("imgs/background4.png"));
+		background.setBounds(0, 0, 360, 640);
+		add(background);
+		
+		this.add(button);
 	}
 	
 	

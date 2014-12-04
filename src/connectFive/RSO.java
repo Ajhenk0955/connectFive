@@ -5,7 +5,15 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+@SuppressWarnings("serial")
 class RSO extends QuestionFrame{
+	private JPanel question1;
+	private JPanel question2;
+	private JPanel question3;
+	private JPanel question4;
+	private JPanel question5;
+	private JPanel question6;
+	private JPanel question7;
 	private JRadioButton baking;
 	private JRadioButton gaming;
 	private JRadioButton reading;
@@ -56,8 +64,13 @@ class RSO extends QuestionFrame{
 	RSO (){
 		super();
 		JPanel button = new JPanel(new GridLayout(0,1));
+		button.setOpaque(false);
+		button.setLayout(null);
 		
 		//question 1
+		question1 = new JPanel();
+		question1.setOpaque(false);
+		question1.setLayout(new BoxLayout(question1, BoxLayout.Y_AXIS));
 		enjoy = new JLabel ("  1)  What do you enjoy doing (select one that applies most)?");
 		baking = new JRadioButton("Baking");
 		gaming = new JRadioButton("Gaming");
@@ -66,14 +79,14 @@ class RSO extends QuestionFrame{
 		volunteering = new JRadioButton("Volunteering");
 		sports = new JRadioButton("Sports");
 		space = new JLabel("   ");
-		button.add(enjoy);
-		button.add(baking);
-		button.add(gaming);
-		button.add(reading);
-		button.add(building);
-		button.add(volunteering);
-		button.add(sports);
-		button.add(space);
+		question1.add(enjoy);
+		question1.add(baking);
+		question1.add(gaming);
+		question1.add(reading);
+		question1.add(building);
+		question1.add(volunteering);
+		question1.add(sports);
+		question1.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(baking);
 		radioGroup.add(gaming);
@@ -81,9 +94,11 @@ class RSO extends QuestionFrame{
 		radioGroup.add(building);
 		radioGroup.add(volunteering);
 		radioGroup.add(sports);
-		add(button);
 		
 		//question 2
+		question2 = new JPanel();
+		question2.setOpaque(false);
+		question2.setLayout(new BoxLayout(question2, BoxLayout.Y_AXIS));
 		major = new JLabel ("  2)  What is your major?");
 		engineering = new JRadioButton("Engineering");
 		math  = new JRadioButton("Math");
@@ -92,37 +107,41 @@ class RSO extends QuestionFrame{
 		eng = new JRadioButton("English");
 		arts = new JRadioButton("Arts");
 		space = new JLabel("   ");
-		button.add(major);
-		button.add(engineering);
-		button.add(math);
-		button.add(hs);
-		button.add(his);
-		button.add(eng);
-		button.add(arts);
-		button.add(space);
+		question2.add(major);
+		question2.add(engineering);
+		question2.add(math);
+		question2.add(hs);
+		question2.add(his);
+		question2.add(eng);
+		question2.add(arts);
+		question2.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(engineering);
 		radioGroup.add(math);
 		radioGroup.add(hs);
 		radioGroup.add(eng);
 		radioGroup.add(arts);
-		add(button);
 		
 		//question 3
+		question3 = new JPanel();
+		question3.setOpaque(false);
+		question3.setLayout(new BoxLayout(question3, BoxLayout.Y_AXIS));
 		connect = new JLabel ("  3)  Do you prefer something major related?");
 		yes = new JRadioButton("Yes");
 		no = new JRadioButton("No");
 		space = new JLabel("   ");
-		button.add(connect);
-		button.add(yes);
-		button.add(no);
-		button.add(space);
+		question3.add(connect);
+		question3.add(yes);
+		question3.add(no);
+		question3.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(yes);
 		radioGroup.add(no);
-		add(button);
 		
 		//question 4
+		question4 = new JPanel();
+		question4.setOpaque(false);
+		question4.setLayout(new BoxLayout(question4, BoxLayout.Y_AXIS));
 		least = new JLabel ("  4)  What is least interesting to you?");
 		baking2 = new JRadioButton("Baking");
 		gaming2 = new JRadioButton("Gaming");
@@ -131,14 +150,14 @@ class RSO extends QuestionFrame{
 		volunteering2 = new JRadioButton("Volunteering");
 		sports2 = new JRadioButton("Sports");
 		space = new JLabel("   ");
-		button.add(least);
-		button.add(baking2);
-		button.add(gaming2);
-		button.add(reading2);
-		button.add(building2);
-		button.add(volunteering2);
-		button.add(sports2);
-		button.add(space);
+		question4.add(least);
+		question4.add(baking2);
+		question4.add(gaming2);
+		question4.add(reading2);
+		question4.add(building2);
+		question4.add(volunteering2);
+		question4.add(sports2);
+		question4.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(baking2);
 		radioGroup.add(gaming);
@@ -146,9 +165,11 @@ class RSO extends QuestionFrame{
 		radioGroup.add(building2);
 		radioGroup.add(volunteering2);
 		radioGroup.add(sports2);
-		add(button);
 		
 		//question 5
+		question5 = new JPanel();
+		question5.setOpaque(false);
+		question5.setLayout(new BoxLayout(question5, BoxLayout.Y_AXIS));
 		most = new JLabel ("  5)  Which category is most interesting to you?");
 		acad = new JRadioButton("Academic");
 		cult = new JRadioButton("Culture");
@@ -158,15 +179,15 @@ class RSO extends QuestionFrame{
 		ser = new JRadioButton("Service");
 		sports3 = new JRadioButton("Sports");
 		space = new JLabel("   ");
-		button.add(most);
-		button.add(acad);
-		button.add(cult);
-		button.add(med);
-		button.add(pol);
-		button.add(rel);
-		button.add(ser);
-		button.add(sports3);
-		button.add(space);
+		question5.add(most);
+		question5.add(acad);
+		question5.add(cult);
+		question5.add(med);
+		question5.add(pol);
+		question5.add(rel);
+		question5.add(ser);
+		question5.add(sports3);
+		question5.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(acad);
 		radioGroup.add(cult);
@@ -175,47 +196,50 @@ class RSO extends QuestionFrame{
 		radioGroup.add(rel);
 		radioGroup.add(ser);
 		radioGroup.add(sports3);
-		add(button);
 		
 		//question 6
+		question6 = new JPanel();
+		question6.setOpaque(false);
+		question6.setLayout(new BoxLayout(question6, BoxLayout.Y_AXIS));
 		meet = new JLabel ("  6)  How often are you available to meet?");
 		multi = new JRadioButton("Multiple times a week");
 		week = new JRadioButton("Once a week");
 		bi = new JRadioButton("Biweekly");
 		month = new JRadioButton("Once a month");
 		space = new JLabel("   ");
-		button.add(meet);
-		button.add(multi);
-		button.add(week);
-		button.add(bi);
-		button.add(month);
-		button.add(space);
+		question6.add(meet);
+		question6.add(multi);
+		question6.add(week);
+		question6.add(bi);
+		question6.add(month);
+		question6.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(multi);
 		radioGroup.add(week);
 		radioGroup.add(bi);
 		radioGroup.add(month);
-		add(button);
 		
 		//question 7
+		question7 = new JPanel();
+		question7.setOpaque(false);
+		question7.setLayout(new BoxLayout(question7, BoxLayout.Y_AXIS));
 		donate = new JLabel ("  7)  How often can you donate to the RSO?");
 		zero = new JRadioButton("$0");
 		five = new JRadioButton("$5 - $10");
 		ten = new JRadioButton("$10 - $30");
 		thirty = new JRadioButton("$30+");
 		space = new JLabel("   ");
-		button.add(donate);
-		button.add(zero);
-		button.add(five);
-		button.add(ten);
-		button.add(thirty);
-		button.add(space);
+		question7.add(donate);
+		question7.add(zero);
+		question7.add(five);
+		question7.add(ten);
+		question7.add(thirty);
+		question7.add(space);
 		radioGroup = new ButtonGroup();
 		radioGroup.add(zero);
 		radioGroup.add(five);
 		radioGroup.add(ten);
 		radioGroup.add(thirty);
-		add(button);
 		
 		// action listener
 		baking.addActionListener(this);
@@ -253,6 +277,38 @@ class RSO extends QuestionFrame{
 		five.addActionListener(this);
 		ten.addActionListener(this);
 		thirty.addActionListener(this);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 0, 360, 640);
+		add(scrollPane);
+		
+		JPanel viewPanel=new JPanel();
+		viewPanel.setOpaque(false);
+		viewPanel.setLayout(new BoxLayout(viewPanel, BoxLayout.Y_AXIS));
+		viewPanel.add(question1);
+		viewPanel.add(question2);
+		viewPanel.add(question3);
+		viewPanel.add(question4);
+		viewPanel.add(question5);
+		viewPanel.add(question6);
+		viewPanel.add(question7);
+		viewPanel.add(submit);
+		
+		JViewport view=new JViewport();
+		view.setView(viewPanel);
+		view.setOpaque(false);
+		
+		scrollPane.setViewport(view);
+		scrollPane.getViewport().setOpaque(false);
+		scrollPane.setOpaque(false);
+		
+		
+		JLabel background = new JLabel();
+		background.setIcon(new ImageIcon("imgs/LoginBackground.png"));
+		background.setBounds(0, 0, 360, 640);
+		add(background);
+		
+		this.add(button);
 		
 	}
 	
