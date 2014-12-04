@@ -5,9 +5,9 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+@SuppressWarnings("serial")
 abstract class QuestionFrame extends JFrame implements ActionListener{
 	protected JButton submit;
-	
 	
 	QuestionFrame(){
 		setTitle(getClass().getSimpleName() + " Questionnaire");

@@ -5,8 +5,8 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+@SuppressWarnings("serial")
 class Roommate extends QuestionFrame{
-
 	private JPanel question1;
 	private JPanel question2;
 	private JPanel question3;

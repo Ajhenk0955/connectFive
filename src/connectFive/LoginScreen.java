@@ -1,15 +1,9 @@
 package connectFive;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,21 +13,13 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class LoginScreen extends JFrame {
 
 	private JButton login;
 	private JButton signUp;
 	private JTextField username;
 	private JPasswordField password;
-	private JLabel userLabel;
-	private JLabel passLabel;
-	private JLabel blank;
-	private JLabel blank2;
-	private JLabel blank3;
-	private JLabel welcome;
-	
-	private String user;
-	private String pass;
 	private String empty;
 	
 	LoginScreen() {
@@ -63,6 +49,7 @@ public class LoginScreen extends JFrame {
 		login.setBounds(50, 570, 100, 40);
 		eastBlank.add(login);
 		login.addActionListener(new ActionListener(){
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e){
 				// this is where the username and password
 				// need to be verified with the DB

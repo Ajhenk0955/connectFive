@@ -5,6 +5,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+@SuppressWarnings("serial")
 class Restaurant extends QuestionFrame {
 	private JPanel question1;
 	private JPanel question2;

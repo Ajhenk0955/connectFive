@@ -1,29 +1,14 @@
 package connectFive;
 
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-
-
+@SuppressWarnings("serial")
 public class MenuHandler extends JFrame {
 
 	private JButton profile;
@@ -32,24 +17,13 @@ public class MenuHandler extends JFrame {
 	private JButton food;
 	private JButton clubs;
 	private JButton roommate;
-	private JButton signout;
-	private JLabel blank;
-	private JLabel blank2;
-	private JLabel blank3;
-	private JLabel blank4;
-	private JLabel message;
-	private JLabel welcome;
-	
-	
+	private JButton signout;	
 	
 	MenuHandler(){
 		super("Main Menu");
 		
 		this.setLayout(null);
 				
-		
-		
-		
 		// east panel
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setOpaque(false);
