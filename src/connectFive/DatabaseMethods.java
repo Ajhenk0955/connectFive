@@ -9,6 +9,8 @@ import java.util.HashMap;
 
 public class DatabaseMethods {
 
+	// random notes for future use:
+	// insert creates a new row, replace can replace^^
 	public Connection conn = null;
 	private int userID;
 	private ResultSet resultSet;
@@ -25,18 +27,23 @@ public class DatabaseMethods {
 		try {
 			System.out.println("Loading Driver");
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			java.sql.Driver d=new com.mysql.jdbc.Driver();
+			// I load driver^ correctly
+			// java.sql.Driver d=new com.mysql.jdbc.Driver();
 			System.out.println("Success");
 			System.out.println("Trying to establish connection");
-			conn = DriverManager.getConnection("jdbc:sql4.freemysqlhosting.net:3306/sql459231"
-					, "sql459231","jW6!aA6!");
+			conn = DriverManager.getConnection(
+					"jdbc:mysql://sql4.freemysqlhosting.net:3306/sql459231",
+					"sql459231", "jW6!aA6!");
+			// databaseName /sql459231
 			System.out.println(conn);
 			// Do something with the Connection
 		} catch (SQLException ex) {
 			// handle any errors
 			System.out.println("SQLException: " + ex.getMessage());
-			System.out.println("SQLState: " + ((SQLException) ex).getSQLState());
-			System.out.println("VendorError: " + ((SQLException) ex).getErrorCode());
+			System.out
+					.println("SQLState: " + ((SQLException) ex).getSQLState());
+			System.out.println("VendorError: "
+					+ ((SQLException) ex).getErrorCode());
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -112,45 +119,64 @@ public class DatabaseMethods {
 
 	public void addUser(String userName, String password) {
 		// TODO add blank rows for other tables of smame ID
-		//assumes the userID field is generated within the database
-		
-		Statement stmt = null;		
-		ResultSet rs = null;
+		// assumes the userID field is generated within the database
+		// create giant while loop
 
-		String executor = String.format("INSERT INTO userVerification (userName, userPassword) "
-				+ "VALUES ('%s', '%s')", userName, password);
-		try {
-			
-			stmt = conn.createStatement(); //erryor here, if we have nullpinter problem is with conn
-			stmt.executeUpdate(executor);
+		String[] executor = new String[3];
+		executor[0] = String.format(
+				"INSERT INTO userVerification (userName, userPassword) "
+						+ "VALUES ('%s', '%s')", userName, password);
 
-		} catch (SQLException ex) {
-			// handle any errors
-			System.out.println("SQLException: " + ex.getMessage());
-			System.out.println("SQLState: " + ex.getSQLState());
-			System.out.println("VendorError: " + ex.getErrorCode());
-		} finally {
-			// it is a good idea to release
-			// resources in a finally{} block
-			// in reverse-order of their creation
-			// if they are no-longer needed
+		executor[1] = String.format("INSERT INTO userValues (userID)"
+				+ "VALUES (%s)", userID);
+		executor[2] = String.format("INSERT INTO returnUser (userID)"
+				+ "VALUES (%s)", userID);
+		for (int i = 0; i < 3; i++) {
+			Statement stmt = null;
+			ResultSet rs = null;
+			try {
+//TODO Fix CURRENT ERROR, needs to create void rows with user ID
+				stmt = conn.createStatement(); // erryor here, if we have
+												// nullpinter problem is with
+												// conn
+				if (i == 1) {// update userID
+					try {
+						confirmUser(userName, password);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				stmt.executeUpdate(executor[i]);
 
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException sqlEx) {
-				} // ignore
+			} catch (SQLException ex) {
+				// handle any errors
+				System.out.println("SQLException: " + ex.getMessage());
+				System.out.println("SQLState: " + ex.getSQLState());
+				System.out.println("VendorError: " + ex.getErrorCode());
+			} finally {
+				// it is a good idea to release
+				// resources in a finally{} block
+				// in reverse-order of their creation
+				// if they are no-longer needed
 
-				rs = null;
-			}
+				if (rs != null) {
+					try {
+						rs.close();
+					} catch (SQLException sqlEx) {
+					} // ignore
 
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (SQLException sqlEx) {
-				} // ignore
+					rs = null;
+				}
 
-				stmt = null;
+				if (stmt != null) {
+					try {
+						stmt.close();
+					} catch (SQLException sqlEx) {
+					} // ignore
+
+					stmt = null;
+				}
 			}
 		}
 	}
@@ -236,7 +262,7 @@ public class DatabaseMethods {
 					// takes the absolute distance to find matches
 					// to work with restaurants we should make a if statement
 					// that checks whether or not it is a non-user
-					
+
 					Statement sta = conn.createStatement();
 					String statement = String.format(
 							"INSERT INTO returnUser (%s) " + "VALUES ('%s')",
@@ -296,16 +322,16 @@ public class DatabaseMethods {
 		}
 		return returnValue;
 	}
-	
-	public static void main(String args[]){
+
+	public static void main(String args[]) {
 		DatabaseMethods tator;
 		try {
 			tator = new DatabaseMethods();
-			tator.addUser("Andrew", "potato");
+			tator.addUser("Baked", "potato");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 }
