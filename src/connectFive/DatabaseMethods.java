@@ -45,11 +45,9 @@ public class DatabaseMethods {
 			System.out.println("VendorError: "
 					+ ((SQLException) ex).getErrorCode());
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("driver instatiation");
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("driver instatiation");
 		}
@@ -59,32 +57,42 @@ public class DatabaseMethods {
 	public boolean confirmUser(String Name, String Password)
 			throws SQLException {
 		// verifies user account
-		ResultSet temp = selectQuery("userVerification");
-
-		// method also updates userID
-		while (temp.next()) {
-			if (Name == temp.getString(2) && Password == temp.getString(3)) {
-				userID = temp.getInt(1);
-				return true;
-			}
-		}
-		return false;
-
-	}
-
-	private ResultSet selectQuery(String table) {
-		// returns selected query
-		// returns table
+		// fetching table
 		Statement stmt = null;
 		ResultSet rs = null;
-
-		String executeStatement = String.format("SELECT * FROM %s", table);
+		String executeStatement = "SELECT * FROM userVerification";
+		boolean result = false;
 
 		try {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(executeStatement);
 
-			return rs;
+			// method also updates userID
+			rs.first();
+			while (rs.next()) {
+				if (result) {
+					break;
+				}
+				int id = rs.getInt(1);
+				// System.out.println ("id = " + id);
+				String name = rs.getString(2);
+				// System.out.println("name = " + name);
+				// System.out.println("Name = " + Name);
+				String password = rs.getString(3);
+				// problem exists at comparing values
+				if (Name.equals(name) && Password.equals(password)) {
+					result = true;
+					userID = id;
+					// System.out.println(userID);
+				}
+				if (rs.wasNull()) {
+					System.out.println("name is null");
+				} else {
+					// System.out.println("name is not null");
+				}
+				// System.out.println("-----------------------");
+			}
+
 		} catch (SQLException ex) {
 			// handle any errors
 			System.out.println("SQLException: " + ex.getMessage());
@@ -114,11 +122,12 @@ public class DatabaseMethods {
 				stmt = null;
 			}
 		}
-		return rs;
+		return result;
+
 	}
 
 	public void addUser(String userName, String password) {
-		// TODO add blank rows for other tables of smame ID
+		// add blank rows for other tables of smame ID
 		// assumes the userID field is generated within the database
 		// create giant while loop
 
@@ -127,15 +136,14 @@ public class DatabaseMethods {
 				"INSERT INTO userVerification (userName, userPassword) "
 						+ "VALUES ('%s', '%s')", userName, password);
 
-		executor[1] = String.format("INSERT INTO userValues (userID)"
-				+ "VALUES (%s)", userID);
-		executor[2] = String.format("INSERT INTO returnUser (userID)"
-				+ "VALUES (%s)", userID);
+		executor[1] = "";
+		executor[2] = "";
 		for (int i = 0; i < 3; i++) {
 			Statement stmt = null;
 			ResultSet rs = null;
 			try {
-//TODO Fix CURRENT ERROR, needs to create void rows with user ID
+				// needs to create void rows with user
+				// ID
 				stmt = conn.createStatement(); // erryor here, if we have
 												// nullpinter problem is with
 												// conn
@@ -143,10 +151,18 @@ public class DatabaseMethods {
 					try {
 						confirmUser(userName, password);
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
+
 						e.printStackTrace();
+						System.out.println("it broke");
 					}
+					executor[1] = String.format(
+							"INSERT INTO userValues (userID)" + "VALUES (%s)",
+							userID);
+					executor[2] = String.format(
+							"INSERT INTO returnUser (userID)" + "VALUES (%s)",
+							userID);
 				}
+				// performs the function for this loop iteration
 				stmt.executeUpdate(executor[i]);
 
 			} catch (SQLException ex) {
@@ -182,8 +198,8 @@ public class DatabaseMethods {
 	}
 
 	public void pushData(int[] values, String collumn) {
-		// TODO forgot to make sure it adds to the right rows
-
+		// TODO verify this adds to correct row
+		// have to update to specific row!
 		// convert array to int
 		StringBuilder strNum = new StringBuilder();
 
@@ -195,8 +211,8 @@ public class DatabaseMethods {
 		Statement stmt = null;
 		ResultSet rs = null;
 
-		String executor = String.format("INSERT INTO userValues (%s) "
-				+ "VALUES ('%s')", collumn, key);
+		String executor = String.format("UPDATE userValues SET %s='%i' "
+				+ "WHERE userID=%i", collumn, key, userID);
 		try {
 
 			stmt = conn.createStatement();
@@ -304,22 +320,59 @@ public class DatabaseMethods {
 	}
 
 	public HashMap<String, String> getUserReturnValues() throws SQLException {
-		// returns given row values from userID as hashmap
+		// TODO verify returns given row values from userID as hashmap
 		HashMap<String, String> returnValue = null;
 
-		// select query here
-		// returns full return user database
-		resultSet = selectQuery("returnUser");
-		// resultSet is initialized before the first data set
-		while (resultSet.absolute(userID)) {
-			// it is possible to get the columns via name
-			// also possible to get the columns via the column number
-			// which starts at 1
-			for (int i = 0; i < 15; i++) {
-				returnValue.put(names[i], resultSet.getString(i + 2));
+		Statement stmt = null;
+		ResultSet rs = null;
+		String executeStatement = String.format("SELECT * FROM %s",
+				"returnUser");
+
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(executeStatement);
+
+			// resultSet is initialized before the first data set
+			while (rs.absolute(userID)) {
+				// it is possible to get the columns via name
+				// also possible to get the columns via the column number
+				// which starts at 1
+				for (int i = 0; i < 15; i++) {
+					returnValue.put(names[i], resultSet.getString(i + 2));
+				}
+
 			}
 
+		} catch (SQLException ex) {
+			// handle any errors
+			System.out.println("SQLException: " + ex.getMessage());
+			System.out.println("SQLState: " + ex.getSQLState());
+			System.out.println("VendorError: " + ex.getErrorCode());
+		} finally {
+			// it is a good idea to release
+			// resources in a finally{} block
+			// in reverse-order of their creation
+			// if they are no-longer needed
+
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException sqlEx) {
+				} // ignore
+
+				rs = null;
+			}
+
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException sqlEx) {
+				} // ignore
+
+				stmt = null;
+			}
 		}
+
 		return returnValue;
 	}
 
@@ -327,9 +380,8 @@ public class DatabaseMethods {
 		DatabaseMethods tator;
 		try {
 			tator = new DatabaseMethods();
-			tator.addUser("Baked", "potato");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+			tator.addUser("Ryan", "admin");
+		} catch (ClassNotFoundException e) { // TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
