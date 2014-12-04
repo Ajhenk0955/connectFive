@@ -245,7 +245,6 @@ class Restaurant extends QuestionFrame {
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
 		
-		
 		JLabel background = new JLabel();
 		background.setIcon(new ImageIcon("imgs/background5.png"));
 		background.setBounds(0, 0, 360, 640);
@@ -352,13 +351,5 @@ class Restaurant extends QuestionFrame {
 				// insert code here
 			}
 		}
-				
-		System.out.println("1: " + array[0]);
-		System.out.println("2: " + array[1]);
-		System.out.println("3: " + array[2]);
-		System.out.println("4: " + array[3]);
-		System.out.println("5: " + array[4]);
-		System.out.println("6: " + array[5]);
-
 	}
 }

@@ -302,7 +302,6 @@ class RSO extends QuestionFrame{
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
 		
-		
 		JLabel background = new JLabel();
 		background.setIcon(new ImageIcon("imgs/LoginBackground.png"));
 		background.setBounds(0, 0, 360, 640);
@@ -312,12 +311,11 @@ class RSO extends QuestionFrame{
 		
 	}
 	
-	
 	@Override
 	public void actionPerformed(ActionEvent e){
 		
+		// question 1
 		if(baking.isSelected()){
-		//if(e.getSource() == baking){
 			array[0] = 0;
 		}else if(gaming.isSelected()){
 			array[0] = 1;
@@ -329,11 +327,11 @@ class RSO extends QuestionFrame{
 			array[0] = 4;
 		}else if(sports.isSelected()){
 			array[0] = 5;
-		}
-		else {
+		}else {
 			array[0] = -1;
 		}
 		
+		// question 2
 		if(engineering.isSelected()){
 			array[1] = 0;
 		}else if(math.isSelected()){
@@ -346,20 +344,20 @@ class RSO extends QuestionFrame{
 			array[1] = 4;
 		}else if(arts.isSelected()){
 			array[1] = 5;
-		}
-		else{
+		}else{
 			array[1] = -1;
 		}
 		
+		// question 3
 		if(yes.isSelected()){
 			array[2] = 0;
 		}else if(no.isSelected()){
 			array[2] = 1;
-		}
-		else{
+		}else{
 			array[2] = -1;
 		}
 		
+		// question 4
 		if(baking2.isSelected()){
 			array[3] = 0;
 		}else if(gaming2.isSelected()){
@@ -372,11 +370,11 @@ class RSO extends QuestionFrame{
 			array[3] = 4;
 		}else if(sports2.isSelected()){
 			array[3] = 5;
-		}
-		else{
+		}else{
 			array[3] = -1;
 		}
 		
+		// question 5
 		if(acad.isSelected()){
 			array[4] = 0;
 		}else if(cult.isSelected()){
@@ -391,11 +389,11 @@ class RSO extends QuestionFrame{
 			array[4] = 5;
 		}else if(sports3.isSelected()){
 			array[4] = 6;
-		}
-		else{
+		}else{
 			array[4] = -1;
 		}
 		
+		// question 6
 		if(multi.isSelected()){
 			array[5] = 0;
 		}else if(week.isSelected()){
@@ -404,11 +402,11 @@ class RSO extends QuestionFrame{
 			array[5] = 2;
 		}else if(month.isSelected()){
 			array[5] = 3;
-		}
-		else {
+		}else {
 			array[5] = -1;
 		}
 		
+		// question 7
 		if(zero.isSelected()){
 			array[6] = 0;
 		}else if(five.isSelected()){
@@ -417,8 +415,7 @@ class RSO extends QuestionFrame{
 			array[6] = 2;
 		}else if(thirty.isSelected()){
 			array[6] = 3;
-		}
-		else{
+		}else{
 			array[6] = -1;
 		}
 		
@@ -433,13 +430,5 @@ class RSO extends QuestionFrame{
 				// insert code here
 			}
 		}
-		
-		System.out.println("1: " + array[0]);
-		System.out.println("2: " + array[1]);
-		System.out.println("3: " + array[2]);
-		System.out.println("4: " + array[3]);
-		System.out.println("5: " + array[4]);
-		System.out.println("6: " + array[5]);
-		System.out.println("7: " + array[6]);
 	}	
 }

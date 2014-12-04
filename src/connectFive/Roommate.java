@@ -174,7 +174,6 @@ class Roommate extends QuestionFrame{
 		radioGroup.add(pigsty);
 		
 		// action listeners
-		
 		fem.addActionListener(this);
 		male.addActionListener(this);
 		fresh.addActionListener(this);
@@ -220,7 +219,6 @@ class Roommate extends QuestionFrame{
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
 		
-		
 		JLabel background = new JLabel();
 		background.setIcon(new ImageIcon("imgs/background3.png"));
 		background.setBounds(0, 0, 360, 640);
@@ -238,8 +236,7 @@ class Roommate extends QuestionFrame{
 			array[0] = 0;
 		}else if(male.isSelected()){
 			array[0] = 1;
-		}
-		else{
+		}else{
 			array[0] = -1;
 		}
 		
@@ -254,8 +251,7 @@ class Roommate extends QuestionFrame{
 			array[1] = 3;
 		}else if(grad.isSelected()){
 			array[1] = 4;
-		}
-		else{
+		}else{
 			array[1] = -1;
 		}
 		
@@ -266,8 +262,7 @@ class Roommate extends QuestionFrame{
 			array[2] = 1;
 		}else if(owl.isSelected()){
 			array[2] = 2;
-		}
-		else{
+		}else{
 			array[2] = -1;
 		}
 		
@@ -278,8 +273,7 @@ class Roommate extends QuestionFrame{
 			array[3] = 1;
 		}else if(any.isSelected()){
 			array[3] = 2;
-		}
-		else{
+		}else{
 			array[3] = -1;
 		}
 		
@@ -292,8 +286,7 @@ class Roommate extends QuestionFrame{
 			array[4] = 2;
 		}else if(unre.isSelected()){
 			array[4] = 3;
-		}
-		else{
+		}else{
 			array[4] = -1;
 		}
 		
@@ -306,18 +299,9 @@ class Roommate extends QuestionFrame{
 			array[5] = 2;
 		}else if(pigsty.isSelected()){
 			array[5] = 3;
-		}
-		else{
+		}else{
 			array[5] = -1;
 		}
-		
-		// testing result storage
-		System.out.println("1: " + array[0]);
-		System.out.println("2: " + array[1]);
-		System.out.println("3: " + array[2]);
-		System.out.println("4: " + array[3]);
-		System.out.println("5: " + array[4]);
-		System.out.println("6: " + array[5]);
 		
 		for(int i=0; i<array.length; i++){
 			if(array[i]<0){
@@ -330,6 +314,5 @@ class Roommate extends QuestionFrame{
 				// insert code here
 			}
 		}
-		
 	}
 }

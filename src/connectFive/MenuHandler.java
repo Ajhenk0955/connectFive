@@ -29,15 +29,9 @@ public class MenuHandler extends JFrame {
 		buttonPanel.setOpaque(false);
 		buttonPanel.setBounds(0, 0, 360, 640);
 		buttonPanel.setLayout(null);
-		//buttonPanel.setBackground(Color.BLACK);
 		add(buttonPanel);
 		
-		
-		
-
 		profile = new JButton("Profile");
-
-		
 		buttonPanel.add(profile);
 		profile.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -127,11 +121,6 @@ public class MenuHandler extends JFrame {
 		roommate.setBounds(94, 518, 171, 50);
 		roommate.setIcon(new ImageIcon("imgs/TrangleButton.png"));
 
-
-		
-		
-		
-		
 		// south panel
 		JPanel so = new JPanel();
 		signout = new JButton("Sign out");

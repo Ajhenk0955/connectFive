@@ -151,8 +151,6 @@ public class ProfileRev extends JFrame{
 					String filepath=chooser.getName(file);
 					imagepath.setText(filepath);
 					
-					
-					
 					try {
 						picture= ImageIO.read(file);
 					}
@@ -160,15 +158,11 @@ public class ProfileRev extends JFrame{
 						System.err.println("Error.");
 					}
 				}
-		
-			}
-			
-			else if (e.getSource()==menu) {
+			}else if (e.getSource()==menu) {
 				MenuHandler mainmenu= new MenuHandler();
 				frame.setVisible(false);
 				mainmenu.setVisible(true);
-			}	
-			else {
+			}else {
 				
 				// the DB needs to be scanned from this point to
 				// verify no duplicate username is being created
@@ -179,7 +173,6 @@ public class ProfileRev extends JFrame{
 					gender= genderfield.getText();
 					setVisible(false);
 					viewProfile();
-					
 				}	
 			}
 		}
@@ -189,21 +182,21 @@ public class ProfileRev extends JFrame{
 		
 		frame= new JFrame("User Profile");
 		JPanel imagepanel= new JPanel();
-		imagepanel.setBackground(Color.WHITE);
+		imagepanel.setBackground(Color.BLACK);
 		JPanel namepanel= new JPanel();
-		namepanel.setBackground(Color.WHITE);
+		namepanel.setBackground(Color.BLACK);
 		JPanel entresultspanel= new JPanel();
-		entresultspanel.setBackground(Color.WHITE);
+		entresultspanel.setBackground(Color.BLACK);
 		JPanel restresultspanel= new JPanel();
-		restresultspanel.setBackground(Color.WHITE);
+		restresultspanel.setBackground(Color.BLACK);
 		JPanel clubresultspanel=  new JPanel();
-		clubresultspanel.setBackground(Color.WHITE);
+		clubresultspanel.setBackground(Color.BLACK);
 		JPanel roomresultspanel= new JPanel();
-		roomresultspanel.setBackground(Color.WHITE);
+		roomresultspanel.setBackground(Color.BLACK);
 		JPanel carresultspanel= new JPanel();
-		carresultspanel.setBackground(Color.WHITE);
+		carresultspanel.setBackground(Color.BLACK);
 		JPanel menupanel= new JPanel();
-		menupanel.setBackground(Color.WHITE);
+		menupanel.setBackground(Color.BLACK);
 		
 		frame.setBackground(Color.BLACK);
 		
@@ -235,11 +228,18 @@ public class ProfileRev extends JFrame{
 		BufferedImage resizedImage= new BufferedImage(100,100,BufferedImage.TYPE_INT_ARGB);
 		label= new JLabel(new ImageIcon(resizedImage));
 		nameandaddresslabel= new JLabel("<html>"+name+"<br>"+address+"</html>");
+		nameandaddresslabel.setForeground(Color.WHITE);
 		entresults= new JLabel("Entertainment Results:");
+		entresults.setForeground(Color.WHITE);
 		restresults= new JLabel("Restaurant Results: ");
+		restresults.setForeground(Color.WHITE);
 		clubresults= new JLabel("Club Results: ");
+		clubresults.setForeground(Color.WHITE);
 		roomresults= new JLabel("Roomate Results: ");
+		roomresults.setForeground(Color.WHITE);
 		carresults= new JLabel("Carpool Results: ");
+		carresults.setForeground(Color.WHITE);
+		
 		Graphics2D g= resizedImage.createGraphics();
 		g.setBackground(Color.WHITE);
 		g.drawImage(picture, 0, 0, 100,100,null);
@@ -259,8 +259,6 @@ public class ProfileRev extends JFrame{
 		roomresultspanel.add(roomresults);
 		carresultspanel.add(carresults);
 		
-		
-		menupanel.add(menu);
 		frame.add(Box.createRigidArea(new Dimension(0,10)));
 		frame.add(imagepanel);
 		frame.add(Box.createRigidArea(new Dimension(0,10)));
@@ -279,12 +277,9 @@ public class ProfileRev extends JFrame{
 		frame.setResizable(false);
 		frame.setVisible(true);
 		
-		this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		menupanel.add(menu);
 		
-//		JLabel background = new JLabel();
-//		background.setIcon(new ImageIcon("imgs/background6.png"));
-//		background.setBounds(0, 0, 360, 640);
-//		frame.add(background);
+		this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 	}
 }
 

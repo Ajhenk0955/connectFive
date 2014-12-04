@@ -95,8 +95,6 @@ class Carpool extends QuestionFrame{
 		radioGroup.add(two);
 		radioGroup.add(three);
 		radioGroup.add(four);
-		//button.add(question2);
-		//add(button);
 		
 		//question 3
 		question3 = new JPanel();
@@ -116,7 +114,6 @@ class Carpool extends QuestionFrame{
 		radioGroup.add(female);
 		radioGroup.add(male);
 		radioGroup.add(none);
-		//add(button);
 		
 		//question 4
 		question4 = new JPanel();
@@ -139,7 +136,6 @@ class Carpool extends QuestionFrame{
 		radioGroup.add(close);
 		radioGroup.add(less5);
 		radioGroup.add(more5);
-		//add(button);
 		
 		//question 5
 		question5 = new JPanel();
@@ -162,7 +158,6 @@ class Carpool extends QuestionFrame{
 		radioGroup.add(close2);
 		radioGroup.add(less52);
 		radioGroup.add(more52);
-		//add(button);
 		
 		//question 6
 		question6 = new JPanel();
@@ -188,7 +183,6 @@ class Carpool extends QuestionFrame{
 		radioGroup.add(thirty);
 		radioGroup.add(hour);
 		radioGroup.add(hourP);
-		//add(button);
 		
 		//question 7
 		question7 = new JPanel();
@@ -211,7 +205,6 @@ class Carpool extends QuestionFrame{
 		radioGroup.add(thirty2);
 		radioGroup.add(hour2);
 		radioGroup.add(hourP2);
-		//add(button);
 		
 		// action listener
 		give.addActionListener(this);
@@ -241,7 +234,6 @@ class Carpool extends QuestionFrame{
 		hour2.addActionListener(this);
 		hourP2.addActionListener(this);
 		
-		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 0, 360, 640);
 		add(scrollPane);
@@ -266,7 +258,6 @@ class Carpool extends QuestionFrame{
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
 		
-		
 		JLabel background = new JLabel();
 		background.setIcon(new ImageIcon("imgs/background4.png"));
 		background.setBounds(0, 0, 360, 640);
@@ -275,7 +266,6 @@ class Carpool extends QuestionFrame{
 		this.add(button);
 	}
 	
-	
 	@Override
 	public void actionPerformed(ActionEvent e){
 		
@@ -283,8 +273,7 @@ class Carpool extends QuestionFrame{
 			array[0] = 0;
 		}else if(receive.isSelected()){
 			array[0] = 1;
-		}
-		else{
+		}else{
 			array[0] = -1;
 		}
 		
@@ -296,8 +285,7 @@ class Carpool extends QuestionFrame{
 			array[1] = 2;
 		}else if(four.isSelected()){
 			array[1] = 3;
-		}
-		else{
+		}else{
 			array[1] = -1;
 		}
 		
@@ -307,8 +295,7 @@ class Carpool extends QuestionFrame{
 			array[2] = 1;
 		}else if(none.isSelected()){
 			array[2] = 2;
-		}
-		else{
+		}else{
 			array[2] = -1;
 		}
 		
@@ -320,8 +307,7 @@ class Carpool extends QuestionFrame{
 			array[3] = 2;
 		}else if(more5.isSelected()){
 			array[3] = 3;
-		}
-		else{
+		}else{
 			array[3] = -1;
 		}
 
@@ -333,8 +319,7 @@ class Carpool extends QuestionFrame{
 			array[4] = 2;
 		}else if(more52.isSelected()){
 			array[4] = 3;
-		}
-		else{
+		}else{
 			array[4] = -1;
 		}
 		
@@ -348,8 +333,7 @@ class Carpool extends QuestionFrame{
 			array[5] = 3;
 		}else if(hourP.isSelected()){
 			array[5] = 4;
-		}
-		else{
+		}else{
 			array[5] = -1;
 		}
 		
@@ -361,8 +345,7 @@ class Carpool extends QuestionFrame{
 			array[6] = 2;
 		}else if(hourP2.isSelected()){
 			array[6] = 3;
-		}
-		else{
+		}else{
 			array[6] = -1;
 		}
 		
@@ -377,14 +360,5 @@ class Carpool extends QuestionFrame{
 				// insert code here
 			}
 		}
-		
-		System.out.println("1: " + array[0]);
-		System.out.println("2: " + array[1]);
-		System.out.println("3: " + array[2]);
-		System.out.println("4: " + array[3]);
-		System.out.println("5: " + array[4]);
-		System.out.println("6: " + array[5]);
-		System.out.println("7: " + array[6]);
-
 	}
 }

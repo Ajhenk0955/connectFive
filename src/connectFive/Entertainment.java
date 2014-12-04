@@ -297,7 +297,6 @@ class Entertainment extends QuestionFrame{
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
 		
-		
 		JLabel background = new JLabel();
 		background.setIcon(new ImageIcon("imgs/background2.png"));
 		background.setBounds(0, 0, 360, 640);
@@ -311,114 +310,75 @@ class Entertainment extends QuestionFrame{
 		
 		if(morning.isSelected()){
 			array[0] = 0;
-		}
-		
-		else if(afternoon.isSelected()){
+		}else if(afternoon.isSelected()){
 			array[0] = 1;
-		}
-		
-		else if(night.isSelected()){
+		}else if(night.isSelected()){
 			array[0] = 2;
-		}
-		else{
+		}else{
 			array[0] = -1;
 		}
 		
 		if(sunny.isSelected()){
 			array[1] = 0;
-		}
-		
-		else if(cloudy.isSelected()){
+		}else if(cloudy.isSelected()){
 			array[1] = 1;
-		}
-		
-		else if(rainy.isSelected()){
+		}else if(rainy.isSelected()){
 			array[1] = 2;
-		}
-		
-		else if(storming.isSelected()){
+		}else if(storming.isSelected()){
 			array[1] = 3;
-		}
-		else{
+		}else{
 			array[1] = -1;
 		}
 		
 		if(allDay.isSelected()){
 			array[2] = 0;
-		}
-		
-		else if(twoHours.isSelected()){
+		}else if(twoHours.isSelected()){
 			array[2] = 1;
-		}
-		
-		else if(twoFiveH.isSelected()){
+		}else if(twoFiveH.isSelected()){
 			array[2] = 2;
-		}
-		else{
+		}else{
 			array[2] = -1;
 		}
 		
 		if(indoor.isSelected()){
 			array[3] = 0;
-		}
-		
-		else if(outdoor.isSelected()){
+		}else if(outdoor.isSelected()){
 			array[3] = 1;
-		}
-		else{
+		}else{
 			array[3] = -1;
 		}
 		
 		if(lessThan.isSelected()){
 			array[4] = 0;
-		}
-		
-		else if(tenTwenty.isSelected()){
+		}else if(tenTwenty.isSelected()){
 			array[4] = 1;
-		}
-		
-		else if(TwentyFifty.isSelected()){
+		}else if(TwentyFifty.isSelected()){
 			array[4] = 2;
-		}
-		
-		else if(fiftyPlus.isSelected()){
+		}else if(fiftyPlus.isSelected()){
 			array[4] = 3;
-		}
-		else{
+		}else{
 			array[4] = -1;
 		}
 		
 		if(young.isSelected()){
 			array[5] = 0;
-		}
-		
-		else if(eighteenTwenty.isSelected()){
+		}else if(eighteenTwenty.isSelected()){
 			array[5] = 1;
-		}
-		
-		else if(twentyOnePlus.isSelected()){
+		}else if(twentyOnePlus.isSelected()){
 			array[5] = 2;
-		}
-		else{
+		}else{
 			array[5] = -1;
 		}
 		
 		if(fiveMiles.isSelected()){
 			array[6] = 0;
-		}
-		
-		else if(fiveFifteen.isSelected()){
+		}else if(fiveFifteen.isSelected()){
 			array[6] = 1;
-		}
-		
-		else if(fifteenThirty.isSelected()){
+		}else if(fifteenThirty.isSelected()){
 			array[6] = 2;
-		}
-		
-		else if(thirtyPlus.isSelected()){
+		}else if(thirtyPlus.isSelected()){
 			array[6] = 3;
-		}
-		else{
+		}else{
 			array[6] = -1;
 		}
 		
@@ -426,22 +386,11 @@ class Entertainment extends QuestionFrame{
 			if(array[i]<0){
 				submit.setEnabled(false);
 				break;
-			}
-			else{
+			}else{
 				submit.setEnabled(true);
 				// store results in DB
 				// insert code here
 			}
 		}
-		
-		// testing result storage
-		System.out.println("1: " + array[0]);
-		System.out.println("2: " + array[1]);
-		System.out.println("3: " + array[2]);
-		System.out.println("4: " + array[3]);
-		System.out.println("5: " + array[4]);
-		System.out.println("6: " + array[5]);
-		System.out.println("7: " + array[6]);
-
 	}
 }
