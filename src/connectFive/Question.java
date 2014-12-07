@@ -6,10 +6,10 @@ import java.awt.event.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-abstract class QuestionFrame extends JFrame implements ActionListener{
+abstract class Question extends JFrame implements ActionListener{
 	protected JButton submit;
 	
-	QuestionFrame(){
+	Question(){
 		setTitle(getClass().getSimpleName() + " Questionnaire");
 		JPanel buttonJPanel = new JPanel();
 		buttonJPanel.setLayout(null);
@@ -24,9 +24,9 @@ abstract class QuestionFrame extends JFrame implements ActionListener{
 			public void actionPerformed(ActionEvent event){
 				if(event.getSource() == submit){
 					System.out.println("submitted");
-					JOptionPane.showMessageDialog(QuestionFrame.this, "Submitted!");
+					JOptionPane.showMessageDialog(Question.this, "Submitted!");
 					setVisible(false);
-					ProfileRev pro = new ProfileRev();
+					Profile pro = new Profile();
 					pro.setSize(360,640);
 					pro.viewProfile();
 					pro.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );

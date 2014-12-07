@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class MenuHandler extends JFrame {
+public class Menu extends JFrame {
 
 	private JButton profile;
 	private JButton entertainment;
@@ -19,7 +19,7 @@ public class MenuHandler extends JFrame {
 	private JButton roommate;
 	private JButton signout;	
 	
-	MenuHandler(){
+	Menu(){
 		super("Main Menu");
 		
 		this.setLayout(null);
@@ -35,7 +35,7 @@ public class MenuHandler extends JFrame {
 		buttonPanel.add(profile);
 		profile.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				ProfileRev profile1 = new ProfileRev();
+				Profile profile1 = new Profile();
 				profile1.setSize(360,655);
 				profile1.viewProfile();
 				setVisible(false);
@@ -127,10 +127,9 @@ public class MenuHandler extends JFrame {
 		so.setOpaque(false);
 		signout.setBounds(130, 570, 100, 40);
 		buttonPanel.add(signout);
-		//add(so, BorderLayout.SOUTH);
 		signout.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				LoginScreen login=new LoginScreen();
+				Login login = new Login();
 				login.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 				login.setSize(360,640);
 				login.setResizable(false);

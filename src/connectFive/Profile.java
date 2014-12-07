@@ -24,7 +24,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
-public class ProfileRev extends JFrame{
+public class Profile extends JFrame{
 	
 	boolean created;
 	String credentials;
@@ -71,7 +71,7 @@ public class ProfileRev extends JFrame{
 	JLabel enterAddress;
 	JLabel enterImage;
 
-	public ProfileRev(){
+	public Profile(){
 		super("Create Profile");
 		this.setLayout(null);
 		
@@ -159,7 +159,7 @@ public class ProfileRev extends JFrame{
 					}
 				}
 			}else if (e.getSource()==menu) {
-				MenuHandler mainmenu= new MenuHandler();
+				Menu mainmenu= new Menu();
 				frame.setVisible(false);
 				mainmenu.setVisible(true);
 			}else {

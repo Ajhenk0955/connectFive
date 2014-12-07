@@ -14,7 +14,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
-public class LoginScreen extends JFrame {
+public class Login extends JFrame {
 
 	private JButton login;
 	private JButton signUp;
@@ -22,7 +22,7 @@ public class LoginScreen extends JFrame {
 	private JPasswordField password;
 	private String empty;
 	
-	LoginScreen() {
+	Login() {
 		super("Welcome to Connect Five!");
 		
 		this.setLayout(null);
@@ -55,12 +55,12 @@ public class LoginScreen extends JFrame {
 				// need to be verified with the DB
 				
 				if(username.getText().isEmpty() || password.getText().isEmpty()) {	
-					JOptionPane.showMessageDialog(LoginScreen.this, String.format("Please "
+					JOptionPane.showMessageDialog(Login.this, String.format("Please "
 							+ "enter your username and password.", e.getActionCommand()));
 					username.setText(empty);
 					password.setText(empty);
 				}else {
-					MenuHandler menu = new MenuHandler();
+					Menu menu = new Menu();
 					menu.setSize(360,640);
 					menu.setVisible(true);
 					setVisible(false);	
@@ -73,7 +73,7 @@ public class LoginScreen extends JFrame {
 		eastBlank.add(signUp);
 		signUp.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				ProfileRev pro = new ProfileRev();
+				Profile pro = new Profile();
 				pro.setSize(360,640);
 				pro.setVisible(true);
 				setVisible(false);
