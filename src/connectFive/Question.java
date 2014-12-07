@@ -26,10 +26,8 @@ abstract class Question extends JFrame implements ActionListener{
 					System.out.println("submitted");
 					JOptionPane.showMessageDialog(Question.this, "Submitted!");
 					setVisible(false);
-					Profile pro = new Profile();
-					pro.setSize(360,640);
-					pro.viewProfile();
-					pro.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+					Login.pro.viewProfile();
+					Login.pro.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 				}	
 			}
 		});

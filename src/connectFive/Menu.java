@@ -35,12 +35,10 @@ public class Menu extends JFrame {
 		buttonPanel.add(profile);
 		profile.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				Profile profile1 = new Profile();
-				profile1.setSize(360,655);
-				profile1.viewProfile();
+				Login.pro.viewProfile();
 				setVisible(false);
-				profile1.setResizable(false);
-				profile1.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+				Login.pro.setResizable(false);
+				Login.pro.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 			}
 		});
 		profile.setBounds(94, 253, 171, 50);

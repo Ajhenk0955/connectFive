@@ -22,6 +22,8 @@ public class Login extends JFrame {
 	private JPasswordField password;
 	private String empty;
 	
+	public static Profile pro;	//changed
+	
 	Login() {
 		super("Welcome to Connect Five!");
 		
@@ -54,10 +56,13 @@ public class Login extends JFrame {
 				// this is where the username and password
 				// need to be verified with the DB
 				
-				if(username.getText().isEmpty() || password.getText().isEmpty()) {	
+				System.out.println(username.getText());
+				
+				
+				if(username.getText().isEmpty() || password.getText().isEmpty()||username.getText().equals("Username")) {	
 					JOptionPane.showMessageDialog(Login.this, String.format("Please "
 							+ "enter your username and password.", e.getActionCommand()));
-					username.setText(empty);
+					username.setText(empty);  
 					password.setText(empty);
 				}else {
 					Menu menu = new Menu();
@@ -73,7 +78,7 @@ public class Login extends JFrame {
 		eastBlank.add(signUp);
 		signUp.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				Profile pro = new Profile();
+				pro = new Profile(); //changed
 				pro.setSize(360,640);
 				pro.setVisible(true);
 				setVisible(false);

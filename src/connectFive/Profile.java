@@ -71,7 +71,7 @@ public class Profile extends JFrame{
 	JLabel enterAddress;
 	JLabel enterImage;
 
-	public Profile(){
+	Profile(){
 		super("Create Profile");
 		this.setLayout(null);
 		
@@ -101,7 +101,7 @@ public class Profile extends JFrame{
 		button.add(enterAddress);
 		button.add(addressfield);
 		
-		enterGender = new JLabel("M/F: ");
+		enterGender = new JLabel("Male/Female: ");
 		genderfield = new JTextField();
 		enterGender.setBounds(10, 190, 100, 50);
 		enterGender.setForeground(Color.WHITE);
@@ -227,7 +227,7 @@ public class Profile extends JFrame{
 		
 		BufferedImage resizedImage= new BufferedImage(100,100,BufferedImage.TYPE_INT_ARGB);
 		label= new JLabel(new ImageIcon(resizedImage));
-		nameandaddresslabel= new JLabel("<html>"+name+"<br>"+address+"</html>");
+		nameandaddresslabel= new JLabel("<html>"+name+"<br>"+address+"<br>"+gender+"</html>");
 		nameandaddresslabel.setForeground(Color.WHITE);
 		entresults= new JLabel("Entertainment Results:");
 		entresults.setForeground(Color.WHITE);
