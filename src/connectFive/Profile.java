@@ -22,6 +22,7 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -33,6 +34,8 @@ public class Profile extends JFrame {
 	String name;
 	String address;
 	String gender;
+	String username;
+	String password;
 	BufferedImage picture;
 	BufferedImage map;
 	JFrame frame;
@@ -67,11 +70,15 @@ public class Profile extends JFrame {
 	JTextField namefield;
 	JTextField addressfield;
 	JTextField genderfield;
-
+	JTextField passwordfield;
+	JTextField usernamefield;
+	
 	JLabel enterName;
 	JLabel enterGender;
 	JLabel enterAddress;
 	JLabel enterImage;
+	JLabel enterUsername;
+	JLabel enterPassword;
 
 	Profile() {
 		super("Create Profile");
@@ -87,37 +94,53 @@ public class Profile extends JFrame {
 		button.setBounds(0, 0, 360, 640);
 		button.setLayout(null);
 
+		enterUsername = new JLabel("Username: ");
+		usernamefield = new JTextField();
+		enterUsername.setForeground(Color.WHITE);
+		enterUsername.setBounds(10, 30, 100, 50);
+		usernamefield.setBounds(130, 30, 200, 50);
+		button.add(enterUsername);
+		button.add(usernamefield);
+		
+		enterPassword = new JLabel("Password: ");
+		passwordfield = new JTextField();
+		enterPassword.setForeground(Color.WHITE);
+		enterPassword.setBounds(10, 110, 100, 50);
+		passwordfield.setBounds(130, 110, 200, 50);
+		button.add(enterPassword);
+		button.add(passwordfield);
+		
 		enterName = new JLabel("Name: ");
 		namefield = new JTextField();
 		enterName.setForeground(Color.WHITE);
-		enterName.setBounds(10, 30, 100, 50);
-		namefield.setBounds(130, 30, 200, 50);
+		enterName.setBounds(10, 190, 100, 50);
+		namefield.setBounds(130, 190, 200, 50);
 		button.add(enterName);
 		button.add(namefield);
 
 		enterAddress = new JLabel("Address: ");
 		addressfield = new JTextField();
-		enterAddress.setBounds(10, 110, 100, 50);
+		enterAddress.setBounds(10, 270, 100, 50);
 		enterAddress.setForeground(Color.WHITE);
-		addressfield.setBounds(130, 110, 200, 50);
+		addressfield.setBounds(130, 270, 200, 50);
 		button.add(enterAddress);
 		button.add(addressfield);
 
-		enterGender = new JLabel("Male/Female: ");
+		enterGender = new JLabel("Gender: ");
 		genderfield = new JTextField();
-		enterGender.setBounds(10, 190, 100, 50);
+		enterGender.setBounds(10, 350, 100, 50);
 		enterGender.setForeground(Color.WHITE);
-		genderfield.setBounds(130, 190, 200, 50);
+		genderfield.setBounds(130, 350, 200, 50);
 		button.add(enterGender);
 		button.add(genderfield);
 
-		enterImage = new JLabel("Enter your favorite image:");
+		enterImage = new JLabel("Picture: ");
 		imagepath = new JTextField();
 		Browse = new JButton("Browse");
-		enterImage.setBounds(10, 270, 100, 50);
+		enterImage.setBounds(10, 430, 50, 50);
 		enterImage.setForeground(Color.WHITE);
-		imagepath.setBounds(130, 270, 150, 50);
-		Browse.setBounds(290, 270, 50, 50);
+		imagepath.setBounds(130, 430, 100, 50);
+		Browse.setBounds(250, 430, 80, 50);
 		button.add(enterImage);
 		button.add(imagepath);
 		button.add(Browse);
@@ -165,10 +188,15 @@ public class Profile extends JFrame {
 				mainmenu.setVisible(true);
 			} else {
 
-				if (!namefield.getText().isEmpty()
+				if (!usernamefield.getText().isEmpty()
+						&& !passwordfield.getText().isEmpty()
+						&& !namefield.getText().isEmpty()
 						&& !addressfield.getText().isEmpty()
 						&& !genderfield.getText().isEmpty()
 						&& !imagepath.getText().isEmpty()) {
+					
+					username = usernamefield.getText();
+					password = passwordfield.getText();
 					name = namefield.getText();
 					address = addressfield.getText();
 					gender = genderfield.getText();
@@ -194,6 +222,8 @@ public class Profile extends JFrame {
 
 					setVisible(false);
 					viewProfile();
+				} else{
+					JOptionPane.showMessageDialog(Profile.this, "Please fill all fields.");
 				}
 			}
 		}
@@ -251,8 +281,8 @@ public class Profile extends JFrame {
 		BufferedImage resizedImage = new BufferedImage(100, 100,
 				BufferedImage.TYPE_INT_ARGB);
 		label = new JLabel(new ImageIcon(resizedImage));
-		nameandaddresslabel = new JLabel("<html>" + name + "<br>" + address
-				+ "<br>" + gender + "</html>");
+		nameandaddresslabel = new JLabel("<html>" + name + "<br>" + username
+				+ "<br>" + address + "<br>" + gender +  "</html>");
 		nameandaddresslabel.setForeground(Color.WHITE);
 		entresults = new JLabel("Entertainment Results:");
 		entresults.setForeground(Color.WHITE);
