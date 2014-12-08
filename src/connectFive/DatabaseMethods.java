@@ -255,7 +255,83 @@ public class DatabaseMethods {
 		// TODO updateData();
 	}
 
-	public void updateData() {
+	public void updateData(){
+		String executeStatement = "";
+		String[] collumn = { "carpoolingID", "restaurantsID", "clubsID",
+				"entertainmentID", "roomateID" };
+		int count = 0; // count for collumn names whithin return user
+		// sorts through userValues
+		for(int i = 0; i < 5; i++){
+			String request = String.format(
+					"SELECT %s FROM userValues WHERE userID='%d'",
+					collumn[i], userID);
+			try {
+				Statement stmt = conn.createStatement();
+				ResultSet userKeyID = stmt.executeQuery(request);
+				// get tempKeyID
+				int tempKeyID = userKeyID.getInt(1);
+				//close connections, no longer used
+				stmt.close();
+				userKeyID.close();
+				executeStatement = String.format(
+						"SELECT userID, %s FROM userValues", collumn[i]);
+				// execute statement for table of userIDS and current column
+				stmt = conn.createStatement();
+				userKeyID = stmt.executeQuery(executeStatement);
+				
+				// we need to search through the resultSet now
+				int[] topThree = {1000,1000,1000};
+				int[] topIDS = {1,1,1};
+				while(userKeyID.next()){
+					//absolute value of current row value
+					int temp = Math.abs(tempKeyID-userKeyID.getInt(2));
+					//if value is better replace and rotate
+					if(temp<topThree[0]){
+						topThree[2] = topThree[1];
+						topIDS[2] = topIDS[1];
+						topThree[1] = topThree[0];
+						topIDS[1] = topIDS[0];
+						topThree[0] = temp;
+						topIDS[0] = userKeyID.getInt(1);
+					}
+				}
+				stmt.close();
+				userKeyID.close();
+				// get name of top three matches and stores value in results
+				for(int j = 0; j < 3; j ++){
+				
+					request = String.format(
+							"SELECT userName FROM userVerification WHERE userID='%d'",
+							topIDS[j]);
+					stmt = conn.createStatement();
+					ResultSet userNameMatch = stmt.executeQuery(request);
+					//assigns userName to temp
+					String tempName = userNameMatch.getString(1);
+					stmt.close();
+					userNameMatch.close();
+					//push username to returnResult
+					executeStatement = String.format(
+							"UPDATE returnUser SET %s='%s' WHERE userID='%d'",
+							names[count], tempName, userID);
+					//update the data to returnResult
+					stmt = conn.createStatement();
+					stmt.executeUpdate(executeStatement);
+					// update the collumn count for return user
+					count++;
+					stmt.close();					
+				}
+				
+				
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+	}
+	
+	public void updateDataXXXXXXXXXX() {
 		// TODO fix this
 		// SO broken
 		Statement stmt = null;
@@ -269,32 +345,35 @@ public class DatabaseMethods {
 
 			for (int i = 0; i < 5; i++) {
 				// get temp value for comparisons
-				int tempID = 0;
+				int tempKeyID = 0;
 				ResultSet tempResult = null;
 				Statement tempState = conn.createStatement();
 				String request = String.format(
-						"SELECT %s FROM userValues WHERE " + "userID='%d'",
+						"SELECT %s FROM userValues WHERE userID='%d'",
 						collumn[i], userID);
 				tempResult = tempState.executeQuery(request);
-				tempID = tempResult.getInt(1);
+				tempKeyID = tempResult.getInt(1);
 				// may need to move this before closing
 				//close statement
 				tempState.close();
 				tempResult.close();
 
 				// update exxecute statemtn, then get sorted results
+				// error here TODO
+				// return a table
+				// sorted by abs(collumn - value)
+				
 				executeStatement = String.format(
-						// error here TODO
-						// return a table
-						// sorted by abs(collumn - value)
+						
 						"SELECT userID, %s FROM userValues ORDER by "
 								+ "abs(%s - %d)", collumn[i], collumn[i],
-						tempID);
+						tempKeyID);
 
 				stmt = conn.createStatement();
 				rs = stmt.executeQuery(executeStatement);
 				int p = 0;
 				while (rs.next() && p != 3) {
+					//matching userId
 					int tempValue = rs.getInt(2);// maybe?
 					String tempName = "";
 					// get associated name with tempValue from userVerification
@@ -429,7 +508,7 @@ public class DatabaseMethods {
 			tator.confirmUser("Andrew", password);
 			int[] values = {1,2,3,1,2,3,1};
 			//tator.pushData(values, "carpoolingID");
-			tator.updateData();
+		//	tator.updateData();
 			//results = tator.getUserReturnValues();
 			//Set<String> setOfKeys = results.keySet();
 			//Iterator<String> iterator = setOfKeys.iterator();
