@@ -24,6 +24,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
@@ -70,8 +71,8 @@ public class Profile extends JFrame {
 	JTextField namefield;
 	JTextField addressfield;
 	JTextField genderfield;
-	JTextField passwordfield;
 	JTextField usernamefield;
+	JPasswordField passwordfield;
 	
 	JLabel enterName;
 	JLabel enterGender;
@@ -103,7 +104,7 @@ public class Profile extends JFrame {
 		button.add(usernamefield);
 		
 		enterPassword = new JLabel("Password: ");
-		passwordfield = new JTextField();
+		passwordfield = new JPasswordField();
 		enterPassword.setForeground(Color.WHITE);
 		enterPassword.setBounds(10, 110, 100, 50);
 		passwordfield.setBounds(130, 110, 200, 50);
@@ -196,16 +197,16 @@ public class Profile extends JFrame {
 						&& !imagepath.getText().isEmpty()) {
 					
 					username = usernamefield.getText();
-					password = passwordfield.getText();
 					name = namefield.getText();
 					address = addressfield.getText();
 					gender = genderfield.getText();
-
+					
 					// #####
 					// adding this, someone create the button
-					char[] password = null;
-					// how do I create a userAccount if you never give a
-					// password................
+					char[] password = passwordfield.getPassword();
+					
+					System.out.println(password);
+					
 					boolean userExists = false;
 					try {
 						// scans for duplicate name/password combos
