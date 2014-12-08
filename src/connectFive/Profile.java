@@ -6,6 +6,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics2D;
+import java.awt.GridLayout;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +14,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 import javax.swing.Box;
@@ -202,15 +204,12 @@ public class Profile extends JFrame {
 					gender = genderfield.getText();
 					
 					// #####
-					// adding this, someone create the button
 					char[] password = passwordfield.getPassword();
-					
-					System.out.println(password);
-					
+										
 					boolean userExists = false;
 					try {
 						// scans for duplicate name/password combos
-						userExists = Login.publicData.confirmUser(name,
+						userExists = Login.publicData.confirmUser(username,
 								password);
 					} catch (SQLException e1) {
 						// don't worry it will work
@@ -218,11 +217,14 @@ public class Profile extends JFrame {
 					}
 					if (!userExists) {
 						// creates user in database #always confirm user first
-						Login.publicData.addUser(name, password);
+						Login.publicData.addUser(username, password);
+						
+						setVisible(false);
+						viewProfile();
+					} else if (userExists) {
+						JOptionPane.showMessageDialog(Profile.this, "Username/password combination already exists.");
+						
 					}
-
-					setVisible(false);
-					viewProfile();
 				} else{
 					JOptionPane.showMessageDialog(Profile.this, "Please fill all fields.");
 				}
@@ -232,21 +234,52 @@ public class Profile extends JFrame {
 
 	public void viewProfile() {
 
+		try {
+
+		HashMap<String, String> matches = Login.publicData.getUserReturnValues();
+				
 		frame = new JFrame("User Profile");
 		JPanel imagepanel = new JPanel();
 		imagepanel.setBackground(Color.BLACK);
 		JPanel namepanel = new JPanel();
 		namepanel.setBackground(Color.BLACK);
-		JPanel entresultspanel = new JPanel();
+		
+		JPanel entresultspanel = new JPanel(new GridLayout(0, 2));
+		JLabel entres = new JLabel("<html> 1) " + matches.get(Login.publicData.names[9]) 
+				+ "<br> 2) "	+ matches.get(Login.publicData.names[10]) 
+				+ "<br> 3) " + matches.get(Login.publicData.names[11]) + "<html>");
+		entres.setForeground(Color.MAGENTA);
 		entresultspanel.setBackground(Color.BLACK);
-		JPanel restresultspanel = new JPanel();
+		entresultspanel.repaint();
+		
+		JPanel restresultspanel = new JPanel(new GridLayout(0,2));
+		JLabel restres = new JLabel("<html> 1) " + matches.get(Login.publicData.names[0]) 
+				+ "<br> 2) "	+ matches.get(Login.publicData.names[1]) 
+				+ "<br> 3) " + matches.get(Login.publicData.names[2]) + "<html>");
+		restres.setForeground(Color.RED);
 		restresultspanel.setBackground(Color.BLACK);
-		JPanel clubresultspanel = new JPanel();
+		
+		JPanel clubresultspanel = new JPanel(new GridLayout(0,2));
+		JLabel clubres = new JLabel("<html> 1) " + matches.get(Login.publicData.names[3]) 
+				+ "<br> 2) "	+ matches.get(Login.publicData.names[4]) 
+				+ "<br> 3) " + matches.get(Login.publicData.names[5]) + "<html>");
+		clubres.setForeground(Color.YELLOW);
 		clubresultspanel.setBackground(Color.BLACK);
-		JPanel roomresultspanel = new JPanel();
+		
+		JPanel roomresultspanel = new JPanel(new GridLayout(0,2));
+		JLabel roomres = new JLabel("<html> 1) " + matches.get(Login.publicData.names[9]) 
+				+ "<br> 2) "	+ matches.get(Login.publicData.names[10]) 
+				+ "<br> 3) " + matches.get(Login.publicData.names[11]) + "<html>");
+		roomres.setForeground(Color.GREEN);
 		roomresultspanel.setBackground(Color.BLACK);
-		JPanel carresultspanel = new JPanel();
+		
+		JPanel carresultspanel = new JPanel(new GridLayout(0,2));
+		JLabel carres = new JLabel("<html> 1) " + matches.get(Login.publicData.names[6]) 
+				+ "<br> 2) "	+ matches.get(Login.publicData.names[7]) 
+				+ "<br> 3) " + matches.get(Login.publicData.names[8]) + "<html>");
+		carres.setForeground(Color.CYAN);
 		carresultspanel.setBackground(Color.BLACK);
+		
 		JPanel menupanel = new JPanel();
 		menupanel.setBackground(Color.BLACK);
 
@@ -259,11 +292,6 @@ public class Profile extends JFrame {
 
 		imagepanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		namepanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-		entresultspanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-		restresultspanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-		clubresultspanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-		roomresultspanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-		carresultspanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
 		menupanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
@@ -313,10 +341,15 @@ public class Profile extends JFrame {
 		imagepanel.add(label);
 		imagepanel.add(nameandaddresslabel);
 		entresultspanel.add(entresults);
+		entresultspanel.add(entres);
 		restresultspanel.add(restresults);
+		restresultspanel.add(restres);
 		clubresultspanel.add(clubresults);
+		clubresultspanel.add(clubres);
 		roomresultspanel.add(roomresults);
+		roomresultspanel.add(roomres);
 		carresultspanel.add(carresults);
+		carresultspanel.add(carres);
 
 		frame.add(Box.createRigidArea(new Dimension(0, 10)));
 		frame.add(imagepanel);
@@ -339,5 +372,8 @@ public class Profile extends JFrame {
 		menupanel.add(menu);
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

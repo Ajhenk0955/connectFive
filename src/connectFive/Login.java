@@ -63,10 +63,7 @@ public class Login extends JFrame {
 		login.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
-				// this is where the username and password
-				// need to be verified with the DB
-
-				System.out.println(username.getText());
+				
 				boolean userExists = false;
 
 				if (username.getText().isEmpty()
@@ -85,14 +82,13 @@ public class Login extends JFrame {
 					try {
 						userExists = publicData.confirmUser(username.getText(),
 								password.getPassword());
-						System.out.println("test" + userExists);
 					} catch (SQLException e1) {
-						// don't worry it will work
 						e1.printStackTrace();
 					}
 				}
 				// here you could insert a "wrong password" text
 				if (userExists) {
+					Profile pro = new Profile();
 					Menu menu = new Menu();
 					menu.setSize(360, 640);
 					menu.setVisible(true);

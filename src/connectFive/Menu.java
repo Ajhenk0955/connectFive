@@ -35,6 +35,8 @@ public class Menu extends JFrame {
 		buttonPanel.add(profile);
 		profile.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
+				// TODO 
+				// When reopening program, profile is not found
 				Login.pro.viewProfile();
 				setVisible(false);
 				Login.pro.setResizable(false);

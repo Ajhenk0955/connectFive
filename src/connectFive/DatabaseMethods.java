@@ -430,15 +430,15 @@ public class DatabaseMethods {
 			int[] values = {1,2,3,1,2,3,1};
 			//tator.pushData(values, "carpoolingID");
 			tator.updateData();
-			//results = tator.getUserReturnValues();
-			//Set<String> setOfKeys = results.keySet();
-			//Iterator<String> iterator = setOfKeys.iterator();
-			//while (iterator.hasNext()) {
-			//	String key = (String) iterator.next();
-			//	String value = (String) results.get(key);
+			results = tator.getUserReturnValues();
+			Set<String> setOfKeys = results.keySet();
+			Iterator<String> iterator = setOfKeys.iterator();
+			while (iterator.hasNext()) {
+				String key = (String) iterator.next();
+				String value = (String) results.get(key);
 
-			//	System.out.println("Key: " + key + ", Value: " + value);
-			//}
+				System.out.println("Key: " + key + ", Value: " + value);
+			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
