@@ -6,7 +6,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-class RSO extends Question{
+class RSO extends Question {
 	private JPanel question1;
 	private JPanel question2;
 	private JPanel question3;
@@ -59,19 +59,20 @@ class RSO extends Question{
 	private JLabel space;
 	private ButtonGroup radioGroup;
 
-	int [] array = new int [7];
-	
-	RSO (){
+	int[] array = new int[7];
+
+	RSO() {
 		super();
-		JPanel button = new JPanel(new GridLayout(0,1));
+		JPanel button = new JPanel(new GridLayout(0, 1));
 		button.setOpaque(false);
 		button.setLayout(null);
-		
-		//question 1
+
+		// question 1
 		question1 = new JPanel();
 		question1.setOpaque(false);
 		question1.setLayout(new BoxLayout(question1, BoxLayout.Y_AXIS));
-		enjoy = new JLabel ("  1)  What do you enjoy doing (select one that applies most)?");
+		enjoy = new JLabel(
+				"  1)  What do you enjoy doing (select one that applies most)?");
 		baking = new JRadioButton("Baking");
 		gaming = new JRadioButton("Gaming");
 		reading = new JRadioButton("Reading");
@@ -94,14 +95,14 @@ class RSO extends Question{
 		radioGroup.add(building);
 		radioGroup.add(volunteering);
 		radioGroup.add(sports);
-		
-		//question 2
+
+		// question 2
 		question2 = new JPanel();
 		question2.setOpaque(false);
 		question2.setLayout(new BoxLayout(question2, BoxLayout.Y_AXIS));
-		major = new JLabel ("  2)  What is your major?");
+		major = new JLabel("  2)  What is your major?");
 		engineering = new JRadioButton("Engineering");
-		math  = new JRadioButton("Math");
+		math = new JRadioButton("Math");
 		hs = new JRadioButton("Health Professions and Social Works");
 		his = new JRadioButton("History");
 		eng = new JRadioButton("English");
@@ -121,12 +122,12 @@ class RSO extends Question{
 		radioGroup.add(hs);
 		radioGroup.add(eng);
 		radioGroup.add(arts);
-		
-		//question 3
+
+		// question 3
 		question3 = new JPanel();
 		question3.setOpaque(false);
 		question3.setLayout(new BoxLayout(question3, BoxLayout.Y_AXIS));
-		connect = new JLabel ("  3)  Do you prefer something major related?");
+		connect = new JLabel("  3)  Do you prefer something major related?");
 		yes = new JRadioButton("Yes");
 		no = new JRadioButton("No");
 		space = new JLabel("   ");
@@ -137,12 +138,12 @@ class RSO extends Question{
 		radioGroup = new ButtonGroup();
 		radioGroup.add(yes);
 		radioGroup.add(no);
-		
-		//question 4
+
+		// question 4
 		question4 = new JPanel();
 		question4.setOpaque(false);
 		question4.setLayout(new BoxLayout(question4, BoxLayout.Y_AXIS));
-		least = new JLabel ("  4)  What is least interesting to you?");
+		least = new JLabel("  4)  What is least interesting to you?");
 		baking2 = new JRadioButton("Baking");
 		gaming2 = new JRadioButton("Gaming");
 		reading2 = new JRadioButton("Reading");
@@ -165,12 +166,12 @@ class RSO extends Question{
 		radioGroup.add(building2);
 		radioGroup.add(volunteering2);
 		radioGroup.add(sports2);
-		
-		//question 5
+
+		// question 5
 		question5 = new JPanel();
 		question5.setOpaque(false);
 		question5.setLayout(new BoxLayout(question5, BoxLayout.Y_AXIS));
-		most = new JLabel ("  5)  Which category is most interesting to you?");
+		most = new JLabel("  5)  Which category is most interesting to you?");
 		acad = new JRadioButton("Academic");
 		cult = new JRadioButton("Culture");
 		med = new JRadioButton("Media");
@@ -196,12 +197,12 @@ class RSO extends Question{
 		radioGroup.add(rel);
 		radioGroup.add(ser);
 		radioGroup.add(sports3);
-		
-		//question 6
+
+		// question 6
 		question6 = new JPanel();
 		question6.setOpaque(false);
 		question6.setLayout(new BoxLayout(question6, BoxLayout.Y_AXIS));
-		meet = new JLabel ("  6)  How often are you available to meet?");
+		meet = new JLabel("  6)  How often are you available to meet?");
 		multi = new JRadioButton("Multiple times a week");
 		week = new JRadioButton("Once a week");
 		bi = new JRadioButton("Biweekly");
@@ -218,12 +219,12 @@ class RSO extends Question{
 		radioGroup.add(week);
 		radioGroup.add(bi);
 		radioGroup.add(month);
-		
-		//question 7
+
+		// question 7
 		question7 = new JPanel();
 		question7.setOpaque(false);
 		question7.setLayout(new BoxLayout(question7, BoxLayout.Y_AXIS));
-		donate = new JLabel ("  7)  How often can you donate to the RSO?");
+		donate = new JLabel("  7)  How often can you donate to the RSO?");
 		zero = new JRadioButton("$0");
 		five = new JRadioButton("$5 - $10");
 		ten = new JRadioButton("$10 - $30");
@@ -240,7 +241,7 @@ class RSO extends Question{
 		radioGroup.add(five);
 		radioGroup.add(ten);
 		radioGroup.add(thirty);
-		
+
 		// action listener
 		baking.addActionListener(this);
 		gaming.addActionListener(this);
@@ -277,12 +278,12 @@ class RSO extends Question{
 		five.addActionListener(this);
 		ten.addActionListener(this);
 		thirty.addActionListener(this);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 0, 360, 640);
 		add(scrollPane);
-		
-		JPanel viewPanel=new JPanel();
+
+		JPanel viewPanel = new JPanel();
 		viewPanel.setOpaque(false);
 		viewPanel.setLayout(new BoxLayout(viewPanel, BoxLayout.Y_AXIS));
 		viewPanel.add(question1);
@@ -293,142 +294,147 @@ class RSO extends Question{
 		viewPanel.add(question6);
 		viewPanel.add(question7);
 		viewPanel.add(submit);
-		
-		JViewport view=new JViewport();
+
+		JViewport view = new JViewport();
 		view.setView(viewPanel);
 		view.setOpaque(false);
-		
+
 		scrollPane.setViewport(view);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
-		
+
 		JLabel background = new JLabel();
 		background.setIcon(new ImageIcon("imgs/LoginBackground.png"));
 		background.setBounds(0, 0, 360, 640);
 		add(background);
-		
+
 		this.add(button);
-		
+
 	}
-	
+
 	@Override
-	public void actionPerformed(ActionEvent e){
-		
+	public void actionPerformed(ActionEvent e) {
+
 		// question 1
-		if(baking.isSelected()){
+		if (baking.isSelected()) {
 			array[0] = 0;
-		}else if(gaming.isSelected()){
+		} else if (gaming.isSelected()) {
 			array[0] = 1;
-		}else if(reading.isSelected()){
+		} else if (reading.isSelected()) {
 			array[0] = 2;
-		}else if(building.isSelected()){
+		} else if (building.isSelected()) {
 			array[0] = 3;
-		}else if(volunteering.isSelected()){
+		} else if (volunteering.isSelected()) {
 			array[0] = 4;
-		}else if(sports.isSelected()){
+		} else if (sports.isSelected()) {
 			array[0] = 5;
-		}else {
+		} else {
 			array[0] = -1;
 		}
-		
+
 		// question 2
-		if(engineering.isSelected()){
+		if (engineering.isSelected()) {
 			array[1] = 0;
-		}else if(math.isSelected()){
+		} else if (math.isSelected()) {
 			array[1] = 1;
-		}else if(hs.isSelected()){
+		} else if (hs.isSelected()) {
 			array[1] = 2;
-		}else if(his.isSelected()){
+		} else if (his.isSelected()) {
 			array[1] = 3;
-		}else if(eng.isSelected()){
+		} else if (eng.isSelected()) {
 			array[1] = 4;
-		}else if(arts.isSelected()){
+		} else if (arts.isSelected()) {
 			array[1] = 5;
-		}else{
+		} else {
 			array[1] = -1;
 		}
-		
+
 		// question 3
-		if(yes.isSelected()){
+		if (yes.isSelected()) {
 			array[2] = 0;
-		}else if(no.isSelected()){
+		} else if (no.isSelected()) {
 			array[2] = 1;
-		}else{
+		} else {
 			array[2] = -1;
 		}
-		
+
 		// question 4
-		if(baking2.isSelected()){
+		if (baking2.isSelected()) {
 			array[3] = 0;
-		}else if(gaming2.isSelected()){
+		} else if (gaming2.isSelected()) {
 			array[3] = 1;
-		}else if(reading2.isSelected()){
+		} else if (reading2.isSelected()) {
 			array[3] = 2;
-		}else if(building2.isSelected()){
+		} else if (building2.isSelected()) {
 			array[3] = 3;
-		}else if(volunteering2.isSelected()){
+		} else if (volunteering2.isSelected()) {
 			array[3] = 4;
-		}else if(sports2.isSelected()){
+		} else if (sports2.isSelected()) {
 			array[3] = 5;
-		}else{
+		} else {
 			array[3] = -1;
 		}
-		
+
 		// question 5
-		if(acad.isSelected()){
+		if (acad.isSelected()) {
 			array[4] = 0;
-		}else if(cult.isSelected()){
+		} else if (cult.isSelected()) {
 			array[4] = 1;
-		}else if(med.isSelected()){
+		} else if (med.isSelected()) {
 			array[4] = 2;
-		}else if(pol.isSelected()){
+		} else if (pol.isSelected()) {
 			array[4] = 3;
-		}else if(rel.isSelected()){
+		} else if (rel.isSelected()) {
 			array[4] = 4;
-		}else if(ser.isSelected()){
+		} else if (ser.isSelected()) {
 			array[4] = 5;
-		}else if(sports3.isSelected()){
+		} else if (sports3.isSelected()) {
 			array[4] = 6;
-		}else{
+		} else {
 			array[4] = -1;
 		}
-		
+
 		// question 6
-		if(multi.isSelected()){
+		if (multi.isSelected()) {
 			array[5] = 0;
-		}else if(week.isSelected()){
+		} else if (week.isSelected()) {
 			array[5] = 1;
-		}else if(bi.isSelected()){
+		} else if (bi.isSelected()) {
 			array[5] = 2;
-		}else if(month.isSelected()){
+		} else if (month.isSelected()) {
 			array[5] = 3;
-		}else {
+		} else {
 			array[5] = -1;
 		}
-		
+
 		// question 7
-		if(zero.isSelected()){
+		if (zero.isSelected()) {
 			array[6] = 0;
-		}else if(five.isSelected()){
+		} else if (five.isSelected()) {
 			array[6] = 1;
-		}else if(ten.isSelected()){
+		} else if (ten.isSelected()) {
 			array[6] = 2;
-		}else if(thirty.isSelected()){
+		} else if (thirty.isSelected()) {
 			array[6] = 3;
-		}else{
+		} else {
 			array[6] = -1;
 		}
-		
-		for(int i=0; i<array.length; i++){
-			if(array[i]<0){
+		// #####
+		boolean validAnswers = false;
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] < 0) {
 				submit.setEnabled(false);
+				validAnswers = false;
 				break;
-			}
-			else{
+			} else {
 				submit.setEnabled(true);
+				validAnswers = true;
 				// store results in DB
 				// insert code here
 			}
 		}
-	}	
+		if (validAnswers) {
+			Login.publicData.pushData(array, "clubsID");
+		}
+	}
 }

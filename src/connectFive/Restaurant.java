@@ -6,7 +6,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-class Restaurant extends Question{
+class Restaurant extends Question {
 	private JPanel question1;
 	private JPanel question2;
 	private JPanel question3;
@@ -48,19 +48,19 @@ class Restaurant extends Question{
 	private JLabel space;
 	private ButtonGroup radioGroup;
 
-	int [] array = new int [6];
-	
-	Restaurant (){
+	int[] array = new int[6];
+
+	Restaurant() {
 		super();
-		JPanel button = new JPanel(new GridLayout(0,1));
+		JPanel button = new JPanel(new GridLayout(0, 1));
 		button.setOpaque(false);
 		button.setLayout(null);
-		
-		//question 1
+
+		// question 1
 		question1 = new JPanel();
 		question1.setOpaque(false);
 		question1.setLayout(new BoxLayout(question1, BoxLayout.Y_AXIS));
-		type = new JLabel ("  1)  Which of these best describes you?");
+		type = new JLabel("  1)  Which of these best describes you?");
 		vegan = new JRadioButton("Vegan");
 		vegetarian = new JRadioButton("Vegetarian");
 		sea = new JRadioButton("Seafood allergies");
@@ -80,14 +80,15 @@ class Restaurant extends Question{
 		radioGroup.add(sea);
 		radioGroup.add(gluten);
 		radioGroup.add(none);
-		
-		//question 2
+
+		// question 2
 		question2 = new JPanel();
 		question2.setOpaque(false);
 		question2.setLayout(new BoxLayout(question2, BoxLayout.Y_AXIS));
-		cuisine = new JLabel ("  2)  What type of cuisine are you in the mood for?");
+		cuisine = new JLabel(
+				"  2)  What type of cuisine are you in the mood for?");
 		african = new JRadioButton("African");
-		asian  = new JRadioButton("Asian");
+		asian = new JRadioButton("Asian");
 		european = new JRadioButton("European");
 		oceanic = new JRadioButton("Oceanic");
 		americas = new JRadioButton("Americas");
@@ -105,12 +106,12 @@ class Restaurant extends Question{
 		radioGroup.add(european);
 		radioGroup.add(oceanic);
 		radioGroup.add(americas);
-		
-		//question 3
+
+		// question 3
 		question3 = new JPanel();
 		question3.setOpaque(false);
 		question3.setLayout(new BoxLayout(question3, BoxLayout.Y_AXIS));
-		meal = new JLabel ("  3)  Which meal type are you hungry for?");
+		meal = new JLabel("  3)  Which meal type are you hungry for?");
 		breakfast = new JRadioButton("Breakfast");
 		lunch = new JRadioButton("Lunch");
 		dinner = new JRadioButton("Dinner");
@@ -124,12 +125,12 @@ class Restaurant extends Question{
 		radioGroup.add(breakfast);
 		radioGroup.add(lunch);
 		radioGroup.add(dinner);
-		
-		//question 4
+
+		// question 4
 		question4 = new JPanel();
 		question4.setOpaque(false);
 		question4.setLayout(new BoxLayout(question4, BoxLayout.Y_AXIS));
-		time = new JLabel ("  4)  What time are you planning to eat?");
+		time = new JLabel("  4)  What time are you planning to eat?");
 		morning = new JRadioButton("Morning");
 		midday = new JRadioButton("Midday");
 		afternoon = new JRadioButton("Afternoon");
@@ -149,12 +150,12 @@ class Restaurant extends Question{
 		radioGroup.add(afternoon);
 		radioGroup.add(evening);
 		radioGroup.add(late);
-		
-		//question 5
+
+		// question 5
 		question5 = new JPanel();
 		question5.setOpaque(false);
 		question5.setLayout(new BoxLayout(question5, BoxLayout.Y_AXIS));
-		travel = new JLabel ("  5)  How far are you willing to travel?");
+		travel = new JLabel("  5)  How far are you willing to travel?");
 		less1 = new JRadioButton("Less than a mile");
 		more1 = new JRadioButton("More than a mile");
 		less5 = new JRadioButton("Less than five miles");
@@ -171,12 +172,12 @@ class Restaurant extends Question{
 		radioGroup.add(more1);
 		radioGroup.add(less5);
 		radioGroup.add(more5);
-		
-		//question 6
+
+		// question 6
 		question6 = new JPanel();
 		question6.setOpaque(false);
 		question6.setLayout(new BoxLayout(question6, BoxLayout.Y_AXIS));
-		price = new JLabel ("  6)  How much are you willing to spend on a meal?");
+		price = new JLabel("  6)  How much are you willing to spend on a meal?");
 		zero = new JRadioButton("$0 - $9");
 		ten = new JRadioButton("$10 - $19");
 		twenty = new JRadioButton("$20 - $29");
@@ -193,7 +194,7 @@ class Restaurant extends Question{
 		radioGroup.add(ten);
 		radioGroup.add(twenty);
 		radioGroup.add(thirty);
-				
+
 		// action listener
 		vegan.addActionListener(this);
 		vegetarian.addActionListener(this);
@@ -221,12 +222,12 @@ class Restaurant extends Question{
 		ten.addActionListener(this);
 		twenty.addActionListener(this);
 		thirty.addActionListener(this);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 0, 360, 640);
 		add(scrollPane);
-		
-		JPanel viewPanel=new JPanel();
+
+		JPanel viewPanel = new JPanel();
 		viewPanel.setOpaque(false);
 		viewPanel.setLayout(new BoxLayout(viewPanel, BoxLayout.Y_AXIS));
 		viewPanel.add(question1);
@@ -236,120 +237,117 @@ class Restaurant extends Question{
 		viewPanel.add(question5);
 		viewPanel.add(question6);
 		viewPanel.add(submit);
-		
-		JViewport view=new JViewport();
+
+		JViewport view = new JViewport();
 		view.setView(viewPanel);
 		view.setOpaque(false);
-		
+
 		scrollPane.setViewport(view);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
-		
+
 		JLabel background = new JLabel();
 		background.setIcon(new ImageIcon("imgs/background5.png"));
 		background.setBounds(0, 0, 360, 640);
 		add(background);
-		
+
 		this.add(button);
 	}
-	
-	
+
 	@Override
-	public void actionPerformed(ActionEvent e){
-		
-		if(vegan.isSelected()){
+	public void actionPerformed(ActionEvent e) {
+
+		if (vegan.isSelected()) {
 			array[0] = 0;
-		}else if(vegetarian.isSelected()){
+		} else if (vegetarian.isSelected()) {
 			array[0] = 1;
-		}else if(sea.isSelected()){
+		} else if (sea.isSelected()) {
 			array[0] = 2;
-		}else if(gluten.isSelected()){
+		} else if (gluten.isSelected()) {
 			array[0] = 3;
-		}else if(none.isSelected()){
+		} else if (none.isSelected()) {
 			array[0] = 4;
-		}
-		else{
+		} else {
 			array[0] = -1;
 		}
-		
-		if(african.isSelected()){
+
+		if (african.isSelected()) {
 			array[1] = 0;
-		}else if(asian.isSelected()){
+		} else if (asian.isSelected()) {
 			array[1] = 1;
-		}else if(european.isSelected()){
+		} else if (european.isSelected()) {
 			array[1] = 2;
-		}else if(oceanic.isSelected()){
+		} else if (oceanic.isSelected()) {
 			array[1] = 3;
-		}else if(americas.isSelected()){
+		} else if (americas.isSelected()) {
 			array[1] = 4;
-		}
-		else{
+		} else {
 			array[1] = -1;
 		}
-		
-		if(breakfast.isSelected()){
+
+		if (breakfast.isSelected()) {
 			array[2] = 0;
-		}else if(lunch.isSelected()){
+		} else if (lunch.isSelected()) {
 			array[2] = 1;
-		}else if(dinner.isSelected()){
+		} else if (dinner.isSelected()) {
 			array[2] = 2;
-		}
-		else{
+		} else {
 			array[2] = -1;
 		}
-		
-		if(morning.isSelected()){
+
+		if (morning.isSelected()) {
 			array[3] = 0;
-		}else if(midday.isSelected()){
+		} else if (midday.isSelected()) {
 			array[3] = 1;
-		}else if(afternoon.isSelected()){
+		} else if (afternoon.isSelected()) {
 			array[3] = 2;
-		}else if(evening.isSelected()){
+		} else if (evening.isSelected()) {
 			array[3] = 3;
-		}else if(late.isSelected()){
+		} else if (late.isSelected()) {
 			array[3] = 4;
-		}
-		else{
+		} else {
 			array[3] = -1;
 		}
-		
-		if(less1.isSelected()){
+
+		if (less1.isSelected()) {
 			array[4] = 0;
-		}else if(more1.isSelected()){
+		} else if (more1.isSelected()) {
 			array[4] = 1;
-		}else if(less5.isSelected()){
+		} else if (less5.isSelected()) {
 			array[4] = 2;
-		}else if(more5.isSelected()){
+		} else if (more5.isSelected()) {
 			array[4] = 3;
-		}
-		else{
+		} else {
 			array[4] = -1;
 		}
-		
-		if(zero.isSelected()){
+
+		if (zero.isSelected()) {
 			array[5] = 0;
-		}else if(ten.isSelected()){
+		} else if (ten.isSelected()) {
 			array[5] = 1;
-		}else if(twenty.isSelected()){
+		} else if (twenty.isSelected()) {
 			array[5] = 2;
-		}else if(thirty.isSelected()){
+		} else if (thirty.isSelected()) {
 			array[5] = 3;
-		}
-		else{
+		} else {
 			array[5] = -1;
 		}
-		
-		
-		for(int i=0; i<array.length; i++){
-			if(array[i]<0){
+		// #####
+		boolean validAnswers = false;
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] < 0) {
 				submit.setEnabled(false);
+				validAnswers = false;
 				break;
-			}
-			else{
+			} else {
 				submit.setEnabled(true);
+				validAnswers = true;
 				// store results in DB
 				// insert code here
 			}
+		}
+		if (validAnswers) {
+			Login.publicData.pushData(array, "restaurantsID");
 		}
 	}
 }

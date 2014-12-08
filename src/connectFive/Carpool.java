@@ -6,7 +6,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-class Carpool extends Question{
+class Carpool extends Question {
 	private JPanel question1;
 	private JPanel question2;
 	private JPanel question3;
@@ -15,7 +15,7 @@ class Carpool extends Question{
 	private JPanel question6;
 	private JPanel question7;
 	private JRadioButton give;
-	private JRadioButton receive;	
+	private JRadioButton receive;
 	private JRadioButton me;
 	private JRadioButton two;
 	private JRadioButton three;
@@ -50,19 +50,19 @@ class Carpool extends Question{
 	private JLabel space;
 	private ButtonGroup radioGroup;
 
-	int [] array = new int [7];
-	
-	Carpool (){
+	int[] array = new int[7];
+
+	Carpool() {
 		super();
-		JPanel button = new JPanel(new GridLayout(0,1));
+		JPanel button = new JPanel(new GridLayout(0, 1));
 		button.setOpaque(false);
 		button.setLayout(null);
-		
-		//question 1
+
+		// question 1
 		question1 = new JPanel();
 		question1.setOpaque(false);
 		question1.setLayout(new BoxLayout(question1, BoxLayout.Y_AXIS));
-		look = new JLabel ("  1)  Are you looking to:");
+		look = new JLabel("  1)  Are you looking to:");
 		give = new JRadioButton("Give a ride");
 		receive = new JRadioButton("Receive a ride");
 		space = new JLabel("  ");
@@ -73,14 +73,14 @@ class Carpool extends Question{
 		radioGroup = new ButtonGroup();
 		radioGroup.add(give);
 		radioGroup.add(receive);
-		
-		//question 2
+
+		// question 2
 		question2 = new JPanel();
 		question2.setOpaque(false);
 		question2.setLayout(new BoxLayout(question2, BoxLayout.Y_AXIS));
-		party = new JLabel ("  2)  How many people are in your party?");
+		party = new JLabel("  2)  How many people are in your party?");
 		me = new JRadioButton("Just me");
-		two  = new JRadioButton("Two");
+		two = new JRadioButton("Two");
 		three = new JRadioButton("Three");
 		four = new JRadioButton("Four");
 		space = new JLabel("  ");
@@ -95,12 +95,12 @@ class Carpool extends Question{
 		radioGroup.add(two);
 		radioGroup.add(three);
 		radioGroup.add(four);
-		
-		//question 3
+
+		// question 3
 		question3 = new JPanel();
 		question3.setOpaque(false);
 		question3.setLayout(new BoxLayout(question3, BoxLayout.Y_AXIS));
-		prefer = new JLabel ("  3)  Who would you prefer to ride with?");
+		prefer = new JLabel("  3)  Who would you prefer to ride with?");
 		female = new JRadioButton("A female");
 		male = new JRadioButton("A male");
 		none = new JRadioButton("No preference");
@@ -114,12 +114,12 @@ class Carpool extends Question{
 		radioGroup.add(female);
 		radioGroup.add(male);
 		radioGroup.add(none);
-		
-		//question 4
+
+		// question 4
 		question4 = new JPanel();
 		question4.setOpaque(false);
 		question4.setLayout(new BoxLayout(question4, BoxLayout.Y_AXIS));
-		whereAt = new JLabel ("  4)  Where are you?");
+		whereAt = new JLabel("  4)  Where are you?");
 		on = new JRadioButton("On campus");
 		close = new JRadioButton("Within a mile of campus");
 		less5 = new JRadioButton("Less than five miles from campus");
@@ -136,12 +136,12 @@ class Carpool extends Question{
 		radioGroup.add(close);
 		radioGroup.add(less5);
 		radioGroup.add(more5);
-		
-		//question 5
+
+		// question 5
 		question5 = new JPanel();
 		question5.setOpaque(false);
 		question5.setLayout(new BoxLayout(question5, BoxLayout.Y_AXIS));
-		whereTo = new JLabel ("  5)  Where are you going?");
+		whereTo = new JLabel("  5)  Where are you going?");
 		on2 = new JRadioButton("On campus");
 		close2 = new JRadioButton("Within a mile of campus");
 		less52 = new JRadioButton("Less than five miles from campus");
@@ -158,12 +158,12 @@ class Carpool extends Question{
 		radioGroup.add(close2);
 		radioGroup.add(less52);
 		radioGroup.add(more52);
-		
-		//question 6
+
+		// question 6
 		question6 = new JPanel();
 		question6.setOpaque(false);
 		question6.setLayout(new BoxLayout(question6, BoxLayout.Y_AXIS));
-		depart = new JLabel ("  6)  What time do you need to depart?");
+		depart = new JLabel("  6)  What time do you need to depart?");
 		now = new JRadioButton("Now");
 		fifteen = new JRadioButton("15 minutes");
 		thirty = new JRadioButton("30 minutes");
@@ -183,12 +183,12 @@ class Carpool extends Question{
 		radioGroup.add(thirty);
 		radioGroup.add(hour);
 		radioGroup.add(hourP);
-		
-		//question 7
+
+		// question 7
 		question7 = new JPanel();
 		question7.setOpaque(false);
 		question7.setLayout(new BoxLayout(question7, BoxLayout.Y_AXIS));
-		arrive = new JLabel ("  7)  What time do you need to arrive?");
+		arrive = new JLabel("  7)  What time do you need to arrive?");
 		fifteen2 = new JRadioButton("15 minutes");
 		thirty2 = new JRadioButton("30 minutes");
 		hour2 = new JRadioButton("1 hour");
@@ -205,7 +205,7 @@ class Carpool extends Question{
 		radioGroup.add(thirty2);
 		radioGroup.add(hour2);
 		radioGroup.add(hourP2);
-		
+
 		// action listener
 		give.addActionListener(this);
 		receive.addActionListener(this);
@@ -233,12 +233,12 @@ class Carpool extends Question{
 		thirty2.addActionListener(this);
 		hour2.addActionListener(this);
 		hourP2.addActionListener(this);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 0, 360, 640);
 		add(scrollPane);
-		
-		JPanel viewPanel=new JPanel();
+
+		JPanel viewPanel = new JPanel();
 		viewPanel.setOpaque(false);
 		viewPanel.setLayout(new BoxLayout(viewPanel, BoxLayout.Y_AXIS));
 		viewPanel.add(question1);
@@ -249,116 +249,121 @@ class Carpool extends Question{
 		viewPanel.add(question6);
 		viewPanel.add(question7);
 		viewPanel.add(submit);
-		
-		JViewport view=new JViewport();
+
+		JViewport view = new JViewport();
 		view.setView(viewPanel);
 		view.setOpaque(false);
-		
+
 		scrollPane.setViewport(view);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
-		
+
 		JLabel background = new JLabel();
 		background.setIcon(new ImageIcon("imgs/background4.png"));
 		background.setBounds(0, 0, 360, 640);
 		add(background);
-		
+
 		this.add(button);
 	}
-	
+
 	@Override
-	public void actionPerformed(ActionEvent e){
-		
-		if(give.isSelected()){
+	public void actionPerformed(ActionEvent e) {
+
+		if (give.isSelected()) {
 			array[0] = 0;
-		}else if(receive.isSelected()){
+		} else if (receive.isSelected()) {
 			array[0] = 1;
-		}else{
+		} else {
 			array[0] = -1;
 		}
-		
-		if(me.isSelected()){
+
+		if (me.isSelected()) {
 			array[1] = 0;
-		}else if(two.isSelected()){
+		} else if (two.isSelected()) {
 			array[1] = 1;
-		}else if(three.isSelected()){
+		} else if (three.isSelected()) {
 			array[1] = 2;
-		}else if(four.isSelected()){
+		} else if (four.isSelected()) {
 			array[1] = 3;
-		}else{
+		} else {
 			array[1] = -1;
 		}
-		
-		if(female.isSelected()){
+
+		if (female.isSelected()) {
 			array[2] = 0;
-		}else if(male.isSelected()){
+		} else if (male.isSelected()) {
 			array[2] = 1;
-		}else if(none.isSelected()){
+		} else if (none.isSelected()) {
 			array[2] = 2;
-		}else{
+		} else {
 			array[2] = -1;
 		}
-		
-		if(on.isSelected()){
+
+		if (on.isSelected()) {
 			array[3] = 0;
-		}else if(close.isSelected()){
+		} else if (close.isSelected()) {
 			array[3] = 1;
-		}else if(less5.isSelected()){
+		} else if (less5.isSelected()) {
 			array[3] = 2;
-		}else if(more5.isSelected()){
+		} else if (more5.isSelected()) {
 			array[3] = 3;
-		}else{
+		} else {
 			array[3] = -1;
 		}
 
-		if(on2.isSelected()){
+		if (on2.isSelected()) {
 			array[4] = 0;
-		}else if(close2.isSelected()){
+		} else if (close2.isSelected()) {
 			array[4] = 1;
-		}else if(less52.isSelected()){
+		} else if (less52.isSelected()) {
 			array[4] = 2;
-		}else if(more52.isSelected()){
+		} else if (more52.isSelected()) {
 			array[4] = 3;
-		}else{
+		} else {
 			array[4] = -1;
 		}
-		
-		if(now.isSelected()){
+
+		if (now.isSelected()) {
 			array[5] = 0;
-		}else if(fifteen.isSelected()){
+		} else if (fifteen.isSelected()) {
 			array[5] = 1;
-		}else if(thirty.isSelected()){
+		} else if (thirty.isSelected()) {
 			array[5] = 2;
-		}else if(hour.isSelected()){
+		} else if (hour.isSelected()) {
 			array[5] = 3;
-		}else if(hourP.isSelected()){
+		} else if (hourP.isSelected()) {
 			array[5] = 4;
-		}else{
+		} else {
 			array[5] = -1;
 		}
-		
-		if(fifteen2.isSelected()){
+
+		if (fifteen2.isSelected()) {
 			array[6] = 0;
-		}else if(thirty2.isSelected()){
+		} else if (thirty2.isSelected()) {
 			array[6] = 1;
-		}else if(hour2.isSelected()){
+		} else if (hour2.isSelected()) {
 			array[6] = 2;
-		}else if(hourP2.isSelected()){
+		} else if (hourP2.isSelected()) {
 			array[6] = 3;
-		}else{
+		} else {
 			array[6] = -1;
 		}
-		
-		for(int i=0; i<array.length; i++){
-			if(array[i]<0){
+		// #####
+		boolean validAnswers = false;
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] < 0) {
 				submit.setEnabled(false);
+				validAnswers = false;
 				break;
-			}
-			else{
+			} else {
 				submit.setEnabled(true);
+				validAnswers = true;
 				// store results in DB
 				// insert code here
 			}
+		}
+		if (validAnswers) {
+			Login.publicData.pushData(array, "carpoolingID");
 		}
 	}
 }

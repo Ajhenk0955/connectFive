@@ -6,7 +6,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-class Roommate extends Question{
+class Roommate extends Question {
 	private JPanel question1;
 	private JPanel question2;
 	private JPanel question3;
@@ -42,19 +42,19 @@ class Roommate extends Question{
 	private JLabel clean;
 	private JLabel space;
 	private ButtonGroup radioGroup;
-	int [] array = new int [6];
-	
-	Roommate (){
+	int[] array = new int[6];
+
+	Roommate() {
 		super();
-		JPanel button = new JPanel(new GridLayout(0,1));
+		JPanel button = new JPanel(new GridLayout(0, 1));
 		button.setOpaque(false);
 		button.setLayout(null);
 
-		//question 1
+		// question 1
 		question1 = new JPanel();
 		question1.setOpaque(false);
 		question1.setLayout(new BoxLayout(question1, BoxLayout.Y_AXIS));
-		gender = new JLabel ("  1)  Are you a female or male?");
+		gender = new JLabel("  1)  Are you a female or male?");
 		fem = new JRadioButton("Female");
 		male = new JRadioButton("Male");
 		space = new JLabel("   ");
@@ -65,12 +65,12 @@ class Roommate extends Question{
 		radioGroup = new ButtonGroup();
 		radioGroup.add(fem);
 		radioGroup.add(male);
-		
-		//question 2
+
+		// question 2
 		question2 = new JPanel();
 		question2.setOpaque(false);
 		question2.setLayout(new BoxLayout(question2, BoxLayout.Y_AXIS));
-		year = new JLabel ("  2)  What year of college are you in?");
+		year = new JLabel("  2)  What year of college are you in?");
 		fresh = new JRadioButton("Freshman");
 		soph = new JRadioButton("Sophomore");
 		jun = new JRadioButton("Junior");
@@ -90,12 +90,12 @@ class Roommate extends Question{
 		radioGroup.add(jun);
 		radioGroup.add(sen);
 		radioGroup.add(grad);
-		
-		//question 3
+
+		// question 3
 		question3 = new JPanel();
 		question3.setOpaque(false);
 		question3.setLayout(new BoxLayout(question3, BoxLayout.Y_AXIS));
-		wake = new JLabel ("  3)  Which of these best describes you?");
+		wake = new JLabel("  3)  Which of these best describes you?");
 		dawn = new JRadioButton("Up at dawn");
 		bird = new JRadioButton("Early bird");
 		owl = new JRadioButton("Night owl");
@@ -109,12 +109,13 @@ class Roommate extends Question{
 		radioGroup.add(dawn);
 		radioGroup.add(bird);
 		radioGroup.add(owl);
-		
-		//question 4
+
+		// question 4
 		question4 = new JPanel();
 		question4.setOpaque(false);
 		question4.setLayout(new BoxLayout(question4, BoxLayout.Y_AXIS));
-		you = new JLabel ("  4)  What type of person would you like to room with?");
+		you = new JLabel(
+				"  4)  What type of person would you like to room with?");
 		less = new JRadioButton("Less like you");
 		more = new JRadioButton("More like you");
 		any = new JRadioButton("Anyone will do");
@@ -128,12 +129,12 @@ class Roommate extends Question{
 		radioGroup.add(less);
 		radioGroup.add(more);
 		radioGroup.add(any);
-		
-		//question 5
+
+		// question 5
 		question5 = new JPanel();
 		question5.setOpaque(false);
 		question5.setLayout(new BoxLayout(question5, BoxLayout.Y_AXIS));
-		pers = new JLabel ("  5)  Which of these best describes you?");
+		pers = new JLabel("  5)  Which of these best describes you?");
 		soc = new JRadioButton("Social");
 		rec = new JRadioButton("Reclusive");
 		dep = new JRadioButton("Dependable");
@@ -150,12 +151,12 @@ class Roommate extends Question{
 		radioGroup.add(rec);
 		radioGroup.add(dep);
 		radioGroup.add(unre);
-		
-		//question 6
+
+		// question 6
 		question6 = new JPanel();
 		question6.setOpaque(false);
 		question6.setLayout(new BoxLayout(question6, BoxLayout.Y_AXIS));
-		clean = new JLabel ("  6)  How often do you clean?");
+		clean = new JLabel("  6)  How often do you clean?");
 		godly = new JRadioButton("Cleanliness is next to godliness");
 		reg = new JRadioButton("Cleaning happens on a regular basis");
 		often = new JRadioButton("Cleaning should happen more often");
@@ -172,7 +173,7 @@ class Roommate extends Question{
 		radioGroup.add(reg);
 		radioGroup.add(often);
 		radioGroup.add(pigsty);
-		
+
 		// action listeners
 		fem.addActionListener(this);
 		male.addActionListener(this);
@@ -195,12 +196,12 @@ class Roommate extends Question{
 		reg.addActionListener(this);
 		often.addActionListener(this);
 		pigsty.addActionListener(this);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 0, 360, 640);
 		add(scrollPane);
-		
-		JPanel viewPanel=new JPanel();
+
+		JPanel viewPanel = new JPanel();
 		viewPanel.setOpaque(false);
 		viewPanel.setLayout(new BoxLayout(viewPanel, BoxLayout.Y_AXIS));
 		viewPanel.add(question1);
@@ -210,109 +211,114 @@ class Roommate extends Question{
 		viewPanel.add(question5);
 		viewPanel.add(question6);
 		viewPanel.add(submit);
-		
-		JViewport view=new JViewport();
+
+		JViewport view = new JViewport();
 		view.setView(viewPanel);
 		view.setOpaque(false);
-		
+
 		scrollPane.setViewport(view);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
-		
+
 		JLabel background = new JLabel();
 		background.setIcon(new ImageIcon("imgs/background3.png"));
 		background.setBounds(0, 0, 360, 640);
 		add(background);
-		
+
 		this.add(button);
-		
+
 	}
-	
+
 	@Override
-	public void actionPerformed(ActionEvent e){
-		
+	public void actionPerformed(ActionEvent e) {
+
 		// question 1
-		if(fem.isSelected()){
+		if (fem.isSelected()) {
 			array[0] = 0;
-		}else if(male.isSelected()){
+		} else if (male.isSelected()) {
 			array[0] = 1;
-		}else{
+		} else {
 			array[0] = -1;
 		}
-		
+
 		// question 2
-		if(fresh.isSelected()){
+		if (fresh.isSelected()) {
 			array[1] = 0;
-		}else if(soph.isSelected()){
+		} else if (soph.isSelected()) {
 			array[1] = 1;
-		}else if(jun.isSelected()){
+		} else if (jun.isSelected()) {
 			array[1] = 2;
-		}else if(sen.isSelected()){
+		} else if (sen.isSelected()) {
 			array[1] = 3;
-		}else if(grad.isSelected()){
+		} else if (grad.isSelected()) {
 			array[1] = 4;
-		}else{
+		} else {
 			array[1] = -1;
 		}
-		
+
 		// question 3
-		if(dawn.isSelected()){
+		if (dawn.isSelected()) {
 			array[2] = 0;
-		}else if(bird.isSelected()){
+		} else if (bird.isSelected()) {
 			array[2] = 1;
-		}else if(owl.isSelected()){
+		} else if (owl.isSelected()) {
 			array[2] = 2;
-		}else{
+		} else {
 			array[2] = -1;
 		}
-		
+
 		// question 4
-		if(less.isSelected()){
+		if (less.isSelected()) {
 			array[3] = 0;
-		}else if(more.isSelected()){
+		} else if (more.isSelected()) {
 			array[3] = 1;
-		}else if(any.isSelected()){
+		} else if (any.isSelected()) {
 			array[3] = 2;
-		}else{
+		} else {
 			array[3] = -1;
 		}
-		
+
 		// question 5
-		if(soc.isSelected()){
+		if (soc.isSelected()) {
 			array[4] = 0;
-		}else if(rec.isSelected()){
+		} else if (rec.isSelected()) {
 			array[4] = 1;
-		}else if(dep.isSelected()){
+		} else if (dep.isSelected()) {
 			array[4] = 2;
-		}else if(unre.isSelected()){
+		} else if (unre.isSelected()) {
 			array[4] = 3;
-		}else{
+		} else {
 			array[4] = -1;
 		}
-		
+
 		// question 6
-		if(godly.isSelected()){
+		if (godly.isSelected()) {
 			array[5] = 0;
-		}else if(reg.isSelected()){
+		} else if (reg.isSelected()) {
 			array[5] = 1;
-		}else if(often.isSelected()){
+		} else if (often.isSelected()) {
 			array[5] = 2;
-		}else if(pigsty.isSelected()){
+		} else if (pigsty.isSelected()) {
 			array[5] = 3;
-		}else{
+		} else {
 			array[5] = -1;
 		}
-		
-		for(int i=0; i<array.length; i++){
-			if(array[i]<0){
+		// #####
+		boolean validAnswers = false;
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] < 0) {
 				submit.setEnabled(false);
+				validAnswers = false;
 				break;
-			}
-			else{
+			} else {
 				submit.setEnabled(true);
+				validAnswers = true;
 				// store results in DB
 				// insert code here
 			}
+		}
+		if (validAnswers) {
+			Login.publicData.pushData(array, "roomateID");
 		}
 	}
 }

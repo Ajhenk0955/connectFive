@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class DatabaseMethods {
 
@@ -13,12 +15,10 @@ public class DatabaseMethods {
 	// insert creates a new row, replace can replace^^
 	public Connection conn = null;
 	private int userID;
-	private ResultSet resultSet;
-
-	String[] names = { "restaurant1", "restaurant2", "restaurant3", "club1",
-			"club2", "club3", "carpool1", "carpool2", "carpool3",
-			"entertainment1", "entertainment2", "entertainment3", "roomate1",
-			"roomate2", "roomate3" };
+	String[] names = { "Restaurant 1", "Restaurant 2", "Restaurant 3",
+			"Club 1", "Club 2", "Club 3", "Carpool 1", "Carpool 2",
+			"Carpool 3", "Entertainment 1", "Entertainment 2",
+			"Entertainment 3", "Roomate 1", "Roomate 2", "Roomate 3" };
 
 	DatabaseMethods() throws ClassNotFoundException {
 		// connects to database
@@ -54,21 +54,20 @@ public class DatabaseMethods {
 
 	}
 
-	public boolean confirmUser(String Name, String Password)
-			throws SQLException {
+	public boolean confirmUser(String Name, char[] pass) throws SQLException {
 		// verifies user account
 		// fetching table
 		Statement stmt = null;
 		ResultSet rs = null;
 		String executeStatement = "SELECT * FROM userVerification";
 		boolean result = false;
-
+		String Password = "";
+		Password = String.valueOf(pass);
 		try {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(executeStatement);
 
 			// method also updates userID
-			rs.first();
 			while (rs.next()) {
 				if (result) {
 					break;
@@ -79,8 +78,8 @@ public class DatabaseMethods {
 				// System.out.println("name = " + name);
 				// System.out.println("Name = " + Name);
 				String password = rs.getString(3);
-				// problem exists at comparing values
-				if (Name.equals(name) && Password.equals(password)) {
+				if ((Name.equals(name) && Password.equals(password))
+						|| name.equals(Name) && password.equals(Password)) {
 					result = true;
 					userID = id;
 					// System.out.println(userID);
@@ -126,11 +125,11 @@ public class DatabaseMethods {
 
 	}
 
-	public void addUser(String userName, String password) {
-		// add blank rows for other tables of smame ID
+	public void addUser(String userName, char[] pass) {
+		// add blank rows for other tables of same ID
 		// assumes the userID field is generated within the database
 		// create giant while loop
-
+		String password = String.valueOf(pass);
 		String[] executor = new String[3];
 		executor[0] = String.format(
 				"INSERT INTO userVerification (userName, userPassword) "
@@ -149,7 +148,7 @@ public class DatabaseMethods {
 												// conn
 				if (i == 1) {// update userID
 					try {
-						confirmUser(userName, password);
+						confirmUser(userName, pass);
 					} catch (SQLException e) {
 
 						e.printStackTrace();
@@ -198,21 +197,26 @@ public class DatabaseMethods {
 	}
 
 	public void pushData(int[] values, String collumn) {
-		// TODO verify this adds to correct row
 		// have to update to specific row!
 		// convert array to int
-		StringBuilder strNum = new StringBuilder();
+		// StringBuilder strNum = new StringBuilder();
+		// problem is here>>
+		// for (int num : values) {
+		// strNum.append(num);
+		// }
+		// int key = Integer.parseInt(strNum.toString());
 
-		for (int num : values) {
-			strNum.append(num);
+		int key = 0;
+		for (int i = 0; i < values.length; i++) {
+			key += Math.pow(10, i) * values[values.length - i - 1];
 		}
-		int key = Integer.parseInt(strNum.toString());
+		System.out.println(key);
 
 		Statement stmt = null;
 		ResultSet rs = null;
 
-		String executor = String.format("UPDATE userValues SET %s='%i' "
-				+ "WHERE userID=%i", collumn, key, userID);
+		String executor = String.format("UPDATE userValues SET %s='%d' "
+				+ "WHERE userID=%d", collumn, key, userID);
 		try {
 
 			stmt = conn.createStatement();
@@ -247,31 +251,59 @@ public class DatabaseMethods {
 				stmt = null;
 			}
 		}
+		// calls for an update
+		// TODO updateData();
 	}
 
 	public void updateData() {
-
+		// TODO fix this
+		// SO broken
 		Statement stmt = null;
 		ResultSet rs = null;
 
 		String executeStatement = "";
-		String[] collumn = { "carPoolingID", "restaurantsID", "clubsID",
+		String[] collumn = { "carpoolingID", "restaurantsID", "clubsID",
 				"entertainmentID", "roomateID" };
 		int count = 0;
 		try {
 
 			for (int i = 0; i < 5; i++) {
+				// get temp value for comparisons
+				int temp = 0;
+				ResultSet tempResult = null;
+				Statement tempState = conn.createStatement();
+				String request = String.format(
+						"SELECT %s FROM userValues WHERE" + "userID='%d'",
+						collumn[i], userID);
+				tempResult = tempState.executeQuery(request);
+				if (tempResult.next()) {
+					temp = rs.getInt(1);
+				}
+				// get sorted results
 				executeStatement = String.format(
-						"SELECT * FROM userValues ORDER by "
-								+ "abs(%s - userValues.%s)", collumn[i],
-						collumn[i]);
+						// error here TODO
+						// return a table
+						// sorted by abs(collumn - value)
+						"SELECT userID, %s FROM userValues ORDER by "
+								+ "abs(%s - '%d')", collumn[i], collumn[i],
+						temp);
 
 				stmt = conn.createStatement();
 				rs = stmt.executeQuery(executeStatement);
 				int p = 0;
 				while (rs.next() && p != 3) {
-					String tempValue = rs.getString(i + 1);
-					p++;
+					int tempValue = rs.getInt(i + 1);
+					String tempName = "";
+					// get associated name with tempValue from userVerification
+
+					String forName = String.format(
+							"SELECT userName FROM userVerification WHERE"
+									+ "userID='%d'", tempValue);
+					Statement tempo = conn.createStatement();
+					ResultSet tempa = tempo.executeQuery(forName);
+					if (tempResult.next()) {
+						tempName = tempa.getString(1);
+					}
 
 					// sorts through the top three matching results of the
 					// sorted query
@@ -281,10 +313,12 @@ public class DatabaseMethods {
 
 					Statement sta = conn.createStatement();
 					String statement = String.format(
-							"INSERT INTO returnUser (%s) " + "VALUES ('%s')",
-							names[count], tempValue);
+							"UPDATE returnUser SET %s='%s' WHERE userID=%d",
+							names[count], tempName, userID);
 					sta.executeUpdate(statement);
 					count++;
+					p++;
+					// count is used for column names
 				}
 
 			}
@@ -320,25 +354,25 @@ public class DatabaseMethods {
 	}
 
 	public HashMap<String, String> getUserReturnValues() throws SQLException {
-		// TODO verify returns given row values from userID as hashmap
-		HashMap<String, String> returnValue = null;
+		// returns given row values from userID as hashmap
+		HashMap<String, String> returnValue = new HashMap<String, String>();
 
 		Statement stmt = null;
 		ResultSet rs = null;
-		String executeStatement = String.format("SELECT * FROM %s",
-				"returnUser");
+		String executeStatement = String.format(
+				"SELECT * FROM returnUser WHERE userID='%d'", userID);
 
 		try {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(executeStatement);
 
 			// resultSet is initialized before the first data set
-			while (rs.absolute(userID)) {
+			if (rs.next()) {
 				// it is possible to get the columns via name
 				// also possible to get the columns via the column number
 				// which starts at 1
 				for (int i = 0; i < 15; i++) {
-					returnValue.put(names[i], resultSet.getString(i + 2));
+					returnValue.put(names[i], rs.getString(i + 2));
 				}
 
 			}
@@ -378,10 +412,24 @@ public class DatabaseMethods {
 
 	public static void main(String args[]) {
 		DatabaseMethods tator;
+		char[] password = { 'p', 'a', 's', 's', 'w', 'o', 'r', 'd' };
+		HashMap<String, String> results;
 		try {
 			tator = new DatabaseMethods();
-			tator.addUser("Ryan", "admin");
-		} catch (ClassNotFoundException e) { // TODO Auto-generated catch block
+			tator.confirmUser("Andrew", password);
+			results = tator.getUserReturnValues();
+			Set<String> setOfKeys = results.keySet();
+			Iterator<String> iterator = setOfKeys.iterator();
+			while (iterator.hasNext()) {
+				String key = (String) iterator.next();
+				String value = (String) results.get(key);
+
+				System.out.println("Key: " + key + ", Value: " + value);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+
 			e.printStackTrace();
 		}
 
