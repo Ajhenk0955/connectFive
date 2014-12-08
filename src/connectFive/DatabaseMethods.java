@@ -269,41 +269,46 @@ public class DatabaseMethods {
 
 			for (int i = 0; i < 5; i++) {
 				// get temp value for comparisons
-				int temp = 0;
+				int tempID = 0;
 				ResultSet tempResult = null;
 				Statement tempState = conn.createStatement();
 				String request = String.format(
-						"SELECT %s FROM userValues WHERE" + "userID='%d'",
+						"SELECT %s FROM userValues WHERE " + "userID='%d'",
 						collumn[i], userID);
 				tempResult = tempState.executeQuery(request);
-				if (tempResult.next()) {
-					temp = rs.getInt(1);
-				}
-				// get sorted results
+				tempID = tempResult.getInt(1);
+				// may need to move this before closing
+				//close statement
+				tempState.close();
+				tempResult.close();
+
+				// update exxecute statemtn, then get sorted results
 				executeStatement = String.format(
 						// error here TODO
 						// return a table
 						// sorted by abs(collumn - value)
 						"SELECT userID, %s FROM userValues ORDER by "
-								+ "abs(%s - '%d')", collumn[i], collumn[i],
-						temp);
+								+ "abs(%s - %d)", collumn[i], collumn[i],
+						tempID);
 
 				stmt = conn.createStatement();
 				rs = stmt.executeQuery(executeStatement);
 				int p = 0;
 				while (rs.next() && p != 3) {
-					int tempValue = rs.getInt(i + 1);
+					int tempValue = rs.getInt(2);// maybe?
 					String tempName = "";
 					// get associated name with tempValue from userVerification
 
 					String forName = String.format(
-							"SELECT userName FROM userVerification WHERE"
+							"SELECT userName FROM userVerification WHERE "
 									+ "userID='%d'", tempValue);
 					Statement tempo = conn.createStatement();
 					ResultSet tempa = tempo.executeQuery(forName);
-					if (tempResult.next()) {
+					if (tempResult.first()) {
 						tempName = tempa.getString(1);
 					}
+					tempo.close();
+					tempa.close();
 
 					// sorts through the top three matching results of the
 					// sorted query
@@ -316,10 +321,14 @@ public class DatabaseMethods {
 							"UPDATE returnUser SET %s='%s' WHERE userID=%d",
 							names[count], tempName, userID);
 					sta.executeUpdate(statement);
+					// close for safety
+					sta.close();
 					count++;
 					p++;
 					// count is used for column names
 				}
+				stmt.close();
+				rs.close();
 
 			}
 		} catch (SQLException ex) {
@@ -413,19 +422,23 @@ public class DatabaseMethods {
 	public static void main(String args[]) {
 		DatabaseMethods tator;
 		char[] password = { 'p', 'a', 's', 's', 'w', 'o', 'r', 'd' };
+		
 		HashMap<String, String> results;
 		try {
 			tator = new DatabaseMethods();
 			tator.confirmUser("Andrew", password);
-			results = tator.getUserReturnValues();
-			Set<String> setOfKeys = results.keySet();
-			Iterator<String> iterator = setOfKeys.iterator();
-			while (iterator.hasNext()) {
-				String key = (String) iterator.next();
-				String value = (String) results.get(key);
+			int[] values = {1,2,3,1,2,3,1};
+			//tator.pushData(values, "carpoolingID");
+			tator.updateData();
+			//results = tator.getUserReturnValues();
+			//Set<String> setOfKeys = results.keySet();
+			//Iterator<String> iterator = setOfKeys.iterator();
+			//while (iterator.hasNext()) {
+			//	String key = (String) iterator.next();
+			//	String value = (String) results.get(key);
 
-				System.out.println("Key: " + key + ", Value: " + value);
-			}
+			//	System.out.println("Key: " + key + ", Value: " + value);
+			//}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
