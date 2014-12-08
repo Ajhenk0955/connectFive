@@ -165,10 +165,6 @@ public class Profile extends JFrame {
 				mainmenu.setVisible(true);
 			} else {
 
-				// the DB needs to be scanned from this point to
-				// verify no duplicate username is being created
-				// and add the user....
-
 				if (!namefield.getText().isEmpty()
 						&& !addressfield.getText().isEmpty()
 						&& !genderfield.getText().isEmpty()
