@@ -169,6 +169,7 @@ public class Profile extends JFrame {
 
 	class ButtonListener implements ActionListener {
 
+		@SuppressWarnings("deprecation")
 		@Override
 		public void actionPerformed(ActionEvent e) {
 

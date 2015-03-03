@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
 
 public class DatabaseMethods {
 
@@ -498,6 +496,7 @@ public class DatabaseMethods {
 		return returnValue;
 	}
 
+	@SuppressWarnings("unused")
 	public static void main(String args[]) {
 		DatabaseMethods tator;
 		char[] password = { 'p', 'a', 's', 's', 'w', 'o', 'r', 'd' };

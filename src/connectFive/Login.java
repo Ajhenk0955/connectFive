@@ -61,7 +61,7 @@ public class Login extends JFrame {
 		login.setBounds(50, 570, 100, 40);
 		eastBlank.add(login);
 		login.addActionListener(new ActionListener() {
-			@SuppressWarnings("deprecation")
+			@SuppressWarnings({ "deprecation", "unused" })
 			public void actionPerformed(ActionEvent e) {
 				
 				boolean userExists = false;
